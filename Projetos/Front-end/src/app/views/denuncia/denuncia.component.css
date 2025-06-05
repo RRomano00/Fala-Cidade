@@ -1,0 +1,161 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Fade-in no container */
+.report-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Campos de texto */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea {
+  height: 250px; /* altura aumentada */
+  resize: vertical;
+}
+
+/* Foco */
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #4c9e4e;
+  box-shadow: 0 0 0 2px rgba(76, 158, 78, 0.2);
+}
+
+/* Campos válidos */
+input:valid,
+textarea:valid {
+  border-color: #4c9e4e;
+}
+
+/* Campos inválidos - só depois de tocados */
+input.touched:invalid,
+textarea.touched:invalid {
+  border-color: #e53935;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+/* Mensagem de erro */
+.error-message {
+  display: none;
+  color: #e53935;
+  font-size: 14px;
+  margin-top: 6px;
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* Mostrar erro se o campo estiver focado e inválido */
+input:focus:invalid + .error-message,
+textarea:focus:invalid + .error-message {
+  display: block;
+}
+
+/* Mostrar erro se o campo foi tocado e está inválido */
+input.touched:invalid + .error-message,
+textarea.touched:invalid + .error-message {
+  display: block;
+}
+
+/* Animação para erro aparecer */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botão com animação de preenchimento */
+button {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 20px;
+  background-color: #4c9e4e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #0f4d30;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+button:hover::before {
+  left: 0;
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
