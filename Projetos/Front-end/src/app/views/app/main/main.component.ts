@@ -26,13 +26,10 @@ import * as fontawesome from '@fortawesome/free-solid-svg-icons';
     MatTooltipModule,
     MatExpansionModule,
     FontAwesomeModule,
-
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-    faFooterIcon = fontawesome.faBacteria;
-
-
+    faFooterIcon = fontawesome.faHeart;
 }
