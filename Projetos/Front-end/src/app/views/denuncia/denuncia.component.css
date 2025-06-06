@@ -14,14 +14,14 @@ body {
   height: 100vh;
 }
 
-/* Fade-in no container */
+/* Container principal com fade-in */
 .report-container {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 90%;
-  max-width: 500px;
+  max-width: 800px;
   text-align: center;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -42,9 +42,29 @@ h2 {
   color: #333;
 }
 
+/* Grupos de entrada (cada um tem uma leve animação de aparecimento) */
 .input-group {
   margin-bottom: 20px;
   text-align: left;
+  opacity: 0;
+  animation: slideInField 0.4s ease forwards;
+}
+
+.input-group:nth-of-type(1) { animation-delay: 0.1s; }
+.input-group:nth-of-type(2) { animation-delay: 0.2s; }
+.input-group:nth-of-type(3) { animation-delay: 0.3s; }
+.input-group:nth-of-type(4) { animation-delay: 0.4s; }
+.input-group:nth-of-type(5) { animation-delay: 0.5s; }
+
+@keyframes slideInField {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .input-group label {
@@ -52,9 +72,10 @@ h2 {
   margin-bottom: 6px;
   font-weight: bold;
   color: #444;
+  transition: color 0.3s ease;
 }
 
-/* Campos de texto */
+/* Campos de texto e textarea */
 input[type="text"],
 textarea {
   width: 100%;
@@ -67,32 +88,60 @@ textarea {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Altura do textarea */
 textarea {
-  height: 250px; /* altura aumentada */
+  height: 200px;
   resize: vertical;
 }
 
-/* Foco */
+/* Estado de foco: rótulo muda de cor levemente */
+input[type="text"]:focus + .error-message,
+textarea:focus + .error-message {
+  /* Sem exibição de erro aqui */
+}
+
 input[type="text"]:focus,
 textarea:focus {
   border-color: #4c9e4e;
   box-shadow: 0 0 0 2px rgba(76, 158, 78, 0.2);
 }
 
-/* Campos válidos */
+input[type="text"]:focus ~ label,
+textarea:focus ~ label {
+  color: #4c9e4e;
+}
+
+/* Campos considerados válidos */
 input:valid,
 textarea:valid {
   border-color: #4c9e4e;
 }
 
-/* Campos inválidos - só depois de tocados */
+/* Animação de “shake” para campos inválidos após envio */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Campos considerados inválidos somente após adicionar classe "touched" */
 input.touched:invalid,
 textarea.touched:invalid {
   border-color: #e53935;
   box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+  animation: shake 0.3s ease;
 }
 
-/* Mensagem de erro */
+/* Mensagem de erro (inicialmente escondida) */
 .error-message {
   display: none;
   color: #e53935;
@@ -101,19 +150,13 @@ textarea.touched:invalid {
   animation: slideDown 0.3s ease forwards;
 }
 
-/* Mostrar erro se o campo estiver focado e inválido */
-input:focus:invalid + .error-message,
-textarea:focus:invalid + .error-message {
-  display: block;
-}
-
-/* Mostrar erro se o campo foi tocado e está inválido */
+/* Mostrar erro se o campo for inválido e tiver classe "touched" */
 input.touched:invalid + .error-message,
 textarea.touched:invalid + .error-message {
   display: block;
 }
 
-/* Animação para erro aparecer */
+/* Animação para a mensagem de erro aparecer */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -125,18 +168,57 @@ textarea.touched:invalid + .error-message {
   }
 }
 
-/* Botão com animação de preenchimento */
+/* Grupo de checkbox (Denúncia Anônima) */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: slideInField 0.4s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  accent-color: #4c9e4e;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.checkbox-group input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
+.checkbox-group label {
+  font-size: 16px;
+  color: #444;
+  cursor: pointer;
+}
+
+/* Botão de submissão com leve animação */
 button {
   position: relative;
   overflow: hidden;
-  padding: 12px 20px;
+  padding: 12px 24px;
   background-color: #4c9e4e;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  transition: color 0.3s ease;
+  transition: transform 0.1s ease, color 0.3s ease;
+  animation: slideInField 0.4s ease forwards;
+  animation-delay: 0.7s;
+}
+
+button:hover {
+  color: #dfe;
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 button::before {

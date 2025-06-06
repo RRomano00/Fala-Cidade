@@ -40,17 +40,14 @@
         <span class="error-message">Por favor, descreva a denúncia.</span>
       </div>
 
+      <!-- Novo campo: Denúncia Anônima -->
+      <div class="checkbox-group">
+        <input type="checkbox" id="anonimo" name="anonimo" />
+        <label for="anonimo">Denúncia Anônima</label>
+      </div>
+
       <button type="submit"><span>Enviar Denúncia</span></button>
     </form>
   </div>
-
-  <script>
-    // Adiciona classe "touched" quando o campo perde o foco pela primeira vez
-    document.querySelectorAll('#denunciaForm input, #denunciaForm textarea').forEach((field) => {
-      field.addEventListener('blur', () => {
-        field.classList.add('touched');
-      });
-    });
-  </script>
 </body>
 </html>
