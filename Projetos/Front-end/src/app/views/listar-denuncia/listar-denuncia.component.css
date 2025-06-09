@@ -18,44 +18,89 @@ h1 {
   color: #2e7d32;
 }
 
+/* Legenda */
+.legenda-status {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #444;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cor-legenda {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.verde {
+  background-color: #2e7d32;
+}
+
+.amarela {
+  background-color: #f9a825;
+}
+
+.vermelha {
+  background-color: #ec0a0a;
+}
+
+/* Lista e cards */
 .denuncia-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.denuncia-card {
+.denuncia-card,
+.denuncia-card-unattended,
+.denuncia-card-pending {
   background-color: #ffffff;
   padding: 20px;
-  border-left: 6px solid #2e7d32;
+  border-left: 6px solid;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border-radius: 8px;
   text-align: left;
   animation: slideUp 0.5s ease-in forwards;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denuncia-card {
+  border-left-color: #2e7d32;
 }
 
 .denuncia-card-unattended {
-  background-color: #ffffff;
-  padding: 20px;
-  border-left: 6px solid #ec0a0a;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  text-align: left;
-  animation: slideUp 0.5s ease-in forwards;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left-color: #ec0a0a;
 }
 
-.denuncia-card:hover {
+.denuncia-card-pending {
+  border-left-color: #f9a825;
+}
+
+.denuncia-card:hover,
+.denuncia-card-unattended:hover,
+.denuncia-card-pending:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-.denuncia-card h2 {
+.denuncia-card h2,
+.denuncia-card-unattended h2,
+.denuncia-card-pending h2 {
   margin-top: 0;
   color: #388e3c;
 }
 
+/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
