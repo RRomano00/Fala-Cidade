@@ -9,39 +9,39 @@ import { ListarDenunciaComponent } from './views/listar-denuncia/listar-denuncia
 
 
 export const routes: Routes = [
-    {
-        path: 'account/sign-in',
-        component: SignInComponent
-    },
-    {
-        path: 'account/sign-up',
-        component: SignUpComponent
-    },
-    {
-        path: '',
-        component: MainComponent,
-        children: [
-            {
-                path: 'account/my-profile',
-                component: MyProfileComponent
-            },
-            {
-                path: 'main',
-                component: MainComponent
-            },
-            {
-                path: 'denuncia',
-                component: DenunciaComponent
-            },
-            {
-                path: 'listar-denuncia',
-                component: ListarDenunciaComponent
-            },
-            {
-            path: '**',
-            component: NotFoundComponent
-        },
-            ],
-        
-    },
+  {
+    path: 'account/sign-in',
+    component: SignInComponent
+  },
+  {
+    path: 'account/sign-up',
+    component: SignUpComponent
+  },
+  {
+    path: '',
+    component: MainComponent,
+    children: [
+      {
+        path: 'my-profile',
+        component: MyProfileComponent
+      },
+      {
+        path: 'main',
+        component: MainComponent
+      },
+      {
+        path: 'denuncia',
+        component: DenunciaComponent
+      },
+      {
+        path: 'listar-denuncia',
+        component: ListarDenunciaComponent
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
+      },
+    ],
+
+  },
 ];
