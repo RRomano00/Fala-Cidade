@@ -26,10 +26,6 @@ export const routes: Routes = [
         component: MyProfileComponent
       },
       {
-        path: 'main',
-        component: MainComponent
-      },
-      {
         path: 'denuncia',
         component: DenunciaComponent
       },
