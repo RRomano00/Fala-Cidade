@@ -352,7 +352,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-usecase" id="p1715fc3dc03943eaa582ea3739f691f0_875912323" name="Visão_Funcional - Diagrama de Casos de Uso" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-440,-33" zoom="0.7">
+      <diagram type="uml-usecase" id="p1715fc3dc03943eaa582ea3739f691f0_875912323" name="Visão_Funcional - Diagrama de Casos de Uso" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-104,0" zoom="0.7">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -541,7 +541,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="pa85d381855ea41de80935838799306ad_763953754" name="VisãoFuncional-Módulo_Denúncia" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-325,-21" zoom="0.7">
+      <diagram type="uml-usecase" id="pa85d381855ea41de80935838799306ad_763953754" name="VisãoFuncional-Módulo_Denúncia" order-index="2" overview-order-index="0" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-369,77">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -820,7 +820,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="p1fec70e112574e4dbd999c5f88a8a303_860532988" name="VisãoFuncional-Módulo_Administrar_Denúncia" order-index="3" overview-order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-204,6" zoom="0.7">
+      <diagram type="uml-usecase" id="p1fec70e112574e4dbd999c5f88a8a303_860532988" name="VisãoFuncional-Módulo_Administrar_Denúncia" order-index="3" overview-order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-202,63" zoom="0.8">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -1118,7 +1118,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="p90bf54fcab464302ae9218f4205a92be_126258648" name="VisãoFuncional-Módulo_Editar_Usuário" order-index="5" overview-order-index="3" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-190,-11" zoom="0.6">
+      <diagram type="uml-usecase" id="p90bf54fcab464302ae9218f4205a92be_126258648" name="VisãoFuncional-Módulo_Editar_Usuário" order-index="5" overview-order-index="3" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="-326,-13" zoom="0.6">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -1505,7 +1505,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-usecase" id="pfbe12017ee884c3d89d92cd03c60bf9e_767744718" name="VisãoFuncional-Módulo_Gerar_Relatório" order-index="7" overview-order-index="5" uid="" name-style="" auto-routed-paths="false" default-line-style="default" view-location="0,104" zoom="0.7">
+      <diagram type="uml-usecase" id="pfbe12017ee884c3d89d92cd03c60bf9e_767744718" name="VisãoFuncional-Módulo_Gerar_Relatório" order-index="7" overview-order-index="5" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
