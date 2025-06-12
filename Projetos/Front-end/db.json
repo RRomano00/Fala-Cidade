@@ -1,0 +1,31 @@
+{
+    "denuncias": [
+        {
+            "id": "1",
+            "cidade": "Furlanzinho lindo",
+            "bairro": "Cachoeira de Minas",
+            "rua": "Rua Unica",
+            "numero": "0",
+            "denuncia": "Não vendem coca-cola na cidade",
+            "status": "Em andamento"
+        },
+        {
+            "id": "2",
+            "cidade": "Rio de Janeiro",
+            "bairro": "Copacabana",
+            "rua": "Avenida Atlântica",
+            "numero": "456",
+            "denuncia": "Barulho excessivo durante a madrugada",
+            "status": "Não atendida"
+        },
+        {
+            "id": "3",
+            "cidade": "Belo Horizonte",
+            "bairro": "Savassi",
+            "rua": "Rua Pernambuco",
+            "numero": "789",
+            "denuncia": "Poste de luz apagado há dias",
+            "status": "Atendida"
+        }
+    ]
+}
