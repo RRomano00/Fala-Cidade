@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,4 +33,6 @@ import * as fontawesome from '@fortawesome/free-solid-svg-icons';
 })
 export class MainComponent {
   faFooterIcon = fontawesome.faHeart;
+
+  constructor(private router: Router) { }
 }
