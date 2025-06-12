@@ -4,8 +4,8 @@ import { SignUpComponent } from './views/account/sign-up/sign-up.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { MainComponent } from './views/app/main/main.component';
 import { MyProfileComponent } from './views/account/my-profile/my-profile.component';
-import { DenunciaComponent } from './views/denuncia/denuncia.component';
-import { ListarDenunciaComponent } from './views/listar-denuncia/listar-denuncia.component';
+import { DenunciaComponent } from './views/denuncias/denuncia/create-denuncia.component';
+import { ListarDenunciaComponent } from './views/denuncias/listar-denuncia/listar-denuncia.component';
 import { HelpComponent } from './views/app/help/help.component';
 
 
@@ -31,7 +31,7 @@ export const routes: Routes = [
         component: HelpComponent
       },
       {
-        path: 'denuncia',
+        path: 'create-denuncia',
         component: DenunciaComponent
       },
       {
