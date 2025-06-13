@@ -40,7 +40,7 @@ export const routes: Routes = [
         component: ListarDenunciaComponent
       },
       {
-        path: 'detail-denuncia',
+        path: 'listar-denuncia/:id',
         component: DetailDenunciaComponent
       },
       {
