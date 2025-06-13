@@ -14,14 +14,11 @@
       'denuncia-card-pending': item.status === 'Em andamento',
       'denuncia-card-unattended': item.status === 'Não atendida'
     }">
-    <h2>Denúncia {{ item.id }}</h2>
-    <a mat-button routerLink='/listar-denuncia/{{item.id}}'>
+    <h3>Denúncia {{ item.id }}</h3>
+    <p>{{item.cidade}} | {{item.rua}}</p>
+    <a mat-button [routerLink]="['/listar-denuncia', item.id]">
       <mat-icon>visibility</mat-icon>
-      Clique aqui para mais detalhes.
-    </a> <!-- <p><strong>Status:</strong> {{ item.status }}</p>
-    <p><strong>Cidade:</strong> {{ item.cidade }}</p>
-    <p><strong>Bairro:</strong> {{ item.bairro }}</p>
-    <p><strong>Rua:</strong> {{ item.rua }}, {{ item.numero }}</p>
-    <p><strong>Conteúdo:</strong> {{ item.denuncia }}</p> -->
+      Ver detalhes
+    </a>
   </div>
 </div>

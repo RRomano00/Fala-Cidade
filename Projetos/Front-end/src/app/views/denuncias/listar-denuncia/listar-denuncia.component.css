@@ -58,16 +58,16 @@ h1 {
 .denuncia-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .denuncia-card,
 .denuncia-card-unattended,
 .denuncia-card-pending {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px;
   border-left: 6px solid;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   text-align: left;
   animation: slideUp 0.5s ease-in forwards;
@@ -90,12 +90,12 @@ h1 {
 .denuncia-card-unattended:hover,
 .denuncia-card-pending:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.denuncia-card h2,
-.denuncia-card-unattended h2,
-.denuncia-card-pending h2 {
+.denuncia-card h3,
+.denuncia-card-unattended h3,
+.denuncia-card-pending h3 {
   margin-top: 0;
   color: #388e3c;
 }
@@ -106,6 +106,7 @@ h1 {
     opacity: 0;
     transform: translateY(-15px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -117,6 +118,7 @@ h1 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
