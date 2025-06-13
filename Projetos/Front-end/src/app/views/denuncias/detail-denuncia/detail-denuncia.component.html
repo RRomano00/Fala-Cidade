@@ -1,1 +1,25 @@
-<p>detail-denuncia works!</p>
+<div class="denuncia-container" *ngIf="denuncia">
+    <h1>Detalhes da Denúncia</h1>
+
+    <div class="denuncia-detalhes">
+        <p><strong>ID:</strong> {{ denuncia.id }}</p>
+        <p><strong>Status:</strong>
+            <span class="status {{ denuncia.status.toLowerCase().replace(' ', '-') }}">
+                {{ denuncia.status }}
+            </span>
+        </p>
+        <p><strong>Cidade:</strong> {{ denuncia.cidade }}</p>
+        <p><strong>Bairro:</strong> {{ denuncia.bairro }}</p>
+        <p><strong>Rua:</strong> {{ denuncia.rua }}</p>
+        <p><strong>Número:</strong> {{ denuncia.numero }}</p>
+        <p><strong>Descrição:</strong></p>
+        <div class="descricao-box">
+            {{ denuncia.denuncia }}
+        </div>
+    </div>
+
+    <a mat-button routerLink="/listar-denuncia" class="voltar-btn">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+    </a>
+</div>

@@ -1,11 +1,53 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReadDenunciaService } from '../../../services/read-denuncia.service';
+import { MatIconModule } from '@angular/material/icon';
+import { Denuncia } from '../../../domain/model/denuncia';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detail-denuncia',
-  imports: [],
+  imports: [
+    RouterOutlet,
+    RouterModule,
+    FontAwesomeModule,
+    MatIconModule,
+    CommonModule
+  ],
   templateUrl: './detail-denuncia.component.html',
   styleUrl: './detail-denuncia.component.css'
 })
 export class DetailDenunciaComponent {
+  denuncia!: Denuncia;
+
+  denunciaId: string = '-1';
+
+
+  constructor(
+    private router: Router,
+    private readDenunciaService: ReadDenunciaService,
+    private route: ActivatedRoute
+
+  ) { }
+
+  ngOnInit(): void {
+    let denunciaId = this.route.snapshot.paramMap.get('id');
+
+    this.denunciaId = denunciaId!
+
+    this.loadDenunciaById(denunciaId!);
+  }
+
+  async loadDenunciaById(denunciaId: string) {
+    try {
+      this.denuncia = await this.readDenunciaService.findById(denunciaId);
+      console.log(this.denuncia);
+    } catch (error) {
+      console.error('Erro ao carregar a denúncia:', error);
+    }
+  }
+
+
 
 }
