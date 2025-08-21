@@ -25,8 +25,7 @@ public class AppConfiguration {
     }
 
     @Bean
-    public UserDao getUserFakeDao(final Connection connection){
-//        return new UserFakeDaoImpl();
+    public UserDao getUserFakeDao(Connection connection){
         return new UserPostgresDaoImpl(connection);
     }
 
