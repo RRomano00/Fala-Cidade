@@ -5,8 +5,12 @@ import br.com.faitec.fala_cidade.port.dao.user.UserDao;
 
 import java.sql.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserPostgresDaoImpl implements UserDao {
+
+    private static final Logger logger = Logger.getLogger(UserPostgresDaoImpl.class.getName());
 
     private final Connection connection;
 
@@ -57,11 +61,57 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public void remove(int id) {
+        logger.log(Level.INFO, "Preparando para remover usuário.");
 
+        String sql = "DELETE FROM user_model ";
+        sql += " WHERE id = ? ;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            preparedStatement.close();
+            logger.log(Level.INFO, "Usuário removido com sucesso.");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public UserModel readById(int id) {
+        final String sql = "SELECT * FROM user_model WHERE id = ? ;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            if (resultSet.next()){
+                final int entityId = resultSet.getInt("id");
+                final String fullname = resultSet.getString("fullname");
+                final String email = resultSet.getString("email");
+                final String password = resultSet.getString("password");
+
+                final String auxRole = resultSet.getString("role");
+                final UserModel.UserRole role = UserModel.UserRole.valueOf(auxRole);
+
+                final UserModel user = new UserModel();
+                user.setId(entityId);
+                user.setFullname(fullname);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setRole(role);
+
+                preparedStatement.close();
+                resultSet.close();
+
+                return  user;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         return null;
     }
 
@@ -72,7 +122,21 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public void updateInformation(int id, UserModel entity) {
+        String sql = "UPDATE user_model SET fullname = ? ";
+        sql += " WHERE id = ? ;";
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, entity.getFullname());
+
+            preparedStatement.setInt(2, entity.getId());
+
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -82,6 +146,20 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public boolean updatePassword(int id, String newPassword) {
-        return false;
+        String sql = "UPDATE user_model SET password = ? ";
+        sql += " WHERE id = ? ;";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
