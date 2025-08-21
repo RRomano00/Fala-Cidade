@@ -62,18 +62,30 @@ begin;
         data_criacao timestamp not null default now(),
         bairro varchar(100) not null,
         numero integer not null,
-        logradouro varchar(100) not null,
+        rua varchar(100) not null,
         cep varchar(9),
         situacao varchar(15) not null check (situacao in ('Pendente','Em análise', 'Em andamento', 'Concluída')),
-        numeroProtocolo integer not null,
+        tipo VARCHAR(50) NOT NULL CHECK (tipo IN (
+        'BURACO_NA_RUA_OU_CALCADA',
+        'POSTE_COM_LUZ_QUEIMADA',
+        'LIXO_ACUMULADO_OU_TERRENO_SUJO',
+        'SINALIZACAO_OU_SEMAFORO_COM_DEFEITO',
+        'PROBLEMAS_EM_PRACAS_E_PARQUES',
+        'FALHAS_NO_TRANSPORTE_PUBLICO',
+        'PROBLEMAS_EM_POSTO_DE_SAUDE_OU_ESCOLA',
+        'SOM_ALTO_OU_PERTURBACAO_DO_SOSSEGO',
+        'OBRA_IRREGULAR_OU_IMOVEL_ABANDONADO',
+        'MAUS_TRATOS_AOS_ANIMAIS',
+        'PESSOA_PRECISANDO_DE_AJUDA_SOCIAL',
+        'OUTROS_PROBLEMAS'));
 
         secretaria_id integer not null references secretaria(id),
         municipio_id integer not null references municipio(id) on delete cascade,
         funcionarioPrefeitura_id integer not null references funcionarioPrefeitura(id),
         denunciante_id integer not null references denunciante(id),
         classificacao_id integer not null references classificacao(id),
-        unique(numeroProtocolo)
 
+        UNIQUE (denunciante_id, data_criacao)
     );
 
     create table midia(
