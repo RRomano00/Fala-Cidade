@@ -1,76 +1,49 @@
 {
-    "denuncias": [
-        {
-            "id": "1",
-            "cidade": "Furlanzinho lindo",
-            "bairro": "Cachoeira de Minas",
-            "rua": "Rua Unica",
-            "numero": "0",
-            "denuncia": "Não vendem coca-cola na cidade",
-            "status": "Em andamento"
-        },
-        {
-            "id": "2",
-            "cidade": "Brasilia",
-            "bairro": "Copacabana",
-            "rua": "Avenida Atlântica",
-            "numero": "456",
-            "denuncia": "Barulho excessivo durante a madrugada",
-            "status": "Não atendida"
-        },
-        {
-            "id": "3",
-            "cidade": "Belo Horizonte",
-            "bairro": "Savassi",
-            "rua": "Rua Pernambuco",
-            "numero": "789",
-            "denuncia": "Poste de luz apagado há dias. Mussum Ipsum, cacilds vidis litro abertis.  Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.",
-            "status": "Atendida"
-        },
-        {
-            "id": "4",
-            "cidade": "São Paulo",
-            "bairro": "Vila Mariana",
-            "rua": "Rua Domingos de Morais",
-            "numero": "1234",
-            "denuncia": "Buraco na via principal causando acidentes.",
-            "status": "Em andamento"
-        },
-        {
-            "id": "5",
-            "cidade": "Fortaleza",
-            "bairro": "Meireles",
-            "rua": "Rua Barbosa de Freitas",
-            "numero": "234",
-            "denuncia": "Falta de iluminação pública em várias ruas.",
-            "status": "Não atendida"
-        },
-        {
-            "id": "6",
-            "cidade": "Curitiba",
-            "bairro": "Batel",
-            "rua": "Avenida do Batel",
-            "numero": "890",
-            "denuncia": "Acúmulo de lixo não recolhido há mais de uma semana.",
-            "status": "Em andamento"
-        },
-        {
-            "id": "7",
-            "cidade": "Recife",
-            "bairro": "Boa Viagem",
-            "rua": "Rua dos Navegantes",
-            "numero": "1020",
-            "denuncia": "Vazamento de esgoto a céu aberto.",
-            "status": "Não atendida"
-        },
-        {
-            "id": "8",
-            "cidade": "Salvador",
-            "bairro": "Barra",
-            "rua": "Avenida Oceânica",
-            "numero": "321",
-            "denuncia": "Sinal de trânsito quebrado há dias, causando engarrafamento.",
-            "status": "Atendida"
-        }
-    ]
+  "denuncias": [
+    {
+      "id": "1",
+      "cidade": "Furlanzinho lindo",
+      "bairro": "Cachoeira de Minas",
+      "rua": "Rua Unica",
+      "numero": "0",
+      "descricao": "Não vendem coca-cola na cidade",
+      "status": "Em andamento"
+    },
+    {
+      "id": "2",
+      "cidade": "Brasilia",
+      "bairro": "Copacabana",
+      "rua": "Avenida Atlântica",
+      "numero": "456",
+      "descricao": "Barulho excessivo durante a madrugada",
+      "status": "Não atendida"
+    },
+    {
+      "id": "3",
+      "cidade": "Belo Horizonte",
+      "bairro": "Savassi",
+      "rua": "Rua Pernambuco",
+      "numero": "789",
+      "descricao": "Poste de luz apagado há dias. Mussum Ipsum, cacilds vidis litro abertis.  Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.",
+      "status": "Atendida"
+    },
+    {
+      "id": "7",
+      "cidade": "Recife",
+      "bairro": "Boa Viagem",
+      "rua": "Rua dos Navegantes",
+      "numero": "1020",
+      "descricao": "Vazamento de esgoto a céu aberto.",
+      "status": "Não atendida"
+    },
+    {
+      "id": "97a8",
+      "cidade": "itu",
+      "bairro": "monte bao",
+      "rua": "rua nossa",
+      "numero": "123",
+      "descricao": "pao de queijo duro",
+      "status": "Não atendida"
+    }
+  ]
 }

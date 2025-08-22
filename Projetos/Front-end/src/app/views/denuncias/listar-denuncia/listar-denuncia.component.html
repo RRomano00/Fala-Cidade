@@ -1,13 +1,11 @@
 <h1>Lista de Denúncias</h1>
 
-<!-- Legenda de status -->
 <div class="legenda-status">
   <span class="legenda-item"><span class="cor-legenda verde"></span> Atendida</span>
   <span class="legenda-item"><span class="cor-legenda amarela"></span> Em andamento</span>
   <span class="legenda-item"><span class="cor-legenda vermelha"></span> Não atendida</span>
 </div>
 
-<!-- Lista de Denúncias -->
 <div class="denuncia-list">
   <div *ngFor="let item of denuncias" [ngClass]="{
       'denuncia-card': item.status === 'Atendida',
