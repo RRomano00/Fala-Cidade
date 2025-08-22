@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import * as fontawesome from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from '../../../services/security/authentication.service';
 
 @Component({
   selector: 'app-main',
@@ -32,7 +33,16 @@ import * as fontawesome from '@fortawesome/free-solid-svg-icons';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-  faFooterIcon = fontawesome.faHeart;
+  faFooterIcon = fontawesome.faBug;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
+
+
+  public logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['account/sign-in'])
+  }
+
 }
