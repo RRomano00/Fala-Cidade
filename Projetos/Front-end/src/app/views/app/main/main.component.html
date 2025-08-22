@@ -1,5 +1,4 @@
 <div class="main-root">
-  <!-- Barra superior -->
   <mat-toolbar class="menu-superior">
     <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
       <mat-icon>menu</mat-icon>
@@ -26,10 +25,8 @@
     </mat-menu>
   </mat-toolbar>
 
-  <!-- Layout lateral com conteúdo -->
   <mat-sidenav-container class="app-container">
 
-    <!-- Barra lateral esquerda -->
     <mat-sidenav #sidenav mode="side" opened class="app-sidenav mat-elevation-z4">
       <mat-nav-list>
         <mat-list-item>
@@ -54,14 +51,13 @@
           </mat-nav-list>
         </mat-expansion-panel>
 
-        <mat-list-item routerLink="/estatisticas">
+        <mat-list-item>
           <mat-icon>insights</mat-icon>
           <span>Estatísticas</span>
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
 
-    <!-- Conteúdo principal -->
     <div class="page-wrap">
       <main class="container">
         <router-outlet></router-outlet>
@@ -69,7 +65,6 @@
     </div>
   </mat-sidenav-container>
 
-  <!-- Rodapé -->
   <footer>
     Todos os direitos reservados. Feito com
     <fa-icon [icon]="faFooterIcon"></fa-icon> pela FAI ;D
