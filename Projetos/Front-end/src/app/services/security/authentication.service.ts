@@ -32,8 +32,7 @@ export class AuthenticationService {
   isAuthenticated(): boolean {
 
     let email = localStorage.getItem('email');
-    if (email != null && email === 'cabralzin@gmail.com') {
-      console.log(`email encontrado: ${email}`)
+    if (email != null && email === 'teste@gmail.com') {
       return true;
     }
 
