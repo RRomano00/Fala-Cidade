@@ -66,7 +66,7 @@ export class CreateDenunciaComponent implements OnInit {
       rua: this.form.controls['rua'].value,
       numero: this.form.controls['numero'].value,
       descricao: this.form.controls['descricao'].value,
-      status: "Não atendida"
+      status: "Pendente"
     }
     await this.createService.create(denuncia)
     this.router.navigate(['/listar-denuncia'])

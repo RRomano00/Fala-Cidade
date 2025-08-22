@@ -18,7 +18,6 @@ h1 {
   color: #2e7d32;
 }
 
-/* Legenda */
 .legenda-status {
   display: flex;
   justify-content: center;
@@ -54,7 +53,6 @@ h1 {
   background-color: #ec0a0a;
 }
 
-/* Lista e cards */
 .denuncia-list {
   display: flex;
   flex-direction: column;

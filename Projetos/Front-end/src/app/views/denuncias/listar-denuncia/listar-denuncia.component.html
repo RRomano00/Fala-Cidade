@@ -3,14 +3,14 @@
 <div class="legenda-status">
   <span class="legenda-item"><span class="cor-legenda verde"></span> Atendida</span>
   <span class="legenda-item"><span class="cor-legenda amarela"></span> Em andamento</span>
-  <span class="legenda-item"><span class="cor-legenda vermelha"></span> Não atendida</span>
+  <span class="legenda-item"><span class="cor-legenda vermelha"></span> Pendente</span>
 </div>
 
 <div class="denuncia-list">
   <div *ngFor="let item of denuncias" [ngClass]="{
       'denuncia-card': item.status === 'Atendida',
       'denuncia-card-pending': item.status === 'Em andamento',
-      'denuncia-card-unattended': item.status === 'Não atendida'
+      'denuncia-card-unattended': item.status === 'Pendente'
     }">
     <h3>Denúncia {{ item.id }}</h3>
     <p>{{item.cidade}} | {{item.rua}}</p>

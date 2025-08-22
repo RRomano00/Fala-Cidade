@@ -11,6 +11,7 @@ body {
   background-color: lab(61.71% -30.99 16.4);
   flex: 1 1 auto;
 }
+
 .menu-superior {
   background-color: lab(61.71% -30.99 16.4);
 }
@@ -46,11 +47,12 @@ footer {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-mat-list-item, 
+
+mat-list-item,
 a[mat-list-item] {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre ícone e texto */
+  gap: 10px;
   padding: 8px 16px;
   font-size: 16px;
 }
@@ -59,4 +61,3 @@ mat-icon {
   font-size: 20px;
   vertical-align: middle;
 }
-
