@@ -8,6 +8,8 @@ import { CreateDenunciaComponent } from './views/denuncias/create-denuncia/creat
 import { ListarDenunciaComponent } from './views/denuncias/listar-denuncia/listar-denuncia.component';
 import { HelpComponent } from './views/app/help/help.component';
 import { DetailDenunciaComponent } from './views/denuncias/detail-denuncia/detail-denuncia.component';
+import { authenticationGuard } from './services/security/guard/authentication.guard';
+import { HomeComponent } from './views/app/home/home.component';
 
 
 export const routes: Routes = [
@@ -22,7 +24,12 @@ export const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [authenticationGuard],
     children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
       {
         path: 'my-profile',
         component: MyProfileComponent
