@@ -58,6 +58,7 @@ export class CreateDenunciaComponent implements OnInit {
       rua: ['', [Validators.required]],
       numero: ['', [Validators.required]],
       descricao: ['', [Validators.required, Validators.minLength(10)]],
+      anonimo: [false]
     })
   }
 
@@ -76,6 +77,8 @@ export class CreateDenunciaComponent implements OnInit {
       return;
     }
 
+    const isAnonimo = this.form.controls['anonimo'].value;
+
     if (!this.user) {
       alert("Você precisa estar logado para criar uma denúncia.");
       this.router.navigate(['/login']);
@@ -89,9 +92,14 @@ export class CreateDenunciaComponent implements OnInit {
       numero: this.form.controls['numero'].value,
       descricao: this.form.controls['descricao'].value,
       status: "Pendente",
-      email: this.user.email,
-      fullname: this.user.fullname
+      email: 'Anônimo',
+      fullname: 'Anônimo'
     };
+
+    if (!isAnonimo && this.user) {
+      denuncia.email = this.user.email;
+      denuncia.fullname = this.user.fullname;
+    }
 
     await this.createService.create(denuncia);
     this.router.navigate(['/listar-denuncia']);
