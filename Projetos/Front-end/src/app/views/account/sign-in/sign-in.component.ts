@@ -57,7 +57,7 @@ export class SignInComponent {
     console.log("sign-in ngOninit");
     this.isLoginIncorrect = false;
 
-    // this.loginIfCredentialIsValid();
+    this.loginIfCredentialIsValid();
   }
 
   loginIfCredentialIsValid() {
@@ -82,28 +82,21 @@ export class SignInComponent {
       password: this.password.value!,
     }
 
-    console.log(credentials);
-
     this.authenticationService.authenticate(credentials)
       .subscribe({
-        next: (value: any) => {
-          console.log(value);
-
-          let user: UserCredentialDto = {
-            email: value.email,
-            password: value.password
-          };
+        next: (user: UserCredentialDto) => {
+          console.log("Login bem sucedido:", user);
 
           this.authenticationService.addDataToLocalStorage(user);
 
           this.router.navigate(['']);
-
         },
         error: (err) => {
-          console.error('ocorreu um erro no servidor')
-          console.error(err);
+          console.error('Login falhou:', err.message);
+          this.isLoginIncorrect = true;
         }
       });
   }
+
 
 }

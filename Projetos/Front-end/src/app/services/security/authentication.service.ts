@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserCredentialDto } from '../../domain/dto/user-credential-dto';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -9,34 +10,28 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthenticationService {
 
+  private readonly apiUrl = `${environment.authentication_api_endpoint}/user`;
 
   constructor(private http: HttpClient) { }
 
-  authenticate(credentials: UserCredentialDto): Observable<any> {
-    console.log('autenticando o usuario');
+  authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
+    console.log('autenticando o usuario...');
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    const body = {
-      email: credentials.email,
-      password: credentials.password,
-    }
-
-    //return this.http.post<any>('http://localhost:8080/authenticate',body,{headers});
-    return this.http.get<any>(`${environment.authentication_api_endpoint}/user/1`);
-
+    return this.http.get<UserCredentialDto[]>(
+      `${this.apiUrl}?email=${credentials.email}&password=${credentials.password}`
+    ).pipe(
+      map(users => {
+        if (users.length > 0) {
+          return users[0];
+        } else {
+          throw new Error('Credenciais inválidas');
+        }
+      })
+    );
   }
 
   isAuthenticated(): boolean {
-
-    let email = localStorage.getItem('email');
-    if (email != null && email === 'teste@gmail.com') {
-      return true;
-    }
-
-    return false;
+    return localStorage.getItem('email') != null;
   }
 
   addDataToLocalStorage(user: UserCredentialDto) {
@@ -44,6 +39,7 @@ export class AuthenticationService {
     localStorage.setItem('email', user.email);
     localStorage.setItem('password', user.password);
   }
+
   logout() {
     localStorage.clear();
   }

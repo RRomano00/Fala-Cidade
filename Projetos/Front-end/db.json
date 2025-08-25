@@ -16,7 +16,7 @@
       "rua": "Avenida Atlântica",
       "numero": "456",
       "descricao": "Barulho excessivo durante a madrugada",
-      "status": "Não atendida"
+      "status": "Pendente"
     },
     {
       "id": "3",
@@ -34,15 +34,45 @@
       "rua": "Rua nossa",
       "numero": "seu numero",
       "descricao": "Não vende pao de queijo",
-      "status": "Não atendida"
+      "status": "Pendente"
     }
   ],
   "user": [
     {
       "id": "1",
       "fullname": "miguelzin",
-      "email": "cabralzin@gmail.com",
+      "email": "teste@gmail.com",
       "password": "567"
+    },
+    {
+      "id": "2",
+      "fullname": "leandro",
+      "email": "leandro123@gmail.com",
+      "password": "842"
+    },
+    {
+      "id": "3",
+      "fullname": "joaovibes",
+      "email": "joao.vibes@gmail.com",
+      "password": "193"
+    },
+    {
+      "id": "4",
+      "fullname": "carolzinha",
+      "email": "carolzinha@gmail.com",
+      "password": "705"
+    },
+    {
+      "id": "5",
+      "fullname": "lucas_top",
+      "email": "lucas.top@gmail.com",
+      "password": "316"
+    },
+    {
+      "id": "6",
+      "fullname": "biafofa",
+      "email": "bia.fofa@gmail.com",
+      "password": "029"
     }
   ]
 }
