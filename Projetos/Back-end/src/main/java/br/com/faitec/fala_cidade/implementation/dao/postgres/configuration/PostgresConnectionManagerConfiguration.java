@@ -5,11 +5,13 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
 import javax.sql.DataSource;
 import java.sql.*;
 
+@Configuration
 public class PostgresConnectionManagerConfiguration {
 
     @Value("${spring.datasource.base.url}")
@@ -29,7 +31,8 @@ public class PostgresConnectionManagerConfiguration {
 
     @Bean
     public DataSource dataSource() throws SQLException {
-        final DataSource build = DataSourceBuilder.create().url(databaseBaseUrl).username(databaseUsername).password(databasePassword).build();
+        final DataSource build = DataSourceBuilder.create()
+                .url(databaseBaseUrl).username(databaseUsername).password(databasePassword).build();
 
         final Connection connection = build.getConnection();
 
@@ -43,7 +46,7 @@ public class PostgresConnectionManagerConfiguration {
 
         String sql = "SELECT COUNT(*) AS dbs ";
         sql += " FROM pg_catalog.pg_database ";
-        sql += " WHERE lower(dataname) = '" + databaseName + "' ;";
+        sql += " WHERE lower(datname) = '" + databaseName + "' ;";
 
         ResultSet resultSet = statement.executeQuery(sql);
 
@@ -62,7 +65,7 @@ public class PostgresConnectionManagerConfiguration {
     }
 
     @Bean
-    @DependsOn("dataSouce")
+    @DependsOn("dataSource")
     public Connection getConnection() throws SQLException {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(databaseUrl);
