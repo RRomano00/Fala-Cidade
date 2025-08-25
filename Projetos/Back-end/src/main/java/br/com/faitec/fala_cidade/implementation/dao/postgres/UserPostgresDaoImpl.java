@@ -20,7 +20,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public int add(UserModel entity) {
-        String sql = "INSERT INTO user_model(password, fullname, email, role) ";
+        String sql = "INSERT INTO usuario(password, fullname, email, role) ";
         sql += " VALUES(?, ?, ?, ?) ";
 
         PreparedStatement preparedStatement;
@@ -63,7 +63,7 @@ public class UserPostgresDaoImpl implements UserDao {
     public void remove(int id) {
         logger.log(Level.INFO, "Preparando para remover usuário.");
 
-        String sql = "DELETE FROM user_model ";
+        String sql = "DELETE FROM usuario ";
         sql += " WHERE id = ? ;";
 
         try {
@@ -79,7 +79,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public UserModel readById(int id) {
-        final String sql = "SELECT * FROM user_model WHERE id = ? ;";
+        final String sql = "SELECT * FROM usuario WHERE id = ? ;";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -122,7 +122,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public void updateInformation(int id, UserModel entity) {
-        String sql = "UPDATE user_model SET fullname = ? ";
+        String sql = "UPDATE usuario SET fullname = ? ";
         sql += " WHERE id = ? ;";
 
         try {
@@ -146,7 +146,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public boolean updatePassword(int id, String newPassword) {
-        String sql = "UPDATE user_model SET password = ? ";
+        String sql = "UPDATE usuario SET password = ? ";
         sql += " WHERE id = ? ;";
 
         try {

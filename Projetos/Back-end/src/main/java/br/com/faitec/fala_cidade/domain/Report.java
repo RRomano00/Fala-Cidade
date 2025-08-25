@@ -6,11 +6,15 @@ package br.com.faitec.fala_cidade.domain;
 public class Report {
     private int id;
     private String description;
-    private String rua;
-    private String bairro;
+    private String neighborhood;
+    private int number;
+    private String street;
+    private String city;
+    private String cep;
     private String urlFoto;
     private String urlVideo;
-    private ReportType tipo;
+    private ReportSituation situation;
+    private ReportType type;
 
 
     public enum ReportType {
@@ -28,17 +32,28 @@ public class Report {
         OUTROS_PROBLEMAS
     }
 
-    public Report(int id, String description, String rua, String bairro, String urlFoto, String urlVideo, ReportType tipo) {
-        this.id = id;
-        this.description = description;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.urlFoto = urlFoto;
-        this.urlVideo = urlVideo;
-        this.tipo = tipo;
+    public enum ReportSituation {
+        PENDENTE,
+        EM_ANDAMENTO,
+        CONCLUIDO
     }
 
-    public Report(){}
+    public Report(int id, String description, String neighborhood, int number, String street, String city, String cep, String urlFoto, String urlVideo, ReportSituation situation, ReportType type) {
+        this.id = id;
+        this.description = description;
+        this.neighborhood = neighborhood;
+        this.number = number;
+        this.street = street;
+        this.city = city;
+        this.cep = cep;
+        this.urlFoto = urlFoto;
+        this.urlVideo = urlVideo;
+        this.situation = situation;
+        this.type = type;
+    }
+
+    public Report() {
+    }
 
     public int getId() {
         return id;
@@ -56,20 +71,44 @@ public class Report {
         this.description = description;
     }
 
-    public String getRua() {
-        return rua;
+    public String getNeighborhood() {
+        return neighborhood;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
     }
 
-    public String getBairro() {
-        return bairro;
+    public int getNumber() {
+        return number;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getUrlFoto() {
@@ -88,11 +127,19 @@ public class Report {
         this.urlVideo = urlVideo;
     }
 
-    public ReportType getTipo() {
-        return tipo;
+    public ReportSituation getSituation() {
+        return situation;
     }
 
-    public void setTipo(ReportType tipo) {
-        this.tipo = tipo;
+    public void setSituation(ReportSituation situation) {
+        this.situation = situation;
+    }
+
+    public ReportType getType() {
+        return type;
+    }
+
+    public void setType(ReportType type) {
+        this.type = type;
     }
 }
