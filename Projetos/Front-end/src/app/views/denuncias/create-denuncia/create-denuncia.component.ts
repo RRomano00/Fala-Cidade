@@ -11,6 +11,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateDenunciaService } from '../../../services/create-denuncia.service';
+import { UserInfoDto } from '../../../domain/dto/user-info.dto';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -27,7 +29,8 @@ import { CreateDenunciaService } from '../../../services/create-denuncia.service
     MatTooltipModule,
     MatExpansionModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './create-denuncia.component.html',
   styleUrl: './create-denuncia.component.css'
@@ -35,12 +38,16 @@ import { CreateDenunciaService } from '../../../services/create-denuncia.service
 export class CreateDenunciaComponent implements OnInit {
 
   form!: FormGroup
+  user!: UserInfoDto | null
 
   constructor(private createService: CreateDenunciaService,
     private formBuilder: FormBuilder,
     private router: Router
 
-  ) { this.initializeForm() }
+  ) {
+    this.initializeForm();
+    this.loadUser();
+  }
 
   ngOnInit(): void { }
 
@@ -54,22 +61,42 @@ export class CreateDenunciaComponent implements OnInit {
     })
   }
 
+  loadUser() {
+    const email = localStorage.getItem('email');
+    const fullname = localStorage.getItem('fullname');
+    if (email) {
+      this.user = { email, fullname: fullname ?? '' };
+    } else {
+      this.user = null;
+    }
+  }
   async create() {
-
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
+
+    if (!this.user) {
+      alert("Você precisa estar logado para criar uma denúncia.");
+      this.router.navigate(['/login']);
+      return;
+    }
+
     let denuncia = {
       cidade: this.form.controls['cidade'].value,
       bairro: this.form.controls['bairro'].value,
       rua: this.form.controls['rua'].value,
       numero: this.form.controls['numero'].value,
       descricao: this.form.controls['descricao'].value,
-      status: "Pendente"
-    }
-    await this.createService.create(denuncia)
-    this.router.navigate(['/listar-denuncia'])
+      status: "Pendente",
+      email: this.user.email,
+      fullname: this.user.fullname
+    };
+
+    await this.createService.create(denuncia);
+    this.router.navigate(['/listar-denuncia']);
   }
+
+
 
 }

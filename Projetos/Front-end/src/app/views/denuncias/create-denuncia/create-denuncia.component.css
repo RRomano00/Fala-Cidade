@@ -14,7 +14,6 @@ body {
   height: 100vh;
 }
 
-/* Container principal com fade-in */
 .report-container {
   background-color: #ffffff;
   padding: 30px;
@@ -31,6 +30,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -42,7 +42,6 @@ h2 {
   color: #333;
 }
 
-/* Grupos de entrada (cada um tem uma leve animação de aparecimento) */
 .input-group {
   margin-bottom: 20px;
   text-align: left;
@@ -50,17 +49,32 @@ h2 {
   animation: slideInField 0.4s ease forwards;
 }
 
-.input-group:nth-of-type(1) { animation-delay: 0.1s; }
-.input-group:nth-of-type(2) { animation-delay: 0.2s; }
-.input-group:nth-of-type(3) { animation-delay: 0.3s; }
-.input-group:nth-of-type(4) { animation-delay: 0.4s; }
-.input-group:nth-of-type(5) { animation-delay: 0.5s; }
+.input-group:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.input-group:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.input-group:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.input-group:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.input-group:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
 
 @keyframes slideInField {
   from {
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -94,9 +108,8 @@ textarea {
   resize: vertical;
 }
 
-/* Estado de foco: rótulo muda de cor levemente */
-input[type="text"]:focus + .error-message,
-textarea:focus + .error-message {
+input[type="text"]:focus+.error-message,
+textarea:focus+.error-message {
   /* Sem exibição de erro aqui */
 }
 
@@ -106,34 +119,34 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(76, 158, 78, 0.2);
 }
 
-input[type="text"]:focus ~ label,
-textarea:focus ~ label {
+input[type="text"]:focus~label,
+textarea:focus~label {
   color: #4c9e4e;
 }
 
-/* Campos considerados válidos */
 input:valid,
 textarea:valid {
   border-color: #4c9e4e;
 }
 
-/* Animação de “shake” para campos inválidos após envio */
 @keyframes shake {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   20%,
   60% {
     transform: translateX(-5px);
   }
+
   40%,
   80% {
     transform: translateX(5px);
   }
 }
 
-/* Campos considerados inválidos somente após adicionar classe "touched" */
 input.touched:invalid,
 textarea.touched:invalid {
   border-color: #e53935;
@@ -141,7 +154,6 @@ textarea.touched:invalid {
   animation: shake 0.3s ease;
 }
 
-/* Mensagem de erro (inicialmente escondida) */
 .error-message {
   display: none;
   color: #e53935;
@@ -150,25 +162,23 @@ textarea.touched:invalid {
   animation: slideDown 0.3s ease forwards;
 }
 
-/* Mostrar erro se o campo for inválido e tiver classe "touched" */
-input.touched:invalid + .error-message,
-textarea.touched:invalid + .error-message {
+input.touched:invalid+.error-message,
+textarea.touched:invalid+.error-message {
   display: block;
 }
 
-/* Animação para a mensagem de erro aparecer */
 @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Grupo de checkbox (Denúncia Anônima) */
 .checkbox-group {
   display: flex;
   align-items: center;
@@ -197,7 +207,6 @@ textarea.touched:invalid + .error-message {
   cursor: pointer;
 }
 
-/* Botão de submissão com leve animação */
 button {
   position: relative;
   overflow: hidden;

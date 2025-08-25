@@ -5,6 +5,8 @@ export interface Denuncia {
     bairro: string,
     rua: string,
     numero: string,
-    descricao: string
-    status: String
+    descricao: string,
+    status: string,
+    email?: string,
+    fullname?: string
 }

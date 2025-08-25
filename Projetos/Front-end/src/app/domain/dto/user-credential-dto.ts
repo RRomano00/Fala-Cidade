@@ -1,4 +1,5 @@
 export interface UserCredentialDto {
     email: string,
-    password: string
+    password: string,
+    fullname: string
 }
