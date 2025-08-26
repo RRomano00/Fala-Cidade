@@ -47,6 +47,33 @@
         </span>
       </div>
 
+
+      <div class="input-group">
+        <label for="tipo">Tipo de Problema</label>
+        <div class="custom-select">
+          <select id="tipo" formControlName="type">
+            <option value="" disabled selected>Selecione um tipo de problema</option>
+            <option value="BURACO NA RUA OU CALÇADA">Buraco na rua ou calçada</option>
+            <option value="POSTE COM LUZ QUEIMADA">Poste com luz queimada</option>
+            <option value="LIXO ACUMULADO OU TERRENO SUJO">Lixo acumulado ou terreno sujo</option>
+            <option value="SINALIZACAO OU SEMÁFORO COM DEFEITO">Sinalização ou semáforo com defeito</option>
+            <option value="PROBLEMAS EM PRAÇAS E PARQUES">Problemas em praças e parques</option>
+            <option value="FALHAS NO TRANSPORTE PÚBLICO">Falhas no transporte público</option>
+            <option value="PROBLEMAS EM POSTO DE SAÚDE OU ESCOLA">Problemas em posto de saúde ou escola</option>
+            <option value="SOM ALTO OU PERTURBACÃO DO SOSSEGO">Som alto ou perturbação do sossego</option>
+            <option value="OBRA IRREGULAR OU IMOVEL ABANDONADO">Obra irregular ou imóvel abandonado</option>
+            <option value="MAUS TRATOS AOS ANIMAIS">Maus-tratos aos animais</option>
+            <option value="PESSOA PRECISANDO DE AJUDA">Pessoa precisando de ajuda</option>
+            <option value="OUTROS PROBLEMAS">Outros problemas</option>
+          </select>
+          <span class="arrow"></span>
+        </div>
+        <span class="error-message" *ngIf="form.get('tipo')?.hasError('required') && form.get('tipo')?.touched">
+          Por favor, selecione um tipo de problema.
+        </span>
+      </div>
+
+
       <div class="input-group">
         <label for="denuncia">Denúncia</label>
         <textarea id="denuncia" formControlName="descricao" placeholder="Descreva a denúncia..."></textarea>
@@ -55,6 +82,8 @@
           Por favor, descreva a denúncia.
         </span>
       </div>
+
+
 
       <div class="checkbox-group">
         <input type="checkbox" id="anonimo" name="anonimo" formControlName="anonimo" />

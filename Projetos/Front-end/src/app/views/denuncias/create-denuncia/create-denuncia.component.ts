@@ -6,13 +6,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import { MatListModule, MatSelectionList } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateDenunciaService } from '../../../services/create-denuncia.service';
 import { UserInfoDto } from '../../../domain/dto/user-info.dto';
 import { CommonModule } from '@angular/common';
+import { MatFormField, MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @Component({
@@ -30,7 +33,12 @@ import { CommonModule } from '@angular/common';
     MatExpansionModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatInputModule,
+    MatFormField,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
   ],
   templateUrl: './create-denuncia.component.html',
   styleUrl: './create-denuncia.component.css'
@@ -56,8 +64,9 @@ export class CreateDenunciaComponent implements OnInit {
       cidade: ['', [Validators.required, Validators.minLength(3)]],
       bairro: ['', [Validators.required,]],
       rua: ['', [Validators.required]],
-      numero: ['', [Validators.required]],
+      numero: ['', []],
       descricao: ['', [Validators.required, Validators.minLength(10)]],
+      type: ['', [Validators.required]],
       anonimo: [false]
     })
   }
@@ -91,6 +100,7 @@ export class CreateDenunciaComponent implements OnInit {
       rua: this.form.controls['rua'].value,
       numero: this.form.controls['numero'].value,
       descricao: this.form.controls['descricao'].value,
+      type: this.form.controls['type'].value,
       status: "Pendente",
       email: 'Anônimo',
       fullname: 'Anônimo'
@@ -104,7 +114,6 @@ export class CreateDenunciaComponent implements OnInit {
     await this.createService.create(denuncia);
     this.router.navigate(['/listar-denuncia']);
   }
-
 
 
 }
