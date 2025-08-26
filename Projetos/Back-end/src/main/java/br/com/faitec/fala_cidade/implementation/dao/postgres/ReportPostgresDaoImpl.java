@@ -4,6 +4,7 @@ import br.com.faitec.fala_cidade.domain.Report;
 import br.com.faitec.fala_cidade.port.dao.report.ReportDao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -110,6 +111,50 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public List<Report> readall() {
-        return List.of();
+        final List<Report> reports = new ArrayList<>();
+
+        final String sql = " SELECT * FROM denuncia; ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                final int entityId = resultSet.getInt("id");
+                final String description = resultSet.getString("description");
+                final int number = resultSet.getInt("number");
+                final String street = resultSet.getString("street");
+                final String neighborhood = resultSet.getString("neighborhood");
+                final String city = resultSet.getString("city");
+                final String cep = resultSet.getString("cep");
+
+                final String auxType = resultSet.getString("type");
+                final Report.ReportType type = Report.ReportType.valueOf(auxType);
+
+                final String auxSituation = resultSet.getString("situation");
+                final Report.ReportSituation situation = Report.ReportSituation.valueOf(auxSituation);
+
+                final Report report = new Report();
+
+                report.setId(entityId);
+                report.setDescription(description);
+                report.setNumber(number);
+                report.setStreet(street);
+                report.setNeighborhood(neighborhood);
+                report.setCity(city);
+                report.setCep(cep);
+                report.setType(type);
+                report.setSituation(situation);
+
+                reports.add(report);
+            }
+            preparedStatement.close();
+            resultSet.close();
+
+            return reports;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
