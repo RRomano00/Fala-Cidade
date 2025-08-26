@@ -80,7 +80,8 @@ export class SignInComponent {
     let credentials: UserCredentialDto = {
       email: this.email.value!,
       password: this.password.value!,
-      fullname: ''
+      fullname: '',
+      role: ''
     }
 
     this.authenticationService.authenticate(credentials)
