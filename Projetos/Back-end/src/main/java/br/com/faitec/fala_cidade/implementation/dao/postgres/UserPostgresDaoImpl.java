@@ -4,6 +4,7 @@ import br.com.faitec.fala_cidade.domain.UserModel;
 import br.com.faitec.fala_cidade.port.dao.user.UserDao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,7 +118,39 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public List<UserModel> readall() {
-        return List.of();
+        final List<UserModel> users = new ArrayList<>();
+
+        final String sql = "SELECT * FROM usuario; ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                final int entityId = resultSet.getInt("id");
+                final String fullname = resultSet.getString("fullname");
+                final String email = resultSet.getString("email");
+                final String password = resultSet.getString("password");
+
+                final String auxRole = resultSet.getString("role");
+                final UserModel.UserRole role = UserModel.UserRole.valueOf(auxRole);
+
+                final UserModel user = new UserModel();
+                user.setId(entityId);
+                user.setFullname(fullname);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setRole(role);
+
+                users.add(user);
+            }
+            preparedStatement.close();
+            resultSet.close();
+
+            return users;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -141,6 +174,37 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public UserModel readByEmail(String email) {
+        String sql = "SELECT * FROM usuario WHERE email = ? ; ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                final int entityId = resultSet.getInt("id");
+                final String fullname = resultSet.getString("fullname");
+                final String password = resultSet.getString("password");
+
+                final String auxRole = resultSet.getString("role");
+                final UserModel.UserRole role = UserModel.UserRole.valueOf(auxRole);
+
+                final UserModel user = new UserModel();
+                user.setId(entityId);
+                user.setFullname(fullname);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setRole(role);
+
+                preparedStatement.close();
+                resultSet.close();
+
+                return  user;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
