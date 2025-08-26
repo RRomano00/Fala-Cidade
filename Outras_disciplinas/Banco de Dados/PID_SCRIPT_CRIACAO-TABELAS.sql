@@ -1,6 +1,6 @@
 begin;
 
-    create table user(
+    create table users(
         id serial primary key,
         fullname varchar(50) not null,
         email varchar(40) not null unique,
@@ -19,13 +19,13 @@ begin;
     create table complainant(
         id serial primary key,
         neighborhood varchar(100) not null,
-        number integer not null,
+        number varchar(10) not null,
         street varchar(100) not null,
         city varchar(100) not null,
         cep varchar(9),
         city_id integer not null references city(id),
-        user_id integer not null references user(id) on delete cascade,
-        unique(user_id)
+        users_id integer not null references users(id) on delete cascade,
+        unique(users_id)
     );
 
     create table department(
@@ -38,23 +38,19 @@ begin;
         id serial primary key,
         city_id integer not null references city(id),
         department_id integer not null references department(id),
-        user_id integer not null references user(id) on delete cascade,
-        unique(user_id)
+        users_id integer not null references users(id) on delete cascade,
+        unique(users_id)
     );
-
     create table classification(
         id serial primary key,
-        name varchar(50) not null unique,
-        description text not null,
         priority varchar(20) not null check (priority in ('Alta','Media','Baixa'))
     );
-
-    create table report(
+	create table report(
         id serial primary key,
         description text not null,
         creation_date timestamp not null default now(),
         neighborhood varchar(100) not null,
-        number integer not null,
+        number varchar(20) not null,
         street varchar(100) not null,
         city varchar(30) not null,
         status varchar(15) not null check (status in ('Pendente', 'Em andamento', 'Resolvido')),
@@ -79,6 +75,7 @@ begin;
         unique (complainant_id, creation_date)
     );
 
+
     create table media(
         id serial primary key,
         file_path text not null, 
@@ -87,8 +84,8 @@ begin;
 
     create table administrator(
         id serial primary key,
-        user_id integer not null references user(id) on delete cascade,
-        unique(user_id)
+        users_id integer not null references users(id) on delete cascade,
+        unique(users_id)
     );
 
 commit;
