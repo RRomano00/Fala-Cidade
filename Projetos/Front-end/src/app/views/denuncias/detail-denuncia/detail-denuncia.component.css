@@ -55,3 +55,43 @@
     text-decoration: none;
     font-weight: 500;
 }
+
+.denuncia-detail {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.denuncia-detail p {
+    margin: 6px 0;
+}
+
+.denuncia-detail .autor-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.denuncia-detail .autor-email {
+    font-size: 14px;
+    color: #000000;
+    font-style: italic;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.denuncia-detail .type-denuncia {
+    font-weight: 600;
+    color: #d93025;
+    text-transform: uppercase;
+    background: #ffffff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+}

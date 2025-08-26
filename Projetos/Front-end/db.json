@@ -7,37 +7,64 @@
       "rua": "Rua Unica",
       "numero": "0",
       "descricao": "Na cidade, não vendem Coca-Cola. Os moradores já se acostumaram com essa ausência, embora muitos ainda sintam falta do sabor único da bebida. Alguns tentam substituí-la por refrigerantes locais, outros apelam para compras em cidades vizinhas. A juventude comenta nas redes sociais, e turistas se surpreendem ao descobrir essa peculiaridade. Há quem diga que é por escolha política, outros acreditam em questões logísticas. Seja como for, virou parte da identidade local. Os bares oferecem alternativas criativas, e os comerciantes aproveitam para promover marcas regionais. A ausência da Coca virou conversa, curiosidade e até motivo de orgulho para alguns habitantes.",
+      "type": "LIXO ACUMULADO OU TERRENO SUJO",
       "status": "Em andamento",
       "email": "teste@gmail.com",
       "fullname": "miguelzin"
     },
     {
-      "id": "5d46",
-      "cidade": "Ventania",
-      "bairro": "Margarida",
-      "rua": "BH",
-      "numero": "1187",
-      "descricao": "A cidade é tão boa que não tem violência. INADMISSÍVEL!!!",
-      "status": "Pendente",
-      "email": "leandro123@gmail.com",
-      "fullname": "leandro"
-    },
-    {
-      "id": "96fc",
-      "cidade": "Nao quero",
-      "bairro": "Que ",
-      "rua": "me ",
-      "numero": "identifoiquem",
-      "descricao": "Furlan é muito gato",
+      "id": "89ee",
+      "cidade": "teste",
+      "bairro": "bairro",
+      "rua": "rua",
+      "numero": "123",
+      "descricao": "lixo no chao na calcada",
+      "type": "LIXO ACUMULADO OU TERRENO SUJO",
       "status": "Pendente",
       "email": "Anônimo",
       "fullname": "Anônimo"
+    },
+    {
+      "id": "6f35",
+      "cidade": "Cidade",
+      "bairro": "Bairro",
+      "rua": "Rua",
+      "numero": "123",
+      "descricao": "Poste com Luz queimada!!!!!!!!1",
+      "type": "POSTE COM LUZ QUEIMADA",
+      "status": "Pendente",
+      "email": "teste@gmail.com",
+      "fullname": "Miguel Martins"
+    },
+    {
+      "id": "8cc4",
+      "cidade": "ponta ",
+      "bairro": "ponta",
+      "rua": "ponta",
+      "numero": "ponta",
+      "descricao": "ASASASASASASAS",
+      "type": "OBRA IRREGULAR OU IMOVEL ABANDONADO",
+      "status": "Pendente",
+      "email": "teste@gmail.com",
+      "fullname": "Miguel Martins"
+    },
+    {
+      "id": "d8e4",
+      "cidade": "asasa",
+      "bairro": "sasasasa",
+      "rua": "sasasa",
+      "numero": "",
+      "descricao": "asasasasasasasas",
+      "type": "BURACO NA RUA OU CALÇADA",
+      "status": "Pendente",
+      "email": "teste@gmail.com",
+      "fullname": "Miguel Martins"
     }
   ],
   "user": [
     {
       "id": "1",
-      "fullname": "miguelzin",
+      "fullname": "Miguel Martins",
       "email": "teste@gmail.com",
       "password": "567"
     },
