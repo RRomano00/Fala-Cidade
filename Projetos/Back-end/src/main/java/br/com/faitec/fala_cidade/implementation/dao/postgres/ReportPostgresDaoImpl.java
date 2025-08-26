@@ -20,7 +20,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public int add(Report entity) {
-        String sql = "INSERT INTO denuncia (desciption, number, street, neighborhood, city, cep, type, situation) ";
+        String sql = "INSERT INTO report (desciption, number, street, neighborhood, city, cep, type, situation) ";
                 sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ; ";
 
         PreparedStatement preparedStatement;
@@ -64,7 +64,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public Report readById(int id) {
-        final String sql = "SELECT * FROM denuncia WHERE id = ? ;";
+        final String sql = "SELECT * FROM report WHERE id = ? ;";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
     public List<Report> readall() {
         final List<Report> reports = new ArrayList<>();
 
-        final String sql = " SELECT * FROM denuncia; ";
+        final String sql = " SELECT * FROM report; ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
