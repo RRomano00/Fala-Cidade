@@ -1,7 +1,9 @@
 package br.com.faitec.fala_cidade.implementation.dao.postgres.configuration;
 
+import br.com.faitec.fala_cidade.port.service.tools.ResourceFileService;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.*;
 
 @Configuration
@@ -28,6 +31,9 @@ public class PostgresConnectionManagerConfiguration {
 
     @Value("${spring.datasource.url}")
     private String databaseUrl;
+
+    @Autowired
+    private ResourceFileService resourceFileService;
 
     @Bean
     public DataSource dataSource() throws SQLException {
@@ -73,5 +79,26 @@ public class PostgresConnectionManagerConfiguration {
         hikariConfig.setPassword(databasePassword);
 
         return new HikariDataSource(hikariConfig).getConnection();
+    }
+
+    @Bean
+    @DependsOn("getConnection")
+    public boolean createTableandInsertData() throws SQLException, IOException{
+        Connection connection = getConnection();
+
+        final String basePath = "fala-cidade-db-scripts";
+        final String createTableSql = resourceFileService.read(basePath + "/PID_SCRIPT_CRIACAO-TABELAS.sql");
+
+        PreparedStatement createStatement = connection.prepareStatement(createTableSql);
+        createStatement.executeUpdate();
+        createStatement.close();
+
+        final String insertDataSql = resourceFileService.read(basePath + "/PID_SCRIPT_POPULAR-TABELAS.sql");
+
+        final PreparedStatement insertStatement = connection.prepareStatement(insertDataSql);
+        insertStatement.execute();
+        insertStatement.close();
+
+        return true;
     }
 }
