@@ -1,4 +1,5 @@
 export interface UserInfoDto {
     email: string,
-    fullname: string
+    fullname: string,
+    role?: string
 }
