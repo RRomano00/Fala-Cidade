@@ -1,12 +1,27 @@
 begin;
 
+    -- Apaga as tabelas na ordem reversa das dependências
+    drop table if exists media cascade;
+    drop table if exists report cascade;
+    drop table if exists classification cascade;
+    drop table if exists city_employee cascade;
+    drop table if exists department cascade;
+    drop table if exists complainant cascade;
+    drop table if exists administrator cascade;
+    drop table if exists city cascade;
+    drop table if exists users cascade;
+
+    create type role_type as enum ('USER', 'ADMINISTRATOR', 'EMPLOYEE');
+
+
     create table users(
         id serial primary key,
         fullname varchar(50) not null,
         email varchar(40) not null unique,
         password varchar(255) not null,
         phone_number varchar(16) unique,
-        cpf varchar(14) unique 
+        cpf varchar(14) unique,
+        role role_type not null default 'USER'
     );
 
     create table city(
@@ -41,11 +56,13 @@ begin;
         users_id integer not null references users(id) on delete cascade,
         unique(users_id)
     );
+
     create table classification(
         id serial primary key,
         priority varchar(20) not null check (priority in ('Alta','Media','Baixa'))
     );
-	create table report(
+
+    create table report(
         id serial primary key,
         description text not null,
         creation_date timestamp not null default now(),
@@ -75,10 +92,9 @@ begin;
         unique (complainant_id, creation_date)
     );
 
-
     create table media(
         id serial primary key,
-        file_path text not null, 
+        file_path text not null,
         report_id integer not null references report(id) on delete cascade
     );
 

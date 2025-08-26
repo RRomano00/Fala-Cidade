@@ -22,6 +22,7 @@ public class AuthenticationRestController {
 
     @PostMapping
     public ResponseEntity<UserModel> authenticate(@RequestBody final AuthenticationDto authenticationDto){
+
         UserModel authenticateUser = authenticationService.authenticate(authenticationDto.getEmail(), authenticationDto.getPassword());
 
         if (authenticateUser == null){
