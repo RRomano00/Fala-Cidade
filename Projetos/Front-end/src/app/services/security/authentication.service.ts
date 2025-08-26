@@ -39,6 +39,7 @@ export class AuthenticationService {
     localStorage.setItem('email', user.email);
     localStorage.setItem('password', user.password);
     localStorage.setItem('fullname', user.fullname ?? '')
+    localStorage.setItem('role', user.role);
   }
 
   logout() {
