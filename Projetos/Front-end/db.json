@@ -59,6 +59,78 @@
       "status": "Pendente",
       "email": "teste@gmail.com",
       "fullname": "Miguel Martins"
+    },
+    {
+      "id": "ae78",
+      "cidade": "LEANBDRO",
+      "bairro": "Bairro",
+      "rua": "Lenadr",
+      "numero": "aaaa",
+      "descricao": "asasasasasasas",
+      "type": "POSTE COM LUZ QUEIMADA",
+      "status": "Pendente",
+      "email": "leandro123@gmail.com",
+      "fullname": "leandro"
+    },
+    {
+      "id": "884b",
+      "cidade": "ASAS",
+      "bairro": "ASAS",
+      "rua": "ASASA",
+      "numero": "SASASA",
+      "descricao": "ASASASASASASASASA",
+      "type": "POSTE COM LUZ QUEIMADA",
+      "status": "Pendente",
+      "email": "Anônimo",
+      "fullname": "Anônimo"
+    },
+    {
+      "id": "faf1",
+      "cidade": "leandro",
+      "bairro": "teste",
+      "rua": "teste",
+      "numero": "",
+      "descricao": "leandro denucnai",
+      "type": "FALHAS NO TRANSPORTE PÚBLICO",
+      "status": "Pendente",
+      "email": "leandro123@gmail.com",
+      "fullname": "leandro"
+    },
+    {
+      "id": "238a",
+      "cidade": "leandro",
+      "bairro": "leandro",
+      "rua": "leandro",
+      "numero": "leandro",
+      "descricao": "leandroleandroleandroleandro",
+      "type": "SINALIZACAO OU SEMÁFORO COM DEFEITO",
+      "status": "Pendente",
+      "email": "leandro123@gmail.com",
+      "fullname": "leandro"
+    },
+    {
+      "id": "e39f",
+      "cidade": "LEANBDRO",
+      "bairro": "LEANBDRO",
+      "rua": "LEANBDRO",
+      "numero": "LEANBDRO",
+      "descricao": "LEANBDROLEANBDRO",
+      "type": "LIXO ACUMULADO OU TERRENO SUJO",
+      "status": "Pendente",
+      "email": "leandro123@gmail.com",
+      "fullname": "leandro"
+    },
+    {
+      "id": "fc1b",
+      "cidade": "LUCAS TOP",
+      "bairro": "LUCAS TOP",
+      "rua": "LUCAS TOP",
+      "numero": "LUCAS TOP",
+      "descricao": "LUCAS TOPLUCAS TOP",
+      "type": "POSTE COM LUZ QUEIMADA",
+      "status": "Pendente",
+      "email": "Anônimo",
+      "fullname": "Anônimo"
     }
   ],
   "user": [
@@ -66,37 +138,43 @@
       "id": "1",
       "fullname": "Miguel Martins",
       "email": "teste@gmail.com",
-      "password": "567"
+      "password": "567",
+      "role": "manager"
     },
     {
       "id": "2",
       "fullname": "leandro",
       "email": "leandro123@gmail.com",
-      "password": "842"
+      "password": "842",
+      "role": "user"
     },
     {
       "id": "3",
       "fullname": "joaovibes",
       "email": "joao.vibes@gmail.com",
-      "password": "193"
+      "password": "193",
+      "role": "user"
     },
     {
       "id": "4",
       "fullname": "carolzinha",
       "email": "carolzinha@gmail.com",
-      "password": "705"
+      "password": "705",
+      "role": "user"
     },
     {
       "id": "5",
       "fullname": "lucas_top",
       "email": "lucas.top@gmail.com",
-      "password": "316"
+      "password": "316",
+      "role": "user"
     },
     {
       "id": "6",
       "fullname": "biafofa",
       "email": "bia.fofa@gmail.com",
-      "password": "029"
+      "password": "029",
+      "role": "user"
     }
   ]
 }

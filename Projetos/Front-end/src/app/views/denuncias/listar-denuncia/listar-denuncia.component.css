@@ -122,3 +122,14 @@ h1 {
     transform: translateY(0);
   }
 }
+
+.empty {
+  text-align: center;
+  background: #f0f0f0;
+  color: #000000;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-size: 16px;
+  max-width: 600px;
+}

@@ -6,6 +6,11 @@
   <span class="legenda-item"><span class="cor-legenda vermelha"></span> Pendente</span>
 </div>
 
+
+<div *ngIf="denuncias.length === 0" class="empty">
+  Nenhuma denúncia encontrada. Você ainda não criou nenhuma denúncia.
+</div>
+
 <div class="denuncia-list">
   <div *ngFor="let item of denuncias" [ngClass]="{
       'denuncia-card': item.status === 'Atendida',

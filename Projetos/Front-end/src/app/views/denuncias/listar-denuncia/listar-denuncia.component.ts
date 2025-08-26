@@ -19,29 +19,34 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ListarDenunciaComponent implements OnInit {
 
+  denuncias: Denuncia[] = [];
+  role: string = '';
+  userEmail: string = '';
+
   constructor(private readDenunciaService: ReadDenunciaService) { }
 
-  denuncias: Denuncia[] = []
-
   ngOnInit(): void {
+    this.role = localStorage.getItem('role') || 'user';
+    this.userEmail = localStorage.getItem('email') || '';
     this.loadDenuncias();
   }
 
-
   async loadDenuncias() {
-    console.log('preparando para obter usuários');
+    let denunciaList: Denuncia[] = await this.readDenunciaService.findAll();
 
-    let denunciaList = await this.readDenunciaService.findAll();
-
-    if (denunciaList == null) {
-      console.log('nenhum usuario encontrado');
+    if (!denunciaList || denunciaList.length === 0) {
+      console.log('nenhuma denúncia encontrada');
+      this.denuncias = [];
       return;
     }
-    console.log(denunciaList)
 
-    this.denuncias = denunciaList;
+    if (this.role === 'manager') {
+      this.denuncias = denunciaList;
+    } else {
+      this.denuncias = denunciaList.filter((d: Denuncia) => d.email === this.userEmail);
+    }
 
-    console.log('usuários obtidos com sucesso');
+    console.log('Denúncias carregadas:', this.denuncias);
   }
 
 }
