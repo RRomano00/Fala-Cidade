@@ -29,7 +29,8 @@ public class UserModel {
 
     public enum UserRole{
         ADMINISTRATOR,
-        USER
+        USER,
+        EMPLOYEE
     }
 
     public int getId() {
