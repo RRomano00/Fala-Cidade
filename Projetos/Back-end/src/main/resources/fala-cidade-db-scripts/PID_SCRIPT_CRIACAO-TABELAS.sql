@@ -57,11 +57,6 @@ begin;
         unique(users_id)
     );
 
-    create table classification(
-        id serial primary key,
-        priority varchar(20) not null check (priority in ('Alta','Media','Baixa'))
-    );
-
     create table report(
         id serial primary key,
         description text not null,
@@ -70,7 +65,7 @@ begin;
         number varchar(20) not null,
         street varchar(100) not null,
         city varchar(30) not null,
-        status varchar(15) not null check (status in ('Pendente', 'Em andamento', 'Resolvido')),
+        status varchar(15) not null check (status in ('PENDENTE', 'EM_ANDAMENTO', 'CONCLUIDO')) default 'PENDENTE',
         type varchar(50) not null check (type in (
             'BURACO_NA_RUA_OU_CALCADA',
             'POSTE_COM_LUZ_QUEIMADA',
@@ -82,13 +77,12 @@ begin;
             'SOM_ALTO_OU_PERTURBACAO_DO_SOSSEGO',
             'OBRA_IRREGULAR_OU_IMOVEL_ABANDONADO',
             'MAUS_TRATOS_AOS_ANIMAIS',
-            'PESSOA_PRECISANDO_DE_AJUDA_SOCIAL',
+            'PESSOA_PRECISANDO_DE_AJUDA',
             'OUTROS_PROBLEMAS'
         )),
-        department_id integer not null references department(id),
-        city_employee_id integer not null references city_employee(id),
+        department_id integer references department(id),
+        city_employee_id integer references city_employee(id),
         complainant_id integer not null references complainant(id),
-        classification_id integer not null references classification(id),
         unique (complainant_id, creation_date)
     );
 

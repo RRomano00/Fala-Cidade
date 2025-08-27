@@ -13,9 +13,9 @@ insert into city (name, state) values
 ('Rio de Janeiro', 'RJ');
 
 -- Complainants (usuários comuns)
-insert into complainant (neighborhood, number, street, city, cep, city_id, users_id) values
-('Centro', '100', 'Rua A', 'São Paulo', '01000-000', 1, 2),
-('Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', '22000-000', 2, 1);
+insert into complainant (neighborhood, number, street, city, city_id, users_id) values
+('Centro', '100', 'Rua A', 'São Paulo', 1, 2),
+('Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 2, 1);
 
 -- Departamentos
 insert into department (name, city_id) values
@@ -28,16 +28,11 @@ insert into city_employee (city_id, department_id, users_id) values
 (1, 1, 3),
 (2, 3, 4);
 
--- Classificações
-insert into classification (priority) values
-('Alta'),
-('Media');
-
 -- Relatórios
-insert into report (description, neighborhood, number, street, city, status, type, department_id, city_employee_id, complainant_id, classification_id)
+insert into report (description, neighborhood, number, street, city, status, type, department_id, city_employee_id, complainant_id)
 values
-('Buraco grande na rua', 'Centro', '100', 'Rua A', 'São Paulo', 'Pendente', 'BURACO_NA_RUA_OU_CALCADA', 1, 1, 1, 1),
-('Lixo acumulado na praça', 'Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 'Em andamento', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 3, 2, 2, 2);
+('Buraco grande na rua', 'Centro', '100', 'Rua A', 'São Paulo', 'PENDENTE', 'BURACO_NA_RUA_OU_CALCADA', 1, 1, 1),
+('Lixo acumulado na praça', 'Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 'EM_ANDAMENTO', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 3, 2, 2);
 
 -- Mídias
 insert into media (file_path, report_id) values
