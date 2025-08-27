@@ -4,4 +4,8 @@ import br.com.faitec.fala_cidade.domain.Report;
 import br.com.faitec.fala_cidade.port.dao.crud.CreateDao;
 import br.com.faitec.fala_cidade.port.dao.crud.ReadDao;
 
-public interface ReportDao extends CreateDao<Report>, ReadDao<Report>{}
+public interface ReportDao extends CreateDao<Report>, ReadDao<Report>{
+    void updateReportStatusToInProgress(final int id);
+
+    void updateReportStatusToConclude(final int id);
+}
