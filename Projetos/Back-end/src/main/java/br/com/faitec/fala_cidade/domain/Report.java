@@ -10,10 +10,8 @@ public class Report {
     private int number;
     private String street;
     private String city;
-    private String cep;
-    private String urlFoto;
-    private String urlVideo;
-    private ReportSituation situation;
+    private String urlFotoVideo;
+    private ReportStatus status;
     private ReportType type;
 
 
@@ -28,27 +26,25 @@ public class Report {
         SOM_ALTO_OU_PERTURBACAO_DO_SOSSEGO,
         OBRA_IRREGULAR_OU_IMOVEL_ABANDONADO,
         MAUS_TRATOS_AOS_ANIMAIS,
-        PESSOA_PRECISANDO_DE_AJUDA_SOCIAL,
+        PESSOA_PRECISANDO_DE_AJUDA,
         OUTROS_PROBLEMAS
     }
 
-    public enum ReportSituation {
+    public enum ReportStatus {
         PENDENTE,
         EM_ANDAMENTO,
         CONCLUIDO
     }
 
-    public Report(int id, String description, String neighborhood, int number, String street, String city, String cep, String urlFoto, String urlVideo, ReportSituation situation, ReportType type) {
+    public Report(int id, String description, String neighborhood, int number, String street, String city, String urlFotoVideo, ReportStatus status, ReportType type) {
         this.id = id;
         this.description = description;
         this.neighborhood = neighborhood;
         this.number = number;
         this.street = street;
         this.city = city;
-        this.cep = cep;
-        this.urlFoto = urlFoto;
-        this.urlVideo = urlVideo;
-        this.situation = situation;
+        this.urlFotoVideo = urlFotoVideo;
+        this.status = status;
         this.type = type;
     }
 
@@ -103,36 +99,20 @@ public class Report {
         this.city = city;
     }
 
-    public String getCep() {
-        return cep;
+    public String getUrlFotoVideo() {
+        return urlFotoVideo;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setUrlFotoVideo(String urlFotoVideo) {
+        this.urlFotoVideo = urlFotoVideo;
     }
 
-    public String getUrlFoto() {
-        return urlFoto;
+    public ReportStatus getStatus() {
+        return status;
     }
 
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
-    }
-
-    public String getUrlVideo() {
-        return urlVideo;
-    }
-
-    public void setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
-    }
-
-    public ReportSituation getSituation() {
-        return situation;
-    }
-
-    public void setSituation(ReportSituation situation) {
-        this.situation = situation;
+    public void setStatus(ReportStatus status) {
+        this.status = status;
     }
 
     public ReportType getType() {
