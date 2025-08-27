@@ -5,4 +5,9 @@ import br.com.faitec.fala_cidade.port.service.crud.CreateService;
 import br.com.faitec.fala_cidade.port.service.crud.ReadService;
 
 public interface ReportService extends CreateService<Report>, ReadService<Report> {
+
+    void updateReportStatusToInProgress(final int id);
+
+    void updateReportStatusToConclude(final int id);
+
 }
