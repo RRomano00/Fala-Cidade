@@ -20,8 +20,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public int add(Report entity) {
-        String sql = "INSERT INTO report (desciption, number, street, neighborhood, city, cep, type, situation) ";
-                sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ; ";
+        String sql = "INSERT INTO report (desciption, number, street, neighborhood, city, type, status) ";
+                sql += " VALUES(?, ?, ?, ?, ?, ?, ?) ; ";
 
         PreparedStatement preparedStatement;
         ResultSet resultSet;
@@ -34,9 +34,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
             preparedStatement.setString(3, entity.getStreet());
             preparedStatement.setString(4, entity.getNeighborhood());
             preparedStatement.setString(5, entity.getCity());
-            preparedStatement.setString(6, entity.getCep());
             preparedStatement.setString(7, entity.getType().name());
-            preparedStatement.setString(8, entity.getSituation().name());
+            preparedStatement.setString(8, entity.getStatus().name());
 
             preparedStatement.execute();
 
@@ -64,14 +63,17 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public Report readById(int id) {
-        final String sql = "SELECT * FROM report WHERE id = ? ;";
+        String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
+        sql += "JOIN complainant c ON r.complainant_id = c.id ";
+        sql += "JOIN users u ON c.users_id = u.id ";
+        sql += "WHERE r.id = ?; ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, id);
 
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()){
                 final int entityId = resultSet.getInt("id");
@@ -80,13 +82,12 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");
-                final String cep = resultSet.getString("cep");
 
                 final String auxType = resultSet.getString("type");
                 final Report.ReportType type = Report.ReportType.valueOf(auxType);
 
-                final String auxSituation = resultSet.getString("situation");
-                final Report.ReportSituation situation = Report.ReportSituation.valueOf(auxSituation);
+                final String auxStatus = resultSet.getString("status");
+                final Report.ReportStatus status = Report.ReportStatus.valueOf(auxStatus);
 
                 final Report report = new Report();
 
@@ -96,9 +97,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 report.setStreet(street);
                 report.setNeighborhood(neighborhood);
                 report.setCity(city);
-                report.setCep(cep);
                 report.setType(type);
-                report.setSituation(situation);
+                report.setStatus(status);
 
                 return report;
             }
@@ -126,13 +126,12 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");
-                final String cep = resultSet.getString("cep");
 
                 final String auxType = resultSet.getString("type");
                 final Report.ReportType type = Report.ReportType.valueOf(auxType);
 
-                final String auxSituation = resultSet.getString("situation");
-                final Report.ReportSituation situation = Report.ReportSituation.valueOf(auxSituation);
+                final String auxStatus = resultSet.getString("status");
+                final Report.ReportStatus status = Report.ReportStatus.valueOf(auxStatus);
 
                 final Report report = new Report();
 
@@ -142,9 +141,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 report.setStreet(street);
                 report.setNeighborhood(neighborhood);
                 report.setCity(city);
-                report.setCep(cep);
                 report.setType(type);
-                report.setSituation(situation);
+                report.setStatus(status);
 
                 reports.add(report);
             }
@@ -153,6 +151,36 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
             return reports;
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateReportStatusToInProgress(int id) {
+        String sql = "UPDATE report SET status = 'EM_ANDAMENTO' WHERE id = ?; ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateReportStatusToConclude(int id) {
+        String sql = "UPDATE report SET status = 'CONCLUIDO' WHERE id = ?; ";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.execute();
+            preparedStatement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
