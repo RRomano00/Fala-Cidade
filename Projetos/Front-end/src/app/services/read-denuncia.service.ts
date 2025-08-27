@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Denuncia } from '../domain/model/denuncia';
+import { Report } from '../domain/model/denuncia';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ReadDenunciaService {
     return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/denuncias`));
   }
 
-  findById(id: string): Promise<Denuncia> {
+  findById(id: string): Promise<Report> {
     return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/denuncias/${id}`));
   }
 }

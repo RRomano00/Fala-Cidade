@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReadDenunciaService } from '../../../services/read-denuncia.service';
-import { Denuncia } from '../../../domain/model/denuncia';
+import { Report } from '../../../domain/model/denuncia';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ListarDenunciaComponent implements OnInit {
 
-  denuncias: Denuncia[] = [];
+  denuncias: Report[] = [];
   role: string = '';
   userEmail: string = '';
 
@@ -32,7 +32,7 @@ export class ListarDenunciaComponent implements OnInit {
   }
 
   async loadDenuncias() {
-    let denunciaList: Denuncia[] = await this.readDenunciaService.findAll();
+    let denunciaList: Report[] = await this.readDenunciaService.findAll();
 
     if (!denunciaList || denunciaList.length === 0) {
       console.log('nenhuma denúncia encontrada');
@@ -43,7 +43,7 @@ export class ListarDenunciaComponent implements OnInit {
     if (this.role === 'EMPLOYEE') {
       this.denuncias = denunciaList;
     } else {
-      this.denuncias = denunciaList.filter((d: Denuncia) => d.email === this.userEmail);
+      this.denuncias = denunciaList.filter((d: Report) => d.email === this.userEmail);
     }
 
     console.log('Denúncias carregadas:', this.denuncias);

@@ -18,7 +18,7 @@
       'denuncia-card-unattended': item.status === 'Pendente'
     }">
     <h3>Denúncia {{ item.id }}</h3>
-    <p>{{item.cidade}} | {{item.rua}}</p>
+    <p>{{item.city}} | {{item.street}}</p>
     <a mat-button [routerLink]="['/listar-denuncia', item.id]">
       <mat-icon>visibility</mat-icon>
       Ver detalhes

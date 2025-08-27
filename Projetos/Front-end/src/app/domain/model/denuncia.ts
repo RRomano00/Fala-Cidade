@@ -1,11 +1,11 @@
-export interface Denuncia {
+export interface Report {
 
     id?: string,
-    cidade: string,
-    bairro: string,
-    rua: string,
-    numero?: string,
-    descricao: string,
+    city: string,
+    neighborhood: string,
+    street: string,
+    number?: string,
+    description: string,
     status: string,
     email?: string,
     fullname?: string

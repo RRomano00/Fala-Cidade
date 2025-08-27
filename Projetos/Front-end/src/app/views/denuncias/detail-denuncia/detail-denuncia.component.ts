@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/rou
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReadDenunciaService } from '../../../services/read-denuncia.service';
 import { MatIconModule } from '@angular/material/icon';
-import { Denuncia } from '../../../domain/model/denuncia';
+import { Report } from '../../../domain/model/denuncia';
 import { CommonModule } from '@angular/common';
 import { DenunciaEditService } from '../../../services/denuncia-edit.service';
 
@@ -20,7 +20,7 @@ import { DenunciaEditService } from '../../../services/denuncia-edit.service';
   styleUrl: './detail-denuncia.component.css'
 })
 export class DetailDenunciaComponent {
-  denuncia!: Denuncia;
+  denuncia!: Report;
 
   denunciaId: string = '-1';
   role: string = '';

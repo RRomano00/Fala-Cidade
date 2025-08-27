@@ -61,11 +61,11 @@ export class CreateDenunciaComponent implements OnInit {
 
   initializeForm() {
     this.form = this.formBuilder.group({
-      cidade: ['', [Validators.required, Validators.minLength(3)]],
-      bairro: ['', [Validators.required,]],
-      rua: ['', [Validators.required]],
-      numero: ['', []],
-      descricao: ['', [Validators.required, Validators.minLength(10)]],
+      city: ['', [Validators.required, Validators.minLength(3)]],
+      neighborhood: ['', [Validators.required,]],
+      street: ['', [Validators.required]],
+      number: ['', []],
+      description: ['', [Validators.required, Validators.minLength(10)]],
       type: ['', [Validators.required]],
       anonimo: [false]
     })
@@ -95,11 +95,11 @@ export class CreateDenunciaComponent implements OnInit {
     }
 
     let denuncia = {
-      cidade: this.form.controls['cidade'].value,
-      bairro: this.form.controls['bairro'].value,
-      rua: this.form.controls['rua'].value,
-      numero: this.form.controls['numero'].value,
-      descricao: this.form.controls['descricao'].value,
+      city: this.form.controls['cidade'].value,
+      neighborhood: this.form.controls['bairro'].value,
+      street: this.form.controls['rua'].value,
+      number: this.form.controls['numero'].value,
+      description: this.form.controls['descricao'].value,
       type: this.form.controls['type'].value,
       status: "Pendente",
       email: 'Anônimo',
