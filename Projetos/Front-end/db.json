@@ -8,9 +8,9 @@
       "numero": "0",
       "descricao": "Na cidade, não vendem Coca-Cola. Os moradores já se acostumaram com essa ausência, embora muitos ainda sintam falta do sabor único da bebida. Alguns tentam substituí-la por refrigerantes locais, outros apelam para compras em cidades vizinhas. A juventude comenta nas redes sociais, e turistas se surpreendem ao descobrir essa peculiaridade. Há quem diga que é por escolha política, outros acreditam em questões logísticas. Seja como for, virou parte da identidade local. Os bares oferecem alternativas criativas, e os comerciantes aproveitam para promover marcas regionais. A ausência da Coca virou conversa, curiosidade e até motivo de orgulho para alguns habitantes.",
       "type": "LIXO ACUMULADO OU TERRENO SUJO",
-      "status": "Em andamento",
+      "status": "Atendida",
       "email": "teste@gmail.com",
-      "fullname": "miguelzin"
+      "fullname": "Miguel Martins"
     },
     {
       "id": "3dff",
@@ -32,9 +32,45 @@
       "numero": "31",
       "descricao": "Furlan enchendo o saco com a caixa de som dele. Basta!!!",
       "type": "SOM ALTO OU PERTURBACÃO DO SOSSEGO",
-      "status": "Pendente",
+      "status": "Atendida",
       "email": "carolzinha@gmail.com",
       "fullname": "carolzinha"
+    },
+    {
+      "id": "7a7d",
+      "cidade": "Sta Rita",
+      "bairro": "Novo",
+      "rua": "Rua",
+      "numero": "12333",
+      "descricao": "Preciso de ajuda na faitec",
+      "type": "PESSOA PRECISANDO DE AJUDA",
+      "status": "Em andamento",
+      "email": "miguel@gmail.com",
+      "fullname": "Miguel Martins"
+    },
+    {
+      "id": "1234",
+      "cidade": "Sta Rita",
+      "bairro": "Sta Rita",
+      "rua": "Sta Rita",
+      "numero": "Sta Rita",
+      "descricao": "Sta RitaSta RitaSta RitaSta Rita",
+      "type": "MAUS TRATOS AOS ANIMAIS",
+      "status": "Pendente",
+      "email": "Anônimo",
+      "fullname": "Anônimo"
+    },
+    {
+      "id": "8cae",
+      "cidade": "Sta Rita",
+      "bairro": "Sta RitaSta RitaSta Rita",
+      "rua": "Sta RitaSta RitaSta Rita",
+      "numero": "Sta RitaSta Rita",
+      "descricao": "Sta RitaSta RitaSta RitaSta RitaSta RitaSta Rita",
+      "type": "MAUS TRATOS AOS ANIMAIS",
+      "status": "Pendente",
+      "email": "Anônimo",
+      "fullname": "Anônimo"
     }
   ],
   "user": [
@@ -43,47 +79,42 @@
       "fullname": "Miguel Martins",
       "email": "miguel@gmail.com",
       "password": "567",
-      "role": "manager"
+      "role": "EMPLOYEE"
     },
     {
       "id": "2",
       "fullname": "leandro",
       "email": "leandro123@gmail.com",
       "password": "123",
-      "role": "user"
+      "role": "USER"
     },
     {
       "id": "3",
       "fullname": "joaovibes",
       "email": "joao.vibes@gmail.com",
       "password": "123",
-      "role": "user"
+      "role": "USER"
     },
     {
       "id": "4",
       "fullname": "carolzinha",
       "email": "carolzinha@gmail.com",
       "password": "123",
-      "role": "user"
+      "role": "USER"
     },
     {
       "id": "5",
       "fullname": "lucas_top",
       "email": "lucas.top@gmail.com",
       "password": "123",
-      "role": "user"
+      "role": "USER"
     },
     {
       "id": "6",
       "fullname": "biafofa",
       "email": "bia.fofa@gmail.com",
       "password": "123",
-      "role": "user"
-    },
-    {
-      "id": "978f",
-      "email": "miguel@gmail.com",
-      "password": "567"
+      "role": "USER"
     }
   ]
 }

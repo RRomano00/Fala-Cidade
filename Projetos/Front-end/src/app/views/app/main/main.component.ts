@@ -33,7 +33,7 @@ import { AuthenticationService } from '../../../services/security/authentication
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-  faFooterIcon = fontawesome.faBug;
+  faFooterIcon = fontawesome.faDollar;
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService

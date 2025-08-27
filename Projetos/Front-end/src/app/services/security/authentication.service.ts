@@ -1,49 +1,48 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { UserCredentialDto } from '../../domain/dto/user-credential-dto';
+import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private readonly apiUrl = `${environment.authentication_api_endpoint}`;
+  private readonly apiUrl = `${environment.authentication_api_endpoint}/user`;
 
   constructor(private http: HttpClient) { }
 
   authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
     console.log('autenticando o usuario...');
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { email: credentials.email, password: credentials.password };
-
-    // Chamada POST para autenticação
-    //return this.http.post<any>(`${this.apiUrl}/authenticate`, body, { headers });
-
-    // Caso vá usar o JSON Server para simulação, descomente a linha abaixo:
-    return this.http.get<any>(`${this.apiUrl}/user`);
+    return this.http.get<UserCredentialDto[]>(
+      `${this.apiUrl}?email=${credentials.email}&password=${credentials.password}`
+    ).pipe(
+      map(users => {
+        if (users.length > 0) {
+          return users[0];
+        } else {
+          throw new Error('Credenciais inválidas');
+        }
+      })
+    );
   }
 
   isAuthenticated(): boolean {
-    let email = localStorage.getItem('email');
-    if (email != null) {
-      console.log(`Usuário autenticado: ${email}`);
-      return true;
-    }
-    return false;
+    return localStorage.getItem('email') != null;
   }
 
   addDataToLocalStorage(user: UserCredentialDto) {
     console.log('adicionando dados no cache...');
     localStorage.setItem('email', user.email);
     localStorage.setItem('password', user.password);
-    localStorage.setItem('fullname', user.fullname ?? '');
-    localStorage.setItem('role', user.role ?? '');
+    localStorage.setItem('fullname', user.fullname ?? '')
+    localStorage.setItem('role', user.role);
   }
 
   logout() {
     localStorage.clear();
-    console.log('usuário deslogado');
   }
 }

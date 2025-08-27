@@ -84,6 +84,7 @@ export class SignInComponent {
       role: ''
     }
 
+
     this.authenticationService.authenticate(credentials)
       .subscribe({
         next: (user: UserCredentialDto) => {
@@ -98,6 +99,7 @@ export class SignInComponent {
           this.isLoginIncorrect = true;
         }
       });
+
   }
 
 
