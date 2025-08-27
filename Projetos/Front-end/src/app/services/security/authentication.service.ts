@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserCredentialDto } from '../../domain/dto/user-credential-dto';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { faPassport } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,16 @@ export class AuthenticationService {
       })
     );
   }
+
+  //   authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
+  //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //     const body = { email: credentials.email, password: credentials.password }
+
+  //     return this.http.post<any>(`${environment.authentication_api_endpoint}/authenticate`, body, { headers });
+  //   }
+  // }
+
+
 
   isAuthenticated(): boolean {
     return localStorage.getItem('email') != null;
