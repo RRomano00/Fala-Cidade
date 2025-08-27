@@ -82,6 +82,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");
+                final String email = resultSet.getString("email");
+                final String fullname = resultSet.getString("fullname");
 
                 final String auxType = resultSet.getString("type");
                 final Report.ReportType type = Report.ReportType.valueOf(auxType);
@@ -99,6 +101,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 report.setCity(city);
                 report.setType(type);
                 report.setStatus(status);
+                report.setEmail(email);
+                report.setFullname(fullname);
 
                 return report;
             }
@@ -113,7 +117,9 @@ public class ReportPostgresDaoImpl implements ReportDao {
     public List<Report> readall() {
         final List<Report> reports = new ArrayList<>();
 
-        final String sql = " SELECT * FROM report; ";
+        String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
+        sql += "JOIN complainant c ON r.complainant_id = c.id ";
+        sql += "JOIN users u ON c.users_id = u.id ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -126,6 +132,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");
+                final String email = resultSet.getString("email");
+                final String fullname = resultSet.getString("fullname");
 
                 final String auxType = resultSet.getString("type");
                 final Report.ReportType type = Report.ReportType.valueOf(auxType);
@@ -143,6 +151,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 report.setCity(city);
                 report.setType(type);
                 report.setStatus(status);
+                report.setEmail(email);
+                report.setFullname(fullname);
 
                 reports.add(report);
             }
