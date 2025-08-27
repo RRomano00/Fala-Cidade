@@ -1,22 +1,38 @@
 <div class="denuncia-container" *ngIf="denuncia">
     <h1>Detalhes da Denúncia</h1>
 
+    <div *ngIf="role === 'EMPLOYEE'" class="status-actions">
+        <p>Alterar status:</p>
+        <button class="em-andamento" (click)="updateStatus('Em andamento')">Em andamento</button>
+        <button class="atendida" (click)="updateStatus('Atendida')">Atendida</button>
+    </div>
+
     <div class="denuncia-detail">
-        <p><strong>ID:</strong> {{ denuncia.id }}</p>
-        <p><strong>Status:</strong>
-            <span class="status {{ denuncia.status.toLowerCase().replace(' ', '-') }}">
-                {{ denuncia.status }}
-            </span>
-        </p>
-        <p><strong>Email:</strong> <span class="autor-email">{{ denuncia.email }}</span></p>
-        <p><strong>Nome do autor:</strong> <span class="autor-name">{{ denuncia.fullname }}</span></p>
+
+        <div class="denuncia-row">
+            <p><strong>ID:</strong> {{ denuncia.id }}</p>
+            <p><strong>Status:</strong>
+                <span class="status {{ denuncia.status.toLowerCase().replace(' ', '-') }}">
+                    {{ denuncia.status }}
+                </span>
+            </p>
+        </div>
+
+        <div class="denuncia-row">
+            <p><strong>Email:</strong> <span class="autor-email"> {{ denuncia.email }} </span></p>
+            <p><strong>Nome do autor:</strong> <span class="autor-name"> {{ denuncia.fullname }} </span></p>
+        </div>
+
+
+        <hr class="divider">
+
         <p><strong>Tipo:</strong> <span class="type-denuncia">{{ denuncia.type }}</span></p>
         <p><strong>Cidade:</strong> {{ denuncia.cidade }}</p>
         <p><strong>Bairro:</strong> {{ denuncia.bairro }}</p>
         <p><strong>Rua:</strong> {{ denuncia.rua }}</p>
         <p><strong>Número:</strong> {{ denuncia.numero }}</p>
         <p><strong>Descrição:</strong></p>
-        <div class=" descricao-box">
+        <div class="descricao-box">
             {{ denuncia.descricao }}
         </div>
     </div>

@@ -5,6 +5,7 @@ import { ReadDenunciaService } from '../../../services/read-denuncia.service';
 import { MatIconModule } from '@angular/material/icon';
 import { Denuncia } from '../../../domain/model/denuncia';
 import { CommonModule } from '@angular/common';
+import { DenunciaEditService } from '../../../services/denuncia-edit.service';
 
 @Component({
   selector: 'app-detail-denuncia',
@@ -22,12 +23,14 @@ export class DetailDenunciaComponent {
   denuncia!: Denuncia;
 
   denunciaId: string = '-1';
+  role: string = '';
 
 
   constructor(
     private router: Router,
     private readDenunciaService: ReadDenunciaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private edit: DenunciaEditService
 
   ) { }
 
@@ -37,17 +40,24 @@ export class DetailDenunciaComponent {
     this.denunciaId = denunciaId!
 
     this.loadDenunciaById(denunciaId!);
+    this.role = localStorage.getItem('role') || '';
   }
 
   async loadDenunciaById(denunciaId: string) {
     try {
       this.denuncia = await this.readDenunciaService.findById(denunciaId);
-      console.log(this.denuncia);
     } catch (error) {
-      console.error('Erro ao carregar a denúncia:', error);
     }
   }
 
+
+  async updateStatus(newStatus: string) {
+    try {
+      this.denuncia.status = newStatus;
+      await this.edit.update(this.denunciaId, this.denuncia);
+    } catch (error) {
+    }
+  }
 
 
 }
