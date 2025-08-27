@@ -1,7 +1,9 @@
 package br.com.faitec.fala_cidade.configuration;
 
 import br.com.faitec.fala_cidade.implementation.dao.fake.UserFakeDaoImpl;
+import br.com.faitec.fala_cidade.implementation.dao.postgres.ReportPostgresDaoImpl;
 import br.com.faitec.fala_cidade.implementation.dao.postgres.UserPostgresDaoImpl;
+import br.com.faitec.fala_cidade.port.dao.report.ReportDao;
 import br.com.faitec.fala_cidade.port.dao.user.UserDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,11 @@ public class AppConfiguration {
     @Bean
     public UserDao getUserFakeDao(Connection connection){
         return new UserPostgresDaoImpl(connection);
+    }
+
+    @Bean
+    public ReportDao getReportDao(Connection connection){
+        return new ReportPostgresDaoImpl(connection);
     }
 
     @Bean
