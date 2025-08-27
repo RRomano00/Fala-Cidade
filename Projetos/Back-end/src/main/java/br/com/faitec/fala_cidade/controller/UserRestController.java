@@ -20,7 +20,7 @@ public class UserRestController {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @GetMapping("/{id}")
     public ResponseEntity<UserModel> getEntityById(@PathVariable final int id){
 
         UserModel entity = userService.findById(id);
