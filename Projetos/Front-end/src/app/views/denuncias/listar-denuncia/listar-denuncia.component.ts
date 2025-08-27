@@ -26,7 +26,7 @@ export class ListarDenunciaComponent implements OnInit {
   constructor(private readDenunciaService: ReadDenunciaService) { }
 
   ngOnInit(): void {
-    this.role = localStorage.getItem('role') || 'user';
+    this.role = localStorage.getItem('role') || 'USER';
     this.userEmail = localStorage.getItem('email') || '';
     this.loadDenuncias();
   }
@@ -40,7 +40,7 @@ export class ListarDenunciaComponent implements OnInit {
       return;
     }
 
-    if (this.role === 'manager') {
+    if (this.role === 'EMPLOYEE') {
       this.denuncias = denunciaList;
     } else {
       this.denuncias = denunciaList.filter((d: Denuncia) => d.email === this.userEmail);
