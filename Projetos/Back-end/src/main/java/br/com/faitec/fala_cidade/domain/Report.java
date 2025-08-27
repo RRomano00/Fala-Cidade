@@ -13,6 +13,8 @@ public class Report {
     private String urlFotoVideo;
     private ReportStatus status;
     private ReportType type;
+    private String email;
+    private String fullname;
 
 
     public enum ReportType {
@@ -121,5 +123,21 @@ public class Report {
 
     public void setType(ReportType type) {
         this.type = type;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }
