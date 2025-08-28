@@ -95,13 +95,13 @@ export class CreateDenunciaComponent implements OnInit {
     }
 
     let denuncia = {
-      city: this.form.controls['cidade'].value,
-      neighborhood: this.form.controls['bairro'].value,
-      street: this.form.controls['rua'].value,
-      number: this.form.controls['numero'].value,
-      description: this.form.controls['descricao'].value,
+      city: this.form.controls['city'].value,
+      neighborhood: this.form.controls['neighborhood'].value,
+      street: this.form.controls['street'].value,
+      number: this.form.controls['number'].value,
+      description: this.form.controls['description'].value,
       type: this.form.controls['type'].value,
-      status: "Pendente",
+      status: "PENDENTE",
       email: 'Anônimo',
       fullname: 'Anônimo'
     };
