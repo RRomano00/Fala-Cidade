@@ -12,6 +12,6 @@ export class CreateDenunciaService {
   constructor(private http: HttpClient) { }
 
   create(denuncia: Report): Promise<any> {
-    return firstValueFrom(this.http.post<any>(`${environment.api_endpoint}/denuncias`, denuncia))
+    return firstValueFrom(this.http.post<any>(`${environment.api_endpoint}/report`, denuncia))
   }
 }
