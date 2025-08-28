@@ -21,14 +21,26 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public int add(Report entity) {
+        String findUserIdSql = "SELECT id FROM users WHERE email = ? LIMIT 1;";
         String sql = "INSERT INTO report (description, number, street, neighborhood, city, type, status, users_id) ";
                 sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ; ";
 
-        PreparedStatement preparedStatement;
-        ResultSet resultSet;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
         try {
             connection.setAutoCommit(false);
+
+            int userId = -1;
+            PreparedStatement findUserStmt = connection.prepareStatement(findUserIdSql);
+            findUserStmt.setString(1, entity.getEmail());
+            ResultSet rs = findUserStmt.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("id");
+            }else {
+                throw new RuntimeException("Usuário com email " + entity.getEmail() + " não encontrado!");
+            }
+
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, entity.getDescription());
             preparedStatement.setInt(2, entity.getNumber());
@@ -37,7 +49,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
             preparedStatement.setString(5, entity.getCity());
             preparedStatement.setString(6, entity.getType().name());
             preparedStatement.setString(7, entity.getStatus().name());
-            preparedStatement.setString(8, entity.getUsers_id());
+            preparedStatement.setInt(8, userId);
 
             preparedStatement.execute();
 
