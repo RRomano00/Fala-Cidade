@@ -8,6 +8,7 @@ begin;
     drop table if exists department cascade;
     drop table if exists city cascade;
     drop table if exists users cascade;
+    drop type if exists role_type cascade;
 
     create type role_type as enum ('USER', 'ADMINISTRATOR', 'EMPLOYEE');
 
