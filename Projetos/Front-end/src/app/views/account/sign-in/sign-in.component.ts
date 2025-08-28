@@ -41,7 +41,7 @@ export class SignInComponent {
   email = new FormControl(null);
   password = new FormControl(null, [
     Validators.minLength(2),
-    Validators.maxLength(4),
+    // Validators.maxLength(4),
   ]);
 
   isLoginIncorrect: boolean = false;
