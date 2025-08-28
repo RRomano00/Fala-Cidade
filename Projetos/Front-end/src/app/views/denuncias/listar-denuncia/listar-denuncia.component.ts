@@ -37,6 +37,7 @@ export class ListarDenunciaComponent implements OnInit {
     if (!denunciaList || denunciaList.length === 0) {
       console.log('nenhuma denúncia encontrada');
       this.denuncias = [];
+      console.log(denunciaList)
       return;
     }
 

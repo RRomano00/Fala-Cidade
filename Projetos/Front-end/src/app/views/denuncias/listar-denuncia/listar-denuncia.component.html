@@ -13,9 +13,9 @@
 
 <div class="denuncia-list">
   <div *ngFor="let item of denuncias" [ngClass]="{
-      'denuncia-card': item.status === 'Atendida',
-      'denuncia-card-pending': item.status === 'Em andamento',
-      'denuncia-card-unattended': item.status === 'Pendente'
+      'denuncia-card': item.status === 'ATENDIDA',
+      'denuncia-card-pending': item.status === 'EM_ANDAMENTO',
+      'denuncia-card-unattended': item.status === 'PENDENTE'
     }">
     <h3>Denúncia {{ item.id }}</h3>
     <p>{{item.city}} | {{item.street}}</p>
