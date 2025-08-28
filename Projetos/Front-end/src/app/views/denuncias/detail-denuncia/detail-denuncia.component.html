@@ -3,8 +3,8 @@
 
     <div *ngIf="role === 'EMPLOYEE'" class="status-actions">
         <p>Alterar status:</p>
-        <button class="em-andamento" (click)="updateStatus('Em andamento')">Em andamento</button>
-        <button class="atendida" (click)="updateStatus('Atendida')">Atendida</button>
+        <button class="EM_ANDAMENTO" (click)="updateStatusProgress('EM_ANDAMENTO')">Em andamento</button>
+        <button class="ATENDIDA" (click)="updateStatusConclude('ATENDIDA')">Atendida</button>
     </div>
 
     <div class="denuncia-detail">
@@ -12,8 +12,8 @@
         <div class="denuncia-row">
             <p><strong>ID:</strong> {{ denuncia.id }}</p>
             <p><strong>Status:</strong>
-                <span class="status {{ denuncia.status.toLowerCase().replace(' ', '-') }}">
-                    {{ denuncia.status }}
+                <span class="status {{ denuncia.status.replace(' ', '_') }}">
+                    {{ denuncia.status!.split('_').join(' ') }}
                 </span>
             </p>
         </div>
@@ -26,7 +26,7 @@
 
         <hr class="divider">
 
-        <p><strong>Tipo:</strong> <span class="type-denuncia">{{ denuncia.type }}</span></p>
+        <p><strong>Tipo:</strong> <span class="type-denuncia">{{denuncia.type!.split('_').join(' ') }}</span></p>
         <p><strong>Cidade:</strong> {{ denuncia.city }}</p>
         <p><strong>Bairro:</strong> {{ denuncia.neighborhood }}</p>
         <p><strong>Rua:</strong> {{ denuncia.street }}</p>

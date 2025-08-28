@@ -40,6 +40,7 @@ export class DetailDenunciaComponent {
     this.denunciaId = denunciaId!
 
     this.loadDenunciaById(denunciaId!);
+    console.log(this.denuncia)
     this.role = localStorage.getItem('role') || '';
   }
 
@@ -51,10 +52,18 @@ export class DetailDenunciaComponent {
   }
 
 
-  async updateStatus(newStatus: string) {
+  async updateStatusProgress(newStatus: string) {
     try {
       this.denuncia.status = newStatus;
-      await this.edit.update(this.denunciaId, this.denuncia);
+      await this.edit.updateToInProgress(this.denunciaId);
+    } catch (error) {
+    }
+  }
+
+  async updateStatusConclude(newStatus: string) {
+    try {
+      this.denuncia.status = newStatus;
+      await this.edit.updateToConclude(this.denunciaId);
     } catch (error) {
     }
   }
