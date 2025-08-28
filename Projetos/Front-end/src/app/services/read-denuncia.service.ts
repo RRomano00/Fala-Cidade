@@ -13,10 +13,10 @@ export class ReadDenunciaService {
 
   findAll(): Promise<any> {
 
-    return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/denuncias`));
+    return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/report`));
   }
 
   findById(id: string): Promise<Report> {
-    return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/denuncias/${id}`));
+    return firstValueFrom(this.http.get<any>(`${environment.api_endpoint}/report/${id}`));
   }
 }
