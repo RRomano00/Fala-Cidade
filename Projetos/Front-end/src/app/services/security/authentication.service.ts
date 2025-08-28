@@ -15,29 +15,28 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
-    console.log('autenticando o usuario...');
+  // authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
+  //   console.log('autenticando o usuario...');
 
-    return this.http.get<UserCredentialDto[]>(
-      `${this.apiUrl}?email=${credentials.email}&password=${credentials.password}`
-    ).pipe(
-      map(users => {
-        if (users.length > 0) {
-          return users[0];
-        } else {
-          throw new Error('Credenciais inválidas');
-        }
-      })
-    );
-  }
-
-  //   authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
-  //     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //     const body = { email: credentials.email, password: credentials.password }
-
-  //     return this.http.post<any>(`${environment.authentication_api_endpoint}/authenticate`, body, { headers });
-  //   }
+  //   return this.http.get<UserCredentialDto[]>(
+  //     `${this.apiUrl}?email=${credentials.email}&password=${credentials.password}`
+  //   ).pipe(
+  //     map(users => {
+  //       if (users.length > 0) {
+  //         return users[0];
+  //       } else {
+  //         throw new Error('Credenciais inválidas');
+  //       }
+  //     })
+  //   );
   // }
+
+  authenticate(credentials: UserCredentialDto): Observable<UserCredentialDto> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { email: credentials.email, password: credentials.password }
+
+    return this.http.post<any>(`${environment.authentication_api_endpoint}/authenticate`, body, { headers });
+  }
 
 
 
