@@ -21,7 +21,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public int add(Report entity) {
-        String sql = "INSERT INTO report (description, number, street, neighborhood, city, type, status, complainant_id) ";
+        String sql = "INSERT INTO report (description, number, street, neighborhood, city, type, status, users_id) ";
                 sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ; ";
 
         PreparedStatement preparedStatement;
@@ -37,7 +37,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
             preparedStatement.setString(5, entity.getCity());
             preparedStatement.setString(6, entity.getType().name());
             preparedStatement.setString(7, entity.getStatus().name());
-            preparedStatement.setString(8, entity.getComplainant_id());
+            preparedStatement.setString(8, entity.getUsers_id());
 
             preparedStatement.execute();
 
@@ -66,8 +66,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
     @Override
     public GetReport readById(int id) {
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
-        sql += "JOIN complainant c ON r.complainant_id = c.id ";
-        sql += "JOIN users u ON c.users_id = u.id ";
+        sql += "JOIN users u ON r.users_id = u.id ";
         sql += "WHERE r.id = ?; ";
 
         try {
@@ -120,8 +119,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
         final List<GetReport> reports = new ArrayList<>();
 
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
-        sql += "JOIN complainant c ON r.complainant_id = c.id ";
-        sql += "JOIN users u ON c.users_id = u.id ";
+        sql += "JOIN users u ON r.users_id = u.id; ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
