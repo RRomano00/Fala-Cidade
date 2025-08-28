@@ -65,7 +65,7 @@ begin;
         number varchar(20) not null,
         street varchar(100) not null,
         city varchar(30) not null,
-        status varchar(15) not null check (status in ('PENDENTE', 'EM_ANDAMENTO', 'CONCLUIDO')) default 'PENDENTE',
+        status varchar(15) not null check (status in ('PENDENTE', 'EM_ANDAMENTO', 'ATENDIDA')) default 'PENDENTE',
         type varchar(50) not null check (type in (
             'BURACO_NA_RUA_OU_CALCADA',
             'POSTE_COM_LUZ_QUEIMADA',
@@ -82,7 +82,7 @@ begin;
         )),
         department_id integer references department(id),
         city_employee_id integer references city_employee(id),
-        complainant_id integer not null references complainant(id),
+        complainant_id integer references complainant(id),
         unique (complainant_id, creation_date)
     );
 
