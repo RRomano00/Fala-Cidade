@@ -13,8 +13,7 @@ public class Report {
     private String urlFotoVideo;
     private ReportStatus status;
     private ReportType type;
-    private String email;
-    private String fullname;
+    private String complainant_id;
 
 
     public enum ReportType {
@@ -35,7 +34,7 @@ public class Report {
     public enum ReportStatus {
         PENDENTE,
         EM_ANDAMENTO,
-        CONCLUIDO
+        ATENDIDA
     }
 
     public Report(int id, String description, String neighborhood, int number, String street, String city, String urlFotoVideo, ReportStatus status, ReportType type) {
@@ -125,19 +124,11 @@ public class Report {
         this.type = type;
     }
 
-    public String getEmail() {
-        return email;
+    public String getComplainant_id() {
+        return complainant_id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setComplainant_id(String complainant_id) {
+        this.complainant_id = complainant_id;
     }
 }
