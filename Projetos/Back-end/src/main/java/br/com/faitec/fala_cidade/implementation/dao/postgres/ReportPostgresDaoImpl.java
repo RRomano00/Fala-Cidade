@@ -1,6 +1,7 @@
 package br.com.faitec.fala_cidade.implementation.dao.postgres;
 
 import br.com.faitec.fala_cidade.domain.Report;
+import br.com.faitec.fala_cidade.domain.dto.GetReport;
 import br.com.faitec.fala_cidade.port.dao.report.ReportDao;
 
 import java.sql.*;
@@ -20,8 +21,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public int add(Report entity) {
-        String sql = "INSERT INTO report (desciption, number, street, neighborhood, city, type, status) ";
-                sql += " VALUES(?, ?, ?, ?, ?, ?, ?) ; ";
+        String sql = "INSERT INTO report (description, number, street, neighborhood, city, type, status, complainant_id) ";
+                sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?) ; ";
 
         PreparedStatement preparedStatement;
         ResultSet resultSet;
@@ -34,8 +35,9 @@ public class ReportPostgresDaoImpl implements ReportDao {
             preparedStatement.setString(3, entity.getStreet());
             preparedStatement.setString(4, entity.getNeighborhood());
             preparedStatement.setString(5, entity.getCity());
-            preparedStatement.setString(7, entity.getType().name());
-            preparedStatement.setString(8, entity.getStatus().name());
+            preparedStatement.setString(6, entity.getType().name());
+            preparedStatement.setString(7, entity.getStatus().name());
+            preparedStatement.setString(8, entity.getComplainant_id());
 
             preparedStatement.execute();
 
@@ -62,7 +64,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
     }
 
     @Override
-    public Report readById(int id) {
+    public GetReport readById(int id) {
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
         sql += "JOIN complainant c ON r.complainant_id = c.id ";
         sql += "JOIN users u ON c.users_id = u.id ";
@@ -91,7 +93,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String auxStatus = resultSet.getString("status");
                 final Report.ReportStatus status = Report.ReportStatus.valueOf(auxStatus);
 
-                final Report report = new Report();
+                final GetReport report = new GetReport();
 
                 report.setId(entityId);
                 report.setDescription(description);
@@ -114,8 +116,8 @@ public class ReportPostgresDaoImpl implements ReportDao {
     }
 
     @Override
-    public List<Report> readall() {
-        final List<Report> reports = new ArrayList<>();
+    public List<GetReport> readall() {
+        final List<GetReport> reports = new ArrayList<>();
 
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
         sql += "JOIN complainant c ON r.complainant_id = c.id ";
@@ -141,7 +143,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
                 final String auxStatus = resultSet.getString("status");
                 final Report.ReportStatus status = Report.ReportStatus.valueOf(auxStatus);
 
-                final Report report = new Report();
+                final GetReport report = new GetReport();
 
                 report.setId(entityId);
                 report.setDescription(description);
@@ -183,7 +185,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
     @Override
     public void updateReportStatusToConclude(int id) {
-        String sql = "UPDATE report SET status = 'CONCLUIDO' WHERE id = ?; ";
+        String sql = "UPDATE report SET status = 'ATENDIDA' WHERE id = ?; ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

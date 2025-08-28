@@ -1,6 +1,7 @@
 package br.com.faitec.fala_cidade.controller;
 
 import br.com.faitec.fala_cidade.domain.Report;
+import br.com.faitec.fala_cidade.domain.dto.GetReport;
 import br.com.faitec.fala_cidade.port.service.report.ReportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +20,32 @@ public class ReportRestController {
         this.reportService = reportService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Report> getEntityById(@PathVariable final int id){
+    @PutMapping("/progress/{id}")
+    public void updateStatusToInProgress(@PathVariable final int id){
 
-        Report entity = reportService.findById(id);
+        reportService.updateReportStatusToInProgress(id);
+
+    }
+
+    @PutMapping("/conclude/{id}")
+    public void updateStatusToConclude(@PathVariable final int id){
+
+        reportService.updateReportStatusToConclude(id);
+
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetReport> getEntityById(@PathVariable final int id){
+
+        GetReport entity = reportService.findById(id);
 
         return entity == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(entity);
     }
 
     @GetMapping()
-    public ResponseEntity<List<Report>> getEntities(){
+    public ResponseEntity<List<GetReport>> getEntities(){
 
-        List<Report> entities = reportService.findAll();
+        List<GetReport> entities = reportService.findAll();
 
         return entities == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(entities);
     }

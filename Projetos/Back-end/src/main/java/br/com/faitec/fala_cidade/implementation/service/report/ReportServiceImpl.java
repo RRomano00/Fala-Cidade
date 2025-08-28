@@ -1,6 +1,7 @@
 package br.com.faitec.fala_cidade.implementation.service.report;
 
 import br.com.faitec.fala_cidade.domain.Report;
+import br.com.faitec.fala_cidade.domain.dto.GetReport;
 import br.com.faitec.fala_cidade.port.dao.report.ReportDao;
 import br.com.faitec.fala_cidade.port.service.report.ReportService;
 import org.springframework.stereotype.Service;
@@ -49,19 +50,19 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Report findById(int id) {
+    public GetReport findById(int id) {
 
         if (id < 0){
             return null;
         }
-        Report entity = reportDao.readById(id);
+        GetReport entity = reportDao.readById(id);
 
         return entity;
     }
 
     @Override
-    public List<Report> findAll() {
-        final List<Report> entities = reportDao.readall();
+    public List<GetReport> findAll() {
+        final List<GetReport> entities = reportDao.readall();
 
         return entities;
     }
