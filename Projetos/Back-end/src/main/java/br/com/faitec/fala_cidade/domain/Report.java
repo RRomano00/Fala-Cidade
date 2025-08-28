@@ -13,7 +13,7 @@ public class Report {
     private String urlFotoVideo;
     private ReportStatus status;
     private ReportType type;
-    private String complainant_id;
+    private String users_id;
 
 
     public enum ReportType {
@@ -124,11 +124,11 @@ public class Report {
         this.type = type;
     }
 
-    public String getComplainant_id() {
-        return complainant_id;
+    public String getUsers_id() {
+        return users_id;
     }
 
-    public void setComplainant_id(String complainant_id) {
-        this.complainant_id = complainant_id;
+    public void setUsers_id(String complainant_id) {
+        this.users_id = complainant_id;
     }
 }
