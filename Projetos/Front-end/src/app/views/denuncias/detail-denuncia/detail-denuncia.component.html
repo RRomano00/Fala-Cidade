@@ -1,0 +1,44 @@
+<div class="denuncia-container" *ngIf="denuncia">
+    <h1>Detalhes da Denúncia</h1>
+
+    <div *ngIf="role === 'EMPLOYEE'" class="status-actions">
+        <p>Alterar status:</p>
+        <button class="EM_ANDAMENTO" (click)="updateStatusProgress('EM_ANDAMENTO')">Em andamento</button>
+        <button class="ATENDIDA" (click)="updateStatusConclude('ATENDIDA')">Atendida</button>
+    </div>
+
+    <div class="denuncia-detail">
+
+        <div class="denuncia-row">
+            <p><strong>ID:</strong> {{ denuncia.id }}</p>
+            <p><strong>Status:</strong>
+                <span class="status {{ denuncia.status.replace(' ', '_') }}">
+                    {{ denuncia.status!.split('_').join(' ') }}
+                </span>
+            </p>
+        </div>
+
+        <div class="denuncia-row">
+            <p><strong>Email:</strong> <span class="autor-email"> {{ denuncia.email }} </span></p>
+            <p><strong>Nome do autor:</strong> <span class="autor-name"> {{ denuncia.fullname }} </span></p>
+        </div>
+
+
+        <hr class="divider">
+
+        <p><strong>Tipo:</strong> <span class="type-denuncia">{{denuncia.type!.split('_').join(' ') }}</span></p>
+        <p><strong>Cidade:</strong> {{ denuncia.city }}</p>
+        <p><strong>Bairro:</strong> {{ denuncia.neighborhood }}</p>
+        <p><strong>Rua:</strong> {{ denuncia.street }}</p>
+        <p><strong>Número:</strong> {{ denuncia.number }}</p>
+        <p><strong>Descrição:</strong></p>
+        <div class="descricao-box">
+            {{ denuncia.description }}
+        </div>
+    </div>
+
+    <a mat-button routerLink="/listar-denuncia" class="voltar-btn">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+    </a>
+</div>

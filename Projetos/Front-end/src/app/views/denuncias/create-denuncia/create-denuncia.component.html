@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enviar Denúncia</title>
+  <link rel="stylesheet" href="create-denuncia.component.css" />
+</head>
+
+<body>
+  <div class="report-container">
+    <h2>Envie sua Denúncia</h2>
+    <form class="form" [formGroup]="form" novalidate id="denunciaForm" (ngSubmit)="create()">
+      <div class="input-group">
+        <label for="city">Cidade</label>
+        <input type="text" id="city" formControlName="city" placeholder="Digite a cidade" />
+        <span class="error-message" *ngIf="form.get('city')?.hasError('required') && form.get('city')?.touched">
+          Por favor, preencha a cidade
+        </span>
+        <span class="error-message" *ngIf="form.get('city')?.hasError('minlength') && form.get('city')?.touched">
+          Cidade deve ter pelo menos 3 caracteres.
+        </span>
+      </div>
+
+      <div class="input-group">
+        <label for="neighborhood">Bairro</label>
+        <input type="text" id="neighborhood" formControlName="neighborhood" placeholder="Digite o bairro" />
+        <span class="error-message"
+          *ngIf="form.get('neighborhood')?.hasError('required') && form.get('neighborhood')?.touched">
+          Por favor, preencha o n eighborhood.
+        </span>
+      </div>
+
+      <div class="input-group">
+        <label for="street">Rua</label>
+        <input type="text" id="street" formControlName="street" placeholder="Digite a rua" />
+        <span class="error-message" *ngIf="form.get('street')?.hasError('required') && form.get('street')?.touched">
+          Por favor, preencha a rua.
+        </span>
+      </div>
+
+      <div class="input-group">
+        <label for="number">Número</label>
+        <input type="text" id="number" formControlName="number" placeholder="Número da residência" />
+        <span class="error-message" *ngIf="form.get('number')?.hasError('required') && form.get('number')?.touched">
+          Por favor, preencha o número.
+        </span>
+      </div>
+
+
+      <div class="input-group">
+        <label for="tipo">Tipo de Problema</label>
+        <div class="custom-select">
+          <select id="type" formControlName="type">
+            <option value="" disabled selected>Selecione um tipo de problema</option>
+            <option value="BURACO_NA_RUA_OU_CALCADA">Buraco na rua ou calçada</option>
+            <option value="POSTE_COM_LUZ_QUEIMADA">Poste com luz queimada</option>
+            <option value="LIXO_ACUMULADO_OU_TERRENO_SUJO">Lixo acumulado ou terreno sujo</option>
+            <option value="SINALIZACAO_OU_SEMAFORO_COM_DEFEITO">Sinalização ou semáforo com defeito</option>
+            <option value="PROBLEMAS_EM_PRACAS_E_PARQUES">Problemas em praças e parques</option>
+            <option value="FALHAS_NO_TRANSPORTE_PUBLICO">Falhas no transporte público</option>
+            <option value="PROBLEMAS_EM_POSTO_DE_SAUDE_OU_ESCOLA">Problemas em posto de saúde ou escola</option>
+            <option value="SOM_ALTO_OU_PERTURBACAO_DO_SOSSEGO">Som alto ou perturbação do sossego</option>
+            <option value="OBRA_IRREGULAR_OU_IMOVEL_ABANDONADO">Obra irregular ou imóvel abandonado</option>
+            <option value="MAUS_TRATOS_AOS_ANIMAIS">Maus-tratos aos animais</option>
+            <option value="PESSOA_PRECISANDO_DE_AJUDA">Pessoa precisando de ajuda</option>
+            <option value="OUTROS_PROBLEMAS">Outros problemas</option>
+          </select>
+          <span class="arrow"></span>
+        </div>
+        <span class="error-message" *ngIf="form.get('type')?.hasError('required') && form.get('type')?.touched">
+          Por favor, selecione um tipo de problema.
+        </span>
+      </div>
+
+
+      <div class="input-group">
+        <label for="denuncia">Denúncia</label>
+        <textarea id="denuncia" formControlName="description" placeholder="Descreva a denúncia..."></textarea>
+        <span class="error-message"
+          *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">
+          Por favor, descreva a denúncia.
+        </span>
+      </div>
+
+
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="anonimo" name="anonimo" formControlName="anonimo" />
+        <label for="anonimo">Denúncia Anônima</label>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Enviar Denúncia</button>
+    </form>
+  </div>
+</body>
+
+</html>

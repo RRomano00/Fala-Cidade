@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f5;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #2e7d32;
+}
+
+.legenda-status {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #444;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cor-legenda {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.verde {
+  background-color: #2e7d32;
+}
+
+.amarela {
+  background-color: #f9a825;
+}
+
+.vermelha {
+  background-color: #ec0a0a;
+}
+
+.denuncia-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.denuncia-card,
+.denuncia-card-unattended,
+.denuncia-card-pending {
+  background-color: #ffffff;
+  padding: 10px;
+  border-left: 6px solid;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  text-align: left;
+  animation: slideUp 0.5s ease-in forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denuncia-card {
+  border-left-color: #2e7d32;
+}
+
+.denuncia-card-unattended {
+  border-left-color: #ec0a0a;
+}
+
+.denuncia-card-pending {
+  border-left-color: #f9a825;
+}
+
+.denuncia-card:hover,
+.denuncia-card-unattended:hover,
+.denuncia-card-pending:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.denuncia-card h3,
+.denuncia-card-unattended h3,
+.denuncia-card-pending h3 {
+  margin-top: 0;
+  color: #388e3c;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.empty {
+  text-align: center;
+  background: #f0f0f0;
+  color: #000000;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-size: 16px;
+  max-width: 600px;
+}

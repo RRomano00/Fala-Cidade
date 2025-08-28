@@ -1,0 +1,307 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.report-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+  opacity: 0;
+  animation: slideInField 0.4s ease forwards;
+}
+
+.input-group:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.input-group:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.input-group:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.input-group:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.input-group:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInField {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+/* Campos de texto e textarea */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Altura do textarea */
+textarea {
+  height: 200px;
+  resize: vertical;
+}
+
+input[type="text"]:focus+.error-message,
+textarea:focus+.error-message {
+  /* Sem exibição de erro aqui */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #4c9e4e;
+  box-shadow: 0 0 0 2px rgba(76, 158, 78, 0.2);
+}
+
+input[type="text"]:focus~label,
+textarea:focus~label {
+  color: #4c9e4e;
+}
+
+input:valid,
+textarea:valid {
+  border-color: #4c9e4e;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+input.touched:invalid,
+textarea.touched:invalid {
+  border-color: #e53935;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+  animation: shake 0.3s ease;
+}
+
+.error-message {
+  display: none;
+  color: #e53935;
+  font-size: 14px;
+  margin-top: 6px;
+  animation: slideDown 0.3s ease forwards;
+}
+
+input.touched:invalid+.error-message,
+textarea.touched:invalid+.error-message {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: slideInField 0.4s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  accent-color: #4c9e4e;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.checkbox-group input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
+.checkbox-group label {
+  font-size: 16px;
+  color: #444;
+  cursor: pointer;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 24px;
+  background-color: #4c9e4e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.1s ease, color 0.3s ease;
+  animation: slideInField 0.4s ease forwards;
+  animation-delay: 0.7s;
+}
+
+button:hover {
+  color: #dfe;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #0f4d30;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+button:hover::before {
+  left: 0;
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-select select:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 6px rgba(0, 119, 255, 0.4);
+  outline: none;
+}
+
+.custom-select .arrow {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #333;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+  margin-top: 4px;
+}

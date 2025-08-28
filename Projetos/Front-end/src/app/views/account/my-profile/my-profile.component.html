@@ -1,53 +1,66 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="">Home</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Meu perfil</li>
-    </ol>
-  </nav>
-  <h1>Meu perfil</h1>
-  <hr>
-  
-  <h2>Dados cadastrais</h2>
-  <form class="form">
-    <div class="form-row">
-      <div class="form-group col-12 mt-2">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="my-profile.component.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="profile-container">
+    <h1>Meu Perfil</h1>
+
+    <form class="profile-form" onsubmit="return validarFormulario(event)">
+      <div class="input-group">
+        <label for="nome">Nome Completo</label>
+        <div class="input-icon">
+          <span class="material-icons">person</span>
+          <input type="text" id="nome" name="fullname" placeholder=" Digite seu nome completo" [value]="user.fullname"
+            required />
+        </div>
+      </div>
+
+      <div class="input-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" value="email@email.com" readonly>
-      </div>
-      <div class="form-group col-12 mt-2">
-        <label for="name">Nome completo</label>
-        <input type="text" class="form-control" id="name" placeholder="Nome completo">
-      </div>
-      <div class="col-12 text-end mt-2">
-        <div class="col-12 text-end mt-2">
-          <button class="btn btn-primary col-4">Atualizar</button>
+        <div class="input-icon">
+          <span class="material-icons">email</span>
+          <input type="email" id="email" name="email" [value]="user.email" disabled />
         </div>
       </div>
-    </div>
-  </form>
-  <hr>
-  <h2>Atualizar senha</h2>
-  <form class="form">
-    <div class="form-row">
-      <div class="form-group col-12 mt-2">
-        <label for="name">Senha antiga</label>
-        <input type="text" class="form-control" id="name" placeholder="Senha antiga">
-      </div>
-      <div class="form-group col-12 mt-2">
-        <label for="newPassword">Senha nova</label>
-        <input type="text" class="form-control" id="newPassword" placeholder="Nova senha">
-      </div>
-      <div class="form-group col-12 mt-2">
-        <label for="repeatNewPassword">Repita a nova senha</label>
-        <input type="text" class="form-control" id="repeatNewPassword" placeholder="Repita a nova senha">
-      </div>
-      <div class="col-12 text-end mt-2">
-        <div class="col-12 text-end mt-2">
-          <button class="btn btn-primary col-4">Atualizar</button>
+
+      <div class="input-group">
+        <label for="senha-atual">Senha Atual</label>
+        <div class="input-icon">
+          <span class="material-icons">lock</span>
+          <input type="password" id="senha-atual" name="senha-atual" placeholder="Digite sua senha atual" required />
         </div>
       </div>
-    </div>
-  </form>
-  
+
+      <div class="input-group">
+        <label for="senha">Nova Senha</label>
+        <div class="input-icon">
+          <span class="material-icons">lock_open</span>
+          <input type="password" id="senha" name="senha" placeholder="Digite a nova senha" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmar-senha">Confirmar Senha</label>
+        <div class="input-icon">
+          <span class="material-icons">lock_open</span>
+          <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Repita a nova senha"
+            oninput="verificarSenhas()" />
+        </div>
+        <small id="senha-msg" class="mensagem-erro"></small>
+      </div>
+
+      <button type="submit">Salvar Alterações</button>
+      <div id="form-mensagem" class="mensagem-status"></div>
+    </form>
+  </div>
+</body>
+
+</html>

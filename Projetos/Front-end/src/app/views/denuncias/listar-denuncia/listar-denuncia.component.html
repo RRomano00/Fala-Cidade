@@ -1,0 +1,30 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<h1>Lista de Denúncias</h1>
+
+<div class="legenda-status">
+  <span class="legenda-item"><span class="cor-legenda verde"></span> Atendida</span>
+  <span class="legenda-item"><span class="cor-legenda amarela"></span> Em andamento</span>
+  <span class="legenda-item"><span class="cor-legenda vermelha"></span> Pendente</span>
+</div>
+
+
+<div *ngIf="denuncias.length === 0" class="empty">
+  Nenhuma denúncia encontrada. Você ainda não criou nenhuma denúncia.
+</div>
+
+<div class="denuncia-list">
+  <div *ngFor="let item of denuncias" [ngClass]="{
+      'denuncia-card': item.status === 'ATENDIDA',
+      'denuncia-card-pending': item.status === 'EM_ANDAMENTO',
+      'denuncia-card-unattended': item.status === 'PENDENTE'
+    }">
+    <h3>Denúncia {{ item.id }}</h3>
+    <p>{{item.city}} | {{item.street}}</p>
+    <a mat-button [routerLink]="['/listar-denuncia', item.id]">
+      <mat-icon>visibility </mat-icon>
+      Ver detalhes
+    </a>
+  </div>
+</div>

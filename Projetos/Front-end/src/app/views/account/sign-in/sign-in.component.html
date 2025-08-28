@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Flutuante</title>
   <link rel="stylesheet" href="sign-in.component.css">
 </head>
+
 <body>
+
 
   <div class="login-container">
     <h2>Login</h2>
     <form>
       <div class="input-group">
-        <input type="text" id="usuario" name="usuario" placeholder=" " required>
-        <label for="usuario">Usuário</label>
+        <input matInput type="text" id="usuario" name="email" placeholder=" " [formControl]="email" required>
+        <label for="user">Usuário</label>
       </div>
       <div class="input-group">
-        <input type="password" id="senha" name="senha" placeholder=" " required>
-        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="password" placeholder=" " [formControl]=" password" required>
+        <label for="password">Senha</label>
       </div>
-      <button type="submit"><span>Entrar</span></button>
+      <button mat-raised-button (click)="login()" [disabled]="!validateFields()">Login</button>
+      @if(isLoginIncorrect){
+      <p class="text-danger mt-2">Email e/ou senha incorretos.</p>
+      }
+
+
     </form>
-    <p>Não tem uma conta? <a href="account/sign-up">Cadastre-se</a></p>
+    <p>Não tem uma conta? <a routerLink="/account/sign-up">Cadastre-se</a></p>
   </div>
 
 </body>
+
 </html>
