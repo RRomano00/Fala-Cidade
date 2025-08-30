@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import * as fontawesome from '@fortawesome/free-solid-svg-icons';
 import { AuthenticationService } from '../../../services/security/authentication.service';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-main',
@@ -32,17 +34,27 @@ import { AuthenticationService } from '../../../services/security/authentication
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   faFooterIcon = fontawesome.faDollar;
 
+  isEmployee: boolean = false;
+
   constructor(private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private cdr: ChangeDetectorRef
+
   ) { }
+
+  ngOnInit(): void {
+    this.isEmployee = (localStorage.getItem('role') === 'EMPLOYEE');
+    this.cdr.detectChanges();
+  }
 
 
   public logout() {
     this.authenticationService.logout();
     this.router.navigate(['account/sign-in'])
   }
+
 
 }
