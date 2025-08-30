@@ -1,0 +1,54 @@
+<div class="statistics-container">
+    <h2>Estatísticas de Denúncias</h2>
+
+    <div class="stats-cards">
+        <div class="card">
+            <h3>Total de Denúncias</h3>
+            <p>{{ totalDenuncias }}</p>
+        </div>
+        <div class="card">
+            <h3>Denúncias Pendentes</h3>
+            <p>{{ abertas }}</p>
+        </div>
+        <div class="card">
+            <h3>Denúncias Concluídas</h3>
+            <p>{{ concluidas }}</p>
+        </div>
+    </div>
+
+    <mat-divider class="my-divider"></mat-divider>
+    <h2>Lista por tipos de denúncias</h2>
+    <p></p>
+
+
+    <div class="stats-cards type-cards">
+        <div class="card" *ngFor="let tipo of denunciasPorTipo"
+            [style.background-color]="TipoDenunciaColors[tipo.tipo]">
+            <h3>{{ tipo.tipo.split('_').join(' ') }}</h3>
+            <p>{{ tipo.quantidade }}</p>
+        </div>
+    </div>
+
+    <mat-divider class="my-divider"></mat-divider>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Tipo</th>
+                    <th>Cidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let denuncia of denuncias">
+                    <td>{{ denuncia.id }}</td>
+                    <td>{{ denuncia.status!.split('_').join(' ')}}</td>
+                    <td>{{ denuncia.type!.split('_').join(' ') }}</td>
+                    <td>{{ denuncia.city }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
