@@ -133,3 +133,16 @@ h1 {
   font-size: 16px;
   max-width: 600px;
 }
+
+.icon-green {
+  color: #2e7d32
+}
+
+.color-red {
+  color: red
+}
+
+.color-yellow {
+  color: #f9a825;
+
+}

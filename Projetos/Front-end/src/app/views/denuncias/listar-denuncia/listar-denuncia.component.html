@@ -17,11 +17,11 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        ✅ Atendidas ({{ conclude.length }})
+        <mat-icon class="color-red">error</mat-icon> Pendentes ({{ unattended.length }})
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <div *ngFor="let item of conclude" class="denuncia-card">
+    <div *ngFor="let item of unattended" class="denuncia-card-unattended">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
       <a mat-button [routerLink]="['/listar-denuncia', item.id]">
@@ -34,7 +34,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        ⏳ Em andamento ({{ inProgress.length }})
+        <mat-icon class="color-yellow">hourglass_top</mat-icon> Em andamento ({{ inProgress.length }})
       </mat-panel-title>
     </mat-expansion-panel-header>
 
@@ -51,11 +51,11 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        🚨 Pendentes ({{ unattended.length }})
+        <mat-icon class="icon-green">check_circle</mat-icon> Atendidas ({{ conclude.length }})
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <div *ngFor="let item of unattended" class="denuncia-card-unattended">
+    <div *ngFor="let item of conclude" class="denuncia-card">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
       <a mat-button [routerLink]="['/listar-denuncia', item.id]">
@@ -64,5 +64,7 @@
       </a>
     </div>
   </mat-expansion-panel>
+
+
 
 </mat-accordion>
