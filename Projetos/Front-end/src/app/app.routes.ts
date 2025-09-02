@@ -10,6 +10,7 @@ import { HelpComponent } from './views/app/help/help.component';
 import { DetailDenunciaComponent } from './views/denuncias/detail-denuncia/detail-denuncia.component';
 import { authenticationGuard } from './services/security/guard/authentication.guard';
 import { HomeComponent } from './views/app/home/home.component';
+import { StatisticsComponent } from './views/denuncias/statistics/statistics.component';
 
 
 export const routes: Routes = [
@@ -49,6 +50,10 @@ export const routes: Routes = [
       {
         path: 'listar-denuncia/:id',
         component: DetailDenunciaComponent
+      },
+      {
+        path: 'statistics',
+        component: StatisticsComponent
       },
       {
         path: '**',

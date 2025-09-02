@@ -51,10 +51,11 @@
           </mat-nav-list>
         </mat-expansion-panel>
 
-        <!-- <mat-list-item>
+        @if (isEmployee) {
+        <mat-list-item routerLink="/statistics">
           <mat-icon>insights</mat-icon>
           <span>Estatísticas</span>
-        </mat-list-item> -->
+        </mat-list-item>}
       </mat-nav-list>
     </mat-sidenav>
 

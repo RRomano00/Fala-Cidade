@@ -4,6 +4,7 @@ import { UserReadService } from '../../../services/user/user-read.service';
 import { AuthenticationService } from '../../../services/security/authentication.service';
 import { FormsModule } from "@angular/forms";
 import { User } from '../../../domain/model/user';
+import { UserRole } from '../../../domain/model/user-role';
 
 @Component({
   selector: 'app-my-profile',
@@ -16,7 +17,7 @@ import { User } from '../../../domain/model/user';
 })
 export class MyProfileComponent {
 
-  user: User = { fullname: '', email: '', password: '', role: '' };
+  user: User = { fullname: '', email: '', password: '', role: UserRole.USER };
 
   ngOnInit(): void {
     const fullname = localStorage.getItem('fullname') || '';
