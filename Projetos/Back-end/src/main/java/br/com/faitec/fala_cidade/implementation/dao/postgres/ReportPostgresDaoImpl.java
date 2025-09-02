@@ -31,14 +31,22 @@ public class ReportPostgresDaoImpl implements ReportDao {
         try {
             connection.setAutoCommit(false);
 
-            int userId = -1;
-            PreparedStatement findUserStmt = connection.prepareStatement(findUserIdSql);
-            findUserStmt.setString(1, entity.getEmail());
-            ResultSet rs = findUserStmt.executeQuery();
-            if (rs.next()) {
-                userId = rs.getInt("id");
-            }else {
-                throw new RuntimeException("Usuário com email " + entity.getEmail() + " não encontrado!");
+            Integer userId = null;
+
+            if (entity.getEmail() != null
+                    && !entity.getEmail().trim().isEmpty()
+                    && !"anonimo".equalsIgnoreCase(entity.getEmail())) {
+
+                PreparedStatement findUserStmt = connection.prepareStatement(findUserIdSql);
+                findUserStmt.setString(1, entity.getEmail());
+                ResultSet rs = findUserStmt.executeQuery();
+                if (rs.next()) {
+                    userId = rs.getInt("id");
+                } else {
+                    throw new RuntimeException("Usuário com email " + entity.getEmail() + " não encontrado!");
+                }
+                rs.close();
+                findUserStmt.close();
             }
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -49,7 +57,12 @@ public class ReportPostgresDaoImpl implements ReportDao {
             preparedStatement.setString(5, entity.getCity());
             preparedStatement.setString(6, entity.getType().name());
             preparedStatement.setString(7, entity.getStatus().name());
-            preparedStatement.setInt(8, userId);
+
+            if (userId != null) {
+                preparedStatement.setInt(8, userId);
+            } else {
+                preparedStatement.setNull(8, java.sql.Types.INTEGER);
+            }
 
             preparedStatement.execute();
 
