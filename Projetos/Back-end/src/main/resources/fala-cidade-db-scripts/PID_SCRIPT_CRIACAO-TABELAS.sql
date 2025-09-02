@@ -1,6 +1,5 @@
 begin;
 
-    -- Apaga as tabelas na ordem reversa das dependências
     drop table if exists media cascade;
     drop table if exists report cascade;
     drop table if exists classification cascade;
