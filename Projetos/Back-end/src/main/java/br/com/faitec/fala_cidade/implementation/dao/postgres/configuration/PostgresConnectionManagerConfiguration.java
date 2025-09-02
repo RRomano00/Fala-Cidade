@@ -9,8 +9,6 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -91,9 +89,17 @@ public class PostgresConnectionManagerConfiguration {
 
         final String basePath = "fala-cidade-db-scripts";
 
-        ScriptUtils.executeSqlScript(connection, new ClassPathResource(basePath+"/PID_SCRIPT_CRIACAO-TABELAS.sql"));
+        final String createTableSql = resourceFileService.read(basePath + "/PID_SCRIPT_CRIACAO-TABELAS.sql");
 
-        ScriptUtils.executeSqlScript(connection, new ClassPathResource(basePath+"/PID_SCRIPT_POPULAR-TABELAS.sql"));
+        PreparedStatement createStatement = connection.prepareStatement(createTableSql);
+        createStatement.executeUpdate();
+        createStatement.close();
+
+        final String insertDataSql = resourceFileService.read(basePath + "/PID_SCRIPT_POPULAR-TABELAS.sql");
+
+        final PreparedStatement insertStatement = connection.prepareStatement(insertDataSql);
+        insertStatement.execute();
+        insertStatement.close();
 
         return true;
     }
