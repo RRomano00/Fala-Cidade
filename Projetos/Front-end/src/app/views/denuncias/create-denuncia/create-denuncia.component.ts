@@ -15,6 +15,7 @@ import { UserInfoDto } from '../../../domain/dto/user-info.dto';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -50,7 +51,8 @@ export class CreateDenunciaComponent implements OnInit {
 
   constructor(private createService: CreateDenunciaService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
 
   ) {
     this.initializeForm();
@@ -111,8 +113,15 @@ export class CreateDenunciaComponent implements OnInit {
       denuncia.fullname = this.user.fullname;
     }
 
-    await this.createService.create(denuncia);
-    this.router.navigate(['/listar-denuncia']);
+
+    try {
+      await this.createService.create(denuncia);
+      this.router.navigate(['/listar-denuncia']);
+      this.toastr.success('Denúncia criada com sucesso')
+    } catch (error) {
+      this.toastr.error('Não foi possível criar denúncia. Tente novamente')
+    }
+
   }
 
 
