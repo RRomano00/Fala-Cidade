@@ -21,6 +21,10 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
+    @if(unattended.length == 0){
+    <h4>Nenhuma denúncia pendente!</h4>
+    }
+
     <div *ngFor="let item of unattended" class="denuncia-card-unattended">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
@@ -38,6 +42,10 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
+    @if(inProgress.length == 0){
+    <h4>Nenhuma denúncia em andamento!</h4>
+    }
+
     <div *ngFor="let item of inProgress" class="denuncia-card-pending">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
@@ -54,6 +62,10 @@
         <mat-icon class="icon-green">check_circle</mat-icon> Atendidas ({{ conclude.length }})
       </mat-panel-title>
     </mat-expansion-panel-header>
+
+    @if(conclude.length == 0){
+    <h4>Nenhuma denúncia concluída!</h4>
+    }
 
     <div *ngFor="let item of conclude" class="denuncia-card">
       <h3>Denúncia {{ item.id }}</h3>
