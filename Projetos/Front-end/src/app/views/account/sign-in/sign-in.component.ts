@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatInputModule } from '@angular/material/input';
 import { UserCredentialDto } from '../../../domain/dto/user-credential-dto';
 import { AuthenticationService } from '../../../services/security/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -49,6 +50,7 @@ export class SignInComponent {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private toastr: ToastrService
   ) {
     console.log("sign-in constructor")
   }
@@ -67,6 +69,7 @@ export class SignInComponent {
       this.router.navigate(['']);
       return;
     }
+
     console.log('credenciais invalidas ou nao existem no cache');
   }
 
@@ -92,11 +95,14 @@ export class SignInComponent {
 
           this.authenticationService.addDataToLocalStorage(user);
 
+          this.toastr.success('Login efetuado com sucesso.')
           this.router.navigate(['']);
         },
         error: (err) => {
           console.error('Login falhou:', err.message);
           this.isLoginIncorrect = true;
+          this.toastr.error('Login falhou. Tente novamente')
+
         }
       });
 
