@@ -7,7 +7,7 @@ export interface Report {
     number?: string,
     description: string,
     status: string,
-    email?: string,
+    email?: string | null,
     fullname?: string
     type?: string
 }

@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { MatFormField, MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
 import { ToastrService } from 'ngx-toastr';
+import { Report } from '../../../domain/model/denuncia';
 
 
 
@@ -95,7 +96,7 @@ export class CreateDenunciaComponent implements OnInit {
       return;
     }
 
-    let denuncia = {
+    let denuncia: Report = {
       city: this.form.controls['city'].value,
       neighborhood: this.form.controls['neighborhood'].value,
       street: this.form.controls['street'].value,
@@ -103,7 +104,7 @@ export class CreateDenunciaComponent implements OnInit {
       description: this.form.controls['description'].value,
       type: this.form.controls['type'].value,
       status: "PENDENTE",
-      email: 'Anônimo',
+      email: null,
       fullname: 'Anônimo'
     };
 
@@ -115,6 +116,7 @@ export class CreateDenunciaComponent implements OnInit {
 
     try {
       await this.createService.create(denuncia);
+      console.log(denuncia)
       this.router.navigate(['/denuncia/list']);
       this.toastr.success('Denúncia criada com sucesso')
     } catch (error) {
