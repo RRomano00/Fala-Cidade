@@ -98,7 +98,6 @@ h1 {
   color: #388e3c;
 }
 
-/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
