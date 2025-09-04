@@ -28,7 +28,7 @@
     <div *ngFor="let item of unattended" class="denuncia-card-unattended">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
-      <a mat-button [routerLink]="['/listar-denuncia', item.id]">
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
         <mat-icon>visibility</mat-icon>
         Ver detalhes
       </a>
@@ -49,7 +49,7 @@
     <div *ngFor="let item of inProgress" class="denuncia-card-pending">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
-      <a mat-button [routerLink]="['/listar-denuncia', item.id]">
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
         <mat-icon>visibility</mat-icon>
         Ver detalhes
       </a>
@@ -70,7 +70,7 @@
     <div *ngFor="let item of conclude" class="denuncia-card">
       <h3>Denúncia {{ item.id }}</h3>
       <p>{{ item.city }} | {{ item.street }}</p>
-      <a mat-button [routerLink]="['/listar-denuncia', item.id]">
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
         <mat-icon>visibility</mat-icon>
         Ver detalhes
       </a>

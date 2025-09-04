@@ -116,7 +116,7 @@ export class CreateDenunciaComponent implements OnInit {
 
     try {
       await this.createService.create(denuncia);
-      this.router.navigate(['/listar-denuncia']);
+      this.router.navigate(['/denuncia/list']);
       this.toastr.success('Denúncia criada com sucesso')
     } catch (error) {
       this.toastr.error('Não foi possível criar denúncia. Tente novamente')

@@ -40,20 +40,26 @@ export const routes: Routes = [
         component: HelpComponent
       },
       {
-        path: 'create-denuncia',
-        component: CreateDenunciaComponent
-      },
-      {
-        path: 'listar-denuncia',
-        component: ListarDenunciaComponent
-      },
-      {
-        path: 'listar-denuncia/:id',
-        component: DetailDenunciaComponent
-      },
-      {
-        path: 'statistics',
-        component: StatisticsComponent
+        path: 'denuncia',
+        children: [
+          {
+            path: 'create',
+            component: CreateDenunciaComponent
+            ,
+          },
+          {
+            path: 'list',
+            component: ListarDenunciaComponent
+          },
+          {
+            path: 'detail/:id',
+            component: DetailDenunciaComponent
+          },
+          {
+            path: 'statistics',
+            component: StatisticsComponent
+          }
+        ],
       },
       {
         path: '**',
