@@ -87,7 +87,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
             preparedStatement.setInt(1, id);
 
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
                 final int entityId = resultSet.getInt("id");
                 final String fullname = resultSet.getString("fullname");
