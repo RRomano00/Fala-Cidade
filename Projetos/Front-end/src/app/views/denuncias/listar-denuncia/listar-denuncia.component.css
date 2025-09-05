@@ -98,7 +98,6 @@ h1 {
   color: #388e3c;
 }
 
-/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -132,4 +131,21 @@ h1 {
   border-radius: 10px;
   font-size: 16px;
   max-width: 600px;
+}
+
+.icon-green {
+  color: #2e7d32
+}
+
+.color-red {
+  color: red
+}
+
+.color-yellow {
+  color: #f9a825;
+
+}
+
+h4 {
+  font-size: 18px;
 }

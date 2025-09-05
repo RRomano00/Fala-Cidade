@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -85,10 +88,17 @@
       </div>
 
 
-
       <div class="checkbox-group">
         <input type="checkbox" id="anonimo" name="anonimo" formControlName="anonimo" />
         <label for="anonimo">Denúncia Anônima</label>
+      </div>
+
+      <div *ngIf="form.get('anonimo')?.value" class="info-text">
+        <mat-icon>error</mat-icon>
+        <p>Atenção</p>
+        <p>Sua identidade não será registrada.</p>
+        <p>A denúncia será totalmente anônima. Você não poderá acompanhar o status de uma denúncia anônima.</p>
+
       </div>
 
       <button type="submit" [disabled]="form.invalid">Enviar Denúncia</button>

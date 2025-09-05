@@ -1,7 +1,6 @@
 begin;
 
 insert into users (fullname, email, password, phone_number, cpf, role) values
-('Anônimo', 'Anônimo', '123', '119222222222', '12345678900', 'USER'),
 ('João Silva', 'joao@email.com', 'senha123', '11999999999', '123.456.789-00', 'ADMINISTRATOR'),
 ('Maria Souza', 'maria@email.com', 'senha456', '11988888888', '987.654.321-00', 'USER'),
 ('Carlos Lima', 'carlos@email.com', 'senha789', '11977777777', '111.222.333-44', 'EMPLOYEE'),

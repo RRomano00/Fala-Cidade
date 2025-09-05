@@ -118,13 +118,11 @@ export class SignUpComponent implements OnInit {
 
     this.createUser.create(user).subscribe({
       next: (res) => {
-        console.log('Usuário criado no backend:', res);
         this.toastr.success("Usuário criado com sucesso!")
         this.form.reset();
         this.router.navigate(['account/sign-in'])
       },
       error: (err) => {
-        console.error('Erro ao criar usuário:', err);
         this.toastr.error('Erro ao criar usuário!')
       }
     });

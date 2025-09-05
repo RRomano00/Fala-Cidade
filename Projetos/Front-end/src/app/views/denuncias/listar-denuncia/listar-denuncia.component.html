@@ -1,6 +1,5 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
 <h1>Lista de Denúncias</h1>
 
 <div class="legenda-status">
@@ -9,22 +8,75 @@
   <span class="legenda-item"><span class="cor-legenda vermelha"></span> Pendente</span>
 </div>
 
-
 <div *ngIf="denuncias.length === 0" class="empty">
   Nenhuma denúncia encontrada. Você ainda não criou nenhuma denúncia.
 </div>
 
-<div class="denuncia-list">
-  <div *ngFor="let item of denuncias" [ngClass]="{
-      'denuncia-card': item.status === 'ATENDIDA',
-      'denuncia-card-pending': item.status === 'EM_ANDAMENTO',
-      'denuncia-card-unattended': item.status === 'PENDENTE'
-    }">
-    <h3>Denúncia {{ item.id }}</h3>
-    <p>{{item.city}} | {{item.street}}</p>
-    <a mat-button [routerLink]="['/listar-denuncia', item.id]">
-      <mat-icon>visibility </mat-icon>
-      Ver detalhes
-    </a>
-  </div>
-</div>
+<mat-accordion multi="true" class="denuncia-accordion">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon class="color-red">error</mat-icon> Pendentes ({{ unattended.length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @if(unattended.length == 0){
+    <h4>Nenhuma denúncia pendente!</h4>
+    }
+
+    <div *ngFor="let item of unattended" class="denuncia-card-unattended">
+      <h3>Denúncia {{ item.id }}</h3>
+      <p>{{ item.city }} | {{ item.street }}</p>
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
+        <mat-icon>visibility</mat-icon>
+        Ver detalhes
+      </a>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon class="color-yellow">hourglass_top</mat-icon> Em andamento ({{ inProgress.length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @if(inProgress.length == 0){
+    <h4>Nenhuma denúncia em andamento!</h4>
+    }
+
+    <div *ngFor="let item of inProgress" class="denuncia-card-pending">
+      <h3>Denúncia {{ item.id }}</h3>
+      <p>{{ item.city }} | {{ item.street }}</p>
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
+        <mat-icon>visibility</mat-icon>
+        Ver detalhes
+      </a>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon class="icon-green">check_circle</mat-icon> Atendidas ({{ conclude.length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @if(conclude.length == 0){
+    <h4>Nenhuma denúncia concluída!</h4>
+    }
+
+    <div *ngFor="let item of conclude" class="denuncia-card">
+      <h3>Denúncia {{ item.id }}</h3>
+      <p>{{ item.city }} | {{ item.street }}</p>
+      <a mat-button [routerLink]="['/denuncia/detail', item.id]">
+        <mat-icon>visibility</mat-icon>
+        Ver detalhes
+      </a>
+    </div>
+  </mat-expansion-panel>
+
+
+
+</mat-accordion>

@@ -15,6 +15,8 @@ import { UserInfoDto } from '../../../domain/dto/user-info.dto';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
+import { ToastrService } from 'ngx-toastr';
+import { Report } from '../../../domain/model/denuncia';
 
 
 
@@ -35,7 +37,6 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     CommonModule,
     MatInputModule,
-    MatFormField,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -50,7 +51,8 @@ export class CreateDenunciaComponent implements OnInit {
 
   constructor(private createService: CreateDenunciaService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
 
   ) {
     this.initializeForm();
@@ -94,7 +96,7 @@ export class CreateDenunciaComponent implements OnInit {
       return;
     }
 
-    let denuncia = {
+    let denuncia: Report = {
       city: this.form.controls['city'].value,
       neighborhood: this.form.controls['neighborhood'].value,
       street: this.form.controls['street'].value,
@@ -102,7 +104,7 @@ export class CreateDenunciaComponent implements OnInit {
       description: this.form.controls['description'].value,
       type: this.form.controls['type'].value,
       status: "PENDENTE",
-      email: 'Anônimo',
+      email: null,
       fullname: 'Anônimo'
     };
 
@@ -111,8 +113,16 @@ export class CreateDenunciaComponent implements OnInit {
       denuncia.fullname = this.user.fullname;
     }
 
-    await this.createService.create(denuncia);
-    this.router.navigate(['/listar-denuncia']);
+
+    try {
+      await this.createService.create(denuncia);
+      console.log(denuncia)
+      this.router.navigate(['/denuncia/list']);
+      this.toastr.success('Denúncia criada com sucesso')
+    } catch (error) {
+      this.toastr.error('Não foi possível criar denúncia. Tente novamente')
+    }
+
   }
 
 

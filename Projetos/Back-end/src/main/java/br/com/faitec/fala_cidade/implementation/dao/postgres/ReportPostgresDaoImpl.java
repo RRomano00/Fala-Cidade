@@ -91,7 +91,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
     @Override
     public GetReport readById(int id) {
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
-        sql += "JOIN users u ON r.users_id = u.id ";
+        sql += "LEFT JOIN users u ON r.users_id = u.id ";
         sql += "WHERE r.id = ?; ";
 
         try {
@@ -144,7 +144,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
         final List<GetReport> reports = new ArrayList<>();
 
         String sql = "SELECT r.*, u.fullname, u.email FROM report r ";
-        sql += "JOIN users u ON r.users_id = u.id; ";
+        sql += "LEFT JOIN users u ON r.users_id = u.id; ";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
