@@ -21,9 +21,17 @@
             </p>
         </div>
 
+
         <div class="denuncia-row">
-            <p><strong>Email:</strong> <span class="autor-email"> {{ denuncia.email }} </span></p>
-            <p><strong>Nome do autor:</strong> <span class="autor-name"> {{ denuncia.fullname }} </span></p>
+            @if(denuncia.email === null){
+            <p><strong>Email:</strong> <span class="autor-email">Anônimo</span></p>
+            <p><strong>Nome do autor:</strong> <span class="autor-name">Anônimo </span></p>
+            }
+            @else {
+            <p><strong>Email:</strong> <span class="autor-email">{{denuncia.email}}</span></p>
+            <p><strong>Email:</strong> <span class="autor-email">{{denuncia.fullname}}</span></p>
+
+            }
         </div>
 
 
