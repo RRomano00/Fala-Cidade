@@ -17,7 +17,7 @@
     <form class="form" [formGroup]="form" novalidate id="denunciaForm" (ngSubmit)="create()">
       <div class="input-group">
         <label for="city">Cidade</label>
-        <input type="text" id="city" formControlName="city" placeholder="Digite a cidade" />
+        <input type="text" id="city" formControlName="city" placeholder="Santa Rita do Sapucaí" readonly />
         <span class="error-message" *ngIf="form.get('city')?.hasError('required') && form.get('city')?.touched">
           Por favor, preencha a cidade
         </span>

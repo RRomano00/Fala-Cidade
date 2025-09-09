@@ -63,7 +63,7 @@ export class CreateDenunciaComponent implements OnInit {
 
   initializeForm() {
     this.form = this.formBuilder.group({
-      city: ['', [Validators.required, Validators.minLength(3)]],
+      city: [{ value: "Santa Rita do Sapucaí", disabled: true }, [Validators.required, Validators.minLength(3)]],
       neighborhood: ['', [Validators.required,]],
       street: ['', [Validators.required]],
       number: ['', []],
