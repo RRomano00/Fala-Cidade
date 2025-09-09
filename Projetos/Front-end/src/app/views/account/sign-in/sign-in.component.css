@@ -1,111 +1,98 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f2e5;
+.base-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 90vh;
+  background-color: #f8f2e5;
+  padding: 2rem;
 }
 
-.login-container {
+.form {
+  width: 100%;
+  max-width: 350px;
   background-color: whitesmoke;
-  padding: 30px;
+  padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+h2.text-center {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+mat-label {
+  font-weight: 500;
+  color: #444;
+}
+
+input[matInput] {
+  font-size: 0.95rem;
+}
+
+mat-error,
+.text-danger {
+  font-size: 0.8rem;
+  color: #e74c3c !important;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+button[mat-raised-button] {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-transform: none;
+  background-color: #4c9e4e;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+button[mat-raised-button]:hover:not(:disabled) {
+  background-color: #0f4d30;
+  transform: scale(1.02);
+}
+
+hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #ecf0f1;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
   text-align: center;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #333;
+.mt-4 p {
+  font-size: 0.9rem;
+  color: #555;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-group {
-  position: relative;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-}
-
-.input-group label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: white;
-  padding: 0 5px;
-  color: #888;
-  font-size: 16px;
-  transition: 0.2s ease all;
-  pointer-events: none;
-}
-
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
-  top: -10px;
-  left: 8px;
-  font-size: 12px;
-  color: #333;
-}
-
-button {
-  position: relative;
-  overflow: hidden;
-  padding: 10px;
-  background-color: #4c9e4e;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
-
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: #0f4d30;
-  transition: left 0.3s ease;
-  z-index: 0;
-}
-
-button:hover::before {
-  left: 0;
-}
-
-button span {
-  position: relative;
-  z-index: 1;
-}
-
-p {
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-a {
+.mt-4 a {
   color: #007BFF;
+  font-weight: 600;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
-a:hover {
+.mt-4 a:hover {
   text-decoration: underline;
 }
