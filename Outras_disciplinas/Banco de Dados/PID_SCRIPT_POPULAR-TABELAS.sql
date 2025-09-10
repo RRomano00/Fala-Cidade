@@ -7,11 +7,11 @@ insert into users (fullname, email, password, phone_number, cpf, role) values
 ('Ana Paula', 'ana@email.com', 'senhaabc', '11966666666', '555.666.777-88', 'EMPLOYEE');
 
 insert into city (name, state) values
-('Santa Rita do Sapucaí', 'MG')
+('Santa Rita do Sapucaí', 'MG');
 
 insert into report (description, neighborhood, number, street, city, status, type, users_id)
 values
-('Buraco grande na rua', 'Centro', '100', 'Rua A', 'São Paulo', 'PENDENTE', 'BURACO_NA_RUA_OU_CALCADA', 1),
-('Lixo acumulado na praça', 'Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 'EM_ANDAMENTO', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 2);
+('Buraco grande na rua', 'Centro', '211', 'Avenida Antônio Paulino', 'Santa Rita do Sapucaí', 'PENDENTE', 'BURACO_NA_RUA_OU_CALCADA', 1),
+('Lixo acumulado na rua', 'Vista Alegre', '31', 'Rua Felicidade', 'Santa Rita do Sapucaí', 'EM_ANDAMENTO', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 2);
 
 commit;
