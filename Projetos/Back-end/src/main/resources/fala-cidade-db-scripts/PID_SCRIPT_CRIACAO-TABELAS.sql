@@ -46,7 +46,6 @@ begin;
             'PESSOA_PRECISANDO_DE_AJUDA',
             'OUTROS_PROBLEMAS'
         )),
-        department_id integer references department(id),
         users_id integer references users(id),
         unique (users_id, creation_date)
     );

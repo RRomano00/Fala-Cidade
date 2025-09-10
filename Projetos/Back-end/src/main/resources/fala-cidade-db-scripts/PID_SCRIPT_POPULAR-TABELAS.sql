@@ -10,18 +10,9 @@ insert into city (name, state) values
 ('São Paulo', 'SP'),
 ('Rio de Janeiro', 'RJ');
 
-insert into department (name, city_id) values
-('Obras', 1),
-('Iluminação', 1),
-('Limpeza Urbana', 2);
-
-insert into report (description, neighborhood, number, street, city, status, type, department_id, users_id)
+insert into report (description, neighborhood, number, street, city, status, type, users_id)
 values
-('Buraco grande na rua', 'Centro', '100', 'Rua A', 'São Paulo', 'PENDENTE', 'BURACO_NA_RUA_OU_CALCADA', 1, 1),
-('Lixo acumulado na praça', 'Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 'EM_ANDAMENTO', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 3, 2);
-
-insert into media (file_path, report_id) values
-('uploads/buraco.jpg', 1),
-('uploads/lixo.jpg', 2);
+('Buraco grande na rua', 'Centro', '100', 'Rua A', 'São Paulo', 'PENDENTE', 'BURACO_NA_RUA_OU_CALCADA', 1),
+('Lixo acumulado na praça', 'Copacabana', '200', 'Avenida Atlântica', 'Rio de Janeiro', 'EM_ANDAMENTO', 'LIXO_ACUMULADO_OU_TERRENO_SUJO', 2);
 
 commit;
