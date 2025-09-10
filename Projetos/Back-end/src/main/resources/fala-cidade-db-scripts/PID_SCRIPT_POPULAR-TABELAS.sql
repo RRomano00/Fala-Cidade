@@ -7,8 +7,7 @@ insert into users (fullname, email, password, phone_number, cpf, role) values
 ('Ana Paula', 'ana@email.com', 'senhaabc', '11966666666', '555.666.777-88', 'EMPLOYEE');
 
 insert into city (name, state) values
-('São Paulo', 'SP'),
-('Rio de Janeiro', 'RJ');
+('Santa Rita do Sapucaí', 'MG')
 
 insert into report (description, neighborhood, number, street, city, status, type, users_id)
 values
