@@ -1,16 +1,10 @@
 begin;
 
-    drop table if exists media cascade;
     drop table if exists report cascade;
     drop table if exists classification cascade;
     drop table if exists city_employee cascade;
-    drop table if exists department cascade;
     drop table if exists city cascade;
     drop table if exists users cascade;
-    drop type if exists role_type cascade;
-
-    create type role_type as enum ('USER', 'ADMINISTRATOR', 'EMPLOYEE');
-
 
     create table users(
         id serial primary key,
@@ -19,7 +13,7 @@ begin;
         password varchar(255) not null,
         phone_number varchar(16) unique,
         cpf varchar(14) unique,
-        role role_type not null default 'USER'
+        role varchar(20) not null check(role in ('USER', 'ADMINISTRATOR', 'EMPLOYEE')) default 'USER'
     );
 
     create table city(
@@ -27,12 +21,6 @@ begin;
         name varchar(100) not null,
         state varchar(100) not null,
         unique(name, state)
-    );
-
-    create table department(
-        id serial primary key,
-        name varchar(50) not null,
-        city_id integer not null references city(id) on delete cascade
     );
 
     create table report(
@@ -61,12 +49,6 @@ begin;
         department_id integer references department(id),
         users_id integer references users(id),
         unique (users_id, creation_date)
-    );
-
-    create table media(
-        id serial primary key,
-        file_path text not null,
-        report_id integer not null references report(id) on delete cascade
     );
 
 commit;
