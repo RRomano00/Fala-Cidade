@@ -1,17 +1,15 @@
 package br.com.faitec.fala_cidade.implementation.service.authentication;
 
 import br.com.faitec.fala_cidade.domain.UserModel;
-import br.com.faitec.fala_cidade.port.dao.user.UserDao;
+import br.com.faitec.fala_cidade.port.service.user.UserService;
 import br.com.faitec.fala_cidade.port.service.authentication.AuthenticationService;
-import org.springframework.stereotype.Service;
 
-@Service
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class BasicAuthenticationServiceImpl implements AuthenticationService {
 
-    private final UserDao userDao;
+    private final UserService userService;
 
-    public AuthenticationServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public BasicAuthenticationServiceImpl(UserService userService) {
+        this.userService = userService;
     }
 
 
@@ -21,7 +19,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (email == null || email.isEmpty() || password == null || password.isEmpty()){
             return null;
         }
-        UserModel user = userDao.readByEmail(email);
+        UserModel user = userService.findByEmail(email);
 
         if (user == null){
             return null;
