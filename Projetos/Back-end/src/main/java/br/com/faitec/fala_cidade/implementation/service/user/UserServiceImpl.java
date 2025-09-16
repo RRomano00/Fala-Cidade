@@ -2,13 +2,12 @@ package br.com.faitec.fala_cidade.implementation.service.user;
 
 import br.com.faitec.fala_cidade.domain.UserModel;
 import br.com.faitec.fala_cidade.port.dao.user.UserDao;
-import br.com.faitec.fala_cidade.port.service.user.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.user.UserService {
 
     private final UserDao userDao;
 
