@@ -11,7 +11,6 @@ begin;
         fullname varchar(50) not null,
         email varchar(40) not null unique,
         password varchar(255) not null,
-        phone_number varchar(16) unique,
         cpf varchar(14) unique,
         role varchar(20) not null check(role in ('USER', 'ADMINISTRATOR', 'EMPLOYEE')) default 'USER'
     );

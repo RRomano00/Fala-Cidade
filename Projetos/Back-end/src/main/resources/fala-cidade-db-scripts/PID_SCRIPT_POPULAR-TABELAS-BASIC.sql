@@ -2,11 +2,11 @@ begin;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-insert into users (fullname, email, password, phone_number, cpf, role) values
-('João Silva', 'joao@email.com', '123', '11999999999', '123.456.789-00', 'ADMINISTRATOR'),
-('Maria Souza', 'maria@email.com', '456', '11988888888', '987.654.321-00', 'USER'),
-('Carlos Lima', 'carlos@email.com', '789', '11977777777', '111.222.333-44', 'EMPLOYEE'),
-('Ana Paula', 'ana@email.com', 'abc', '11966666666', '555.666.777-88', 'EMPLOYEE');
+insert into users (fullname, email, password, cpf, role) values
+('João Silva', 'joao@email.com', '123', '123.456.789-00', 'ADMINISTRATOR'),
+('Maria Souza', 'maria@email.com', '456', '987.654.321-00', 'USER'),
+('Carlos Lima', 'carlos@email.com', '789', '111.222.333-44', 'EMPLOYEE'),
+('Ana Paula', 'ana@email.com', 'abc', '555.666.777-88', 'EMPLOYEE');
 
 insert into city (name, state) values
 ('Santa Rita do Sapucaí', 'MG');
