@@ -1,0 +1,4 @@
+Melhorias que devem compor a entrega 6 do PID:
+- Verificar a implementação dos 60% dos casos de uso do frontend;
+- Corrigir o diagrama de sequencia de acordo com a orientação feita durante a apresentação:  Alterar o nome "Tela Login" para "Login"
+- Preencher o item 5 do doc
