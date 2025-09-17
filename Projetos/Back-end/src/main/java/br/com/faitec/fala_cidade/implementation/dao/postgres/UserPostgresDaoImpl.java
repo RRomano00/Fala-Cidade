@@ -22,7 +22,7 @@ public class UserPostgresDaoImpl implements UserDao {
     @Override
     public int add(UserModel entity) {
         String sql = "INSERT INTO users(password, fullname, email, role) ";
-        sql += " VALUES(?, ?, ?, ?) ";
+        sql += " VALUES(crypt(?, gen_salt('bf')), ?, ?, ?) ";
 
         PreparedStatement preparedStatement;
         ResultSet resultSet;
@@ -210,7 +210,7 @@ public class UserPostgresDaoImpl implements UserDao {
 
     @Override
     public boolean updatePassword(int id, String newPassword) {
-        String sql = "UPDATE users SET password = ? ";
+        String sql = "UPDATE users SET password = crypt(?, gen_salt('bf')) ";
         sql += " WHERE id = ? ;";
 
         try {
