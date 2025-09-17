@@ -1,0 +1,83 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="base-form">
+    <form class="form mat-elevation-z4" [formGroup]="form" (ngSubmit)="create()">
+
+        <div class="register-header">
+            <h1>Criar Usuário</h1>
+            <mat-divider></mat-divider>
+            <h2>Preencha os dados abaixo</h2>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Nome completo</mat-label>
+            <input matInput placeholder="Nome completo" formControlName="fullname">
+
+            <mat-error ngIf="form.controls.fullname.hasError('required')">
+                Campo obrigatório
+            </mat-error>
+
+            @if(form.controls['fullname'].hasError('minlength')){
+            <p class="text-danger">Nome deve ter no mínimo {{fullnameMinLength}} caracteres.</p>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" required="" formControlName="email">
+            <mat-error ngIf="form.controls.email.hasError('required')">
+                Campo obrigatório
+            </mat-error>
+
+            @if(form.controls['email'].hasError('email')){
+            <p class="text-danger">Email inválido</p>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" placeholder="Senha" maxlength="10" formControlName="password">
+            <mat-error ngIf="form.controls.password.hasError('required')">
+                Campo obrigatório
+            </mat-error>
+            @if(form.controls['password'].hasError('minlength')){
+            <p class="text-danger">Senha deve ter no minimo {{passwordMinLength}} caracteres.</p>
+            }
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Repita a senha</mat-label>
+            <input matInput type="password" placeholder="Senha" formControlName="repeatPassword">
+            <mat-error ngIf="form.controls.repeatPassword.hasError('required')">
+                Campo obrigatório
+            </mat-error>
+            @if(form.controls['repeatPassword'].hasError('minlength')){
+            <p class="text-danger">
+                Senha deve ter no minimo {{passwordMinLength}} caracteres.
+            </p>
+            }
+            @else if(!arePasswordsValid()){
+            <p class="text-danger">As senhas não são iguais.</p>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Tipo de Usuário</mat-label>
+            <mat-icon matSuffix>supervisor_account</mat-icon>
+            <mat-select required formControlName="userRole">
+                <mat-option value="EMPLOYEE">Funcionário</mat-option>
+                <mat-option value="ADMINISTRATOR">Administrador</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="text-center">
+            <button mat-raised-button color="primary" [disabled]="!validateFields()">
+                Criar
+            </button>
+        </div>
+
+    </form>
+</div>

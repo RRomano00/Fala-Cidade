@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+}
+
+.base-form {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+.form {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.form:hover {
+    transform: translateY(-4px);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #388e3c;
+    margin-bottom: 0.5rem;
+}
+
+.register-header mat-divider {
+    width: 60%;
+    margin: 0.5rem auto 1.5rem auto;
+    background-color: #388e3c;
+}
+
+.register-header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+mat-icon {
+    color: #388e3c;
+}
+
+button[mat-raised-button] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.4);
+}
+
+button[mat-raised-button]:hover {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+mat-error,
+.text-danger {
+    font-size: 0.8rem;
+    color: #e74c3c !important;
+    margin-top: 4px;
+    font-weight: 500;
+}
