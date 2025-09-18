@@ -51,7 +51,7 @@ export class ListarDenunciaComponent implements OnInit {
       return;
     }
 
-    if (this.role === 'EMPLOYEE') {
+    if (this.role === 'EMPLOYEE' || this.role === 'ADMINISTRATOR') {
       this.denuncias = denunciaList;
     } else {
       this.denuncias = denunciaList.filter((d: Report) => d.email === this.userEmail);
