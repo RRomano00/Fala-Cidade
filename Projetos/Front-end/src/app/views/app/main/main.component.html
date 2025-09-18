@@ -55,7 +55,7 @@
           </mat-nav-list>
         </mat-expansion-panel>
 
-        @if (isEmployee) {
+        @if (isEmployee || isAdministrator) {
         <mat-list-item routerLink="denuncia/statistics">
           <mat-icon>insights</mat-icon>
           <span>Estatísticas</span>
