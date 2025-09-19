@@ -48,6 +48,8 @@ export class CreateDenunciaComponent implements OnInit {
 
   form!: FormGroup
   user!: UserInfoDto | null
+  reportMinLength: number = 5;
+
 
   constructor(private createService: CreateDenunciaService,
     private formBuilder: FormBuilder,
@@ -67,7 +69,7 @@ export class CreateDenunciaComponent implements OnInit {
       neighborhood: ['', [Validators.required,]],
       street: ['', [Validators.required]],
       number: ['', []],
-      description: ['', [Validators.required, Validators.minLength(10)]],
+      description: ['', [Validators.required, Validators.minLength(this.reportMinLength)]],
       type: ['', [Validators.required]],
       anonimo: [false]
     })

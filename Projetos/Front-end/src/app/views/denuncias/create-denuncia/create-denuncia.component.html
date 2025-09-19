@@ -72,19 +72,18 @@
           </select>
           <span class="arrow"></span>
         </div>
-        <span class="error-message" *ngIf="form.get('type')?.hasError('required') && form.get('type')?.touched">
-          Por favor, selecione um tipo de problema.
-        </span>
+        <!-- @if(form.controls['description'].hasError('required')){
+        <p class="text-danger">Escolha um dos tipos da denúncia.</p>
+        } -->
       </div>
 
 
       <div class="input-group">
         <label for="denuncia">Denúncia</label>
         <textarea id="denuncia" formControlName="description" placeholder="Descreva a denúncia..."></textarea>
-        <span class="error-message"
-          *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">
-          Por favor, descreva a denúncia.
-        </span>
+        @if(form.controls['description'].hasError('minlength')){
+        <p class="text-danger">Descreva sua denúncia com no mínimo {{reportMinLength}} caracteres.</p>
+        }
       </div>
 
 
