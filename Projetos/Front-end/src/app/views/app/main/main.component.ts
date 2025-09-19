@@ -38,6 +38,8 @@ export class MainComponent implements OnInit {
   faFooterIcon = fontawesome.faDollar;
 
   isEmployee: boolean = false;
+  isAdministrator: boolean = false;
+
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService,
@@ -47,6 +49,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.isEmployee = (localStorage.getItem('role') === 'EMPLOYEE');
+    this.isAdministrator = (localStorage.getItem('role') === 'ADMINISTRATOR');
     this.cdr.detectChanges();
   }
 

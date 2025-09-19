@@ -11,6 +11,7 @@ import { DetailDenunciaComponent } from './views/denuncias/detail-denuncia/detai
 import { authenticationGuard } from './services/security/guard/authentication.guard';
 import { HomeComponent } from './views/app/home/home.component';
 import { StatisticsComponent } from './views/denuncias/statistics/statistics.component';
+import { UserAddComponent } from './views/user/user-add/user-add.component';
 
 
 export const routes: Routes = [
@@ -60,6 +61,15 @@ export const routes: Routes = [
             component: StatisticsComponent
           }
         ],
+      },
+      {
+        path: 'user',
+        children: [
+          {
+            path: 'add',
+            component: UserAddComponent
+          }
+        ]
       },
       {
         path: '**',

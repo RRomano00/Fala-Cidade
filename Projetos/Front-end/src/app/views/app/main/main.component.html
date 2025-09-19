@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="main-root">
   <mat-toolbar class="menu-superior">
     <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
@@ -58,6 +60,14 @@
           <mat-icon>insights</mat-icon>
           <span>Estatísticas</span>
         </mat-list-item>}
+
+        @if (isAdministrator) {
+        <mat-list-item routerLink="user/add">
+          <mat-icon>group_add</mat-icon>
+          <span>Criar Usuário</span>
+        </mat-list-item>}
+
+
       </mat-nav-list>
     </mat-sidenav>
 
