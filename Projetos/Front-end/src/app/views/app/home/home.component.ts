@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -9,6 +9,16 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  name: string = '';
+
+  ngOnInit(): void {
+    let fullname = localStorage.getItem('fullname');
+    if (fullname) {
+      this.name = fullname;
+    }
+  }
+
 
 }
