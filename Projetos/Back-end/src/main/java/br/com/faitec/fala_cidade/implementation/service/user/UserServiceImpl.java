@@ -2,6 +2,8 @@ package br.com.faitec.fala_cidade.implementation.service.user;
 
 import br.com.faitec.fala_cidade.domain.UserModel;
 import br.com.faitec.fala_cidade.port.dao.user.UserDao;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.user.UserService {
 
     private final UserDao userDao;
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -107,7 +111,7 @@ public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.u
             return false;
         }
 
-        if (!user.getPassword().equals(oldPassword)){
+        if (!encoder.matches(oldPassword, user.getPassword())) {
             return false;
         }
 
