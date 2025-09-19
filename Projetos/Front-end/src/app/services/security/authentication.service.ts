@@ -46,10 +46,12 @@ export class AuthenticationService {
 
   addDataToLocalStorage(user: UserCredentialDto) {
     console.log('adicionando dados no cache...');
+    localStorage.setItem('id', user.id ? user.id.toString() : '');
     localStorage.setItem('email', user.email);
     localStorage.setItem('password', user.password);
     localStorage.setItem('fullname', user.fullname ?? '')
     localStorage.setItem('role', user.role);
+    console.log(user.id)
   }
 
   logout() {
