@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  <div class="profile-container">
+  <div class="profile-container ">
     <h1>Meu Perfil</h1>
 
-    <form class="profile-form" onsubmit="return validarFormulario(event)">
+    <form class="profile-form" [formGroup]="form" (ngSubmit)="save() ">
       <div class="input-group">
         <label for="nome">Nome Completo</label>
         <div class="input-icon">
@@ -35,7 +35,8 @@
         <label for="senha-atual">Senha Atual</label>
         <div class="input-icon">
           <span class="material-icons">lock</span>
-          <input type="password" id="senha-atual" name="senha-atual" placeholder="Digite sua senha atual" required />
+          <input type="password" id="senha-atual" name="senha-atual" placeholder="Digite sua senha atual" required
+            formControlName="oldPassword" />
         </div>
       </div>
 
@@ -43,7 +44,8 @@
         <label for="senha">Nova Senha</label>
         <div class="input-icon">
           <span class="material-icons">lock_open</span>
-          <input type="password" id="senha" name="senha" placeholder="Digite a nova senha" />
+          <input type="password" id="senha" name="senha" placeholder="Digite a nova senha"
+            formControlName="newPassword" />
         </div>
       </div>
 
@@ -52,12 +54,12 @@
         <div class="input-icon">
           <span class="material-icons">lock_open</span>
           <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Repita a nova senha"
-            oninput="verificarSenhas()" />
+            formControlName="confirmPassword" />
         </div>
-        <small id="senha-msg" class="mensagem-erro"></small>
+        <small id=" senha-msg" class="mensagem-erro"></small>
       </div>
 
-      <button type="submit">Salvar Alterações</button>
+      <button type="submit" [disabled]="!validatePasswords()">Salvar Alterações</button>
       <div id="form-mensagem" class="mensagem-status"></div>
     </form>
   </div>
