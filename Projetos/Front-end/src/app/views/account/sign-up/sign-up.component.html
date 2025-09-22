@@ -3,7 +3,7 @@
     <h2 class="text-center">Crie sua conta!</h2>
     <mat-form-field>
       <mat-label>Nome completo</mat-label>
-      <input matInput placeholder="Nome completo" formControlName="fullname">
+      <input matInput placeholder="Nome completo" formControlName="fullname" aria-label="nome completo">
 
       <mat-error ngIf="form.controls.fullname.hasError('required')">
         Campo obrigatório
@@ -17,7 +17,7 @@
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" required="" formControlName="email">
+      <input matInput placeholder="Email" required="" formControlName="email" aria-label="email">
       <mat-error ngIf="form.controls.email.hasError('required')">
         Campo obrigatório
       </mat-error>
@@ -31,7 +31,8 @@
 
     <mat-form-field>
       <mat-label>Senha</mat-label>
-      <input matInput type="password" placeholder="Senha" maxlength="10" formControlName="password">
+      <input matInput type="password" placeholder="Senha" maxlength="10" formControlName="password"
+        aria-label="digite a senha">
       <mat-error ngIf="form.controls.password.hasError('required')">
         Campo obrigatório
       </mat-error>
@@ -43,7 +44,7 @@
 
     <mat-form-field>
       <mat-label>Repita a senha</mat-label>
-      <input matInput type="password" placeholder="Senha" formControlName="repeatPassword">
+      <input matInput type="password" placeholder="Senha" formControlName="repeatPassword" aria-label="repita a senha">
       <mat-error ngIf="form.controls.repeatPassword.hasError('required')">
         Campo obrigatório
       </mat-error>

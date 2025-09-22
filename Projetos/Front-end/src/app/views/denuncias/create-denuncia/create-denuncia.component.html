@@ -28,7 +28,8 @@
 
       <div class="input-group">
         <label for="neighborhood">Bairro</label>
-        <input type="text" id="neighborhood" formControlName="neighborhood" placeholder="Digite o bairro" />
+        <input type="text" id="neighborhood" formControlName="neighborhood" placeholder="Digite o bairro"
+          aria-label="digite o bairro" />
         <span class="error-message"
           *ngIf="form.get('neighborhood')?.hasError('required') && form.get('neighborhood')?.touched">
           Por favor, preencha o n eighborhood.
@@ -37,7 +38,7 @@
 
       <div class="input-group">
         <label for="street">Rua</label>
-        <input type="text" id="street" formControlName="street" placeholder="Digite a rua" />
+        <input type="text" id="street" formControlName="street" placeholder="Digite a rua" aria-label="digite a rua" />
         <span class="error-message" *ngIf="form.get('street')?.hasError('required') && form.get('street')?.touched">
           Por favor, preencha a rua.
         </span>
@@ -45,7 +46,8 @@
 
       <div class="input-group">
         <label for="number">Número</label>
-        <input type="text" id="number" formControlName="number" placeholder="Número da residência" />
+        <input type="text" id="number" formControlName="number" placeholder="Número da residência"
+          aria-label="digite o numero" />
         <span class="error-message" *ngIf="form.get('number')?.hasError('required') && form.get('number')?.touched">
           Por favor, preencha o número.
         </span>
@@ -53,10 +55,10 @@
 
 
       <div class="input-group">
-        <label for="tipo">Tipo de Problema</label>
+        <label for="tipo" aria-label="selecione o tipo">Tipo de Problema</label>
         <div class="custom-select">
           <select id="type" formControlName="type">
-            <option value="" disabled selected>Selecione um tipo de problema</option>
+            <option value="" disabled selected aria-label="selecione um problema">Selecione um tipo de problema</option>
             <option value="BURACO_NA_RUA_OU_CALCADA">Buraco na rua ou calçada</option>
             <option value="POSTE_COM_LUZ_QUEIMADA">Poste com luz queimada</option>
             <option value="LIXO_ACUMULADO_OU_TERRENO_SUJO">Lixo acumulado ou terreno sujo</option>
@@ -80,7 +82,8 @@
 
       <div class="input-group">
         <label for="denuncia">Denúncia</label>
-        <textarea id="denuncia" formControlName="description" placeholder="Descreva a denúncia..."></textarea>
+        <textarea id="denuncia" formControlName="description" placeholder="Descreva a denúncia..."
+          aria-label="digite a denuncia"></textarea>
         @if(form.controls['description'].hasError('minlength')){
         <p class="text-danger">Descreva sua denúncia com no mínimo {{reportMinLength}} caracteres.</p>
         }
