@@ -51,7 +51,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, entity.getDescription());
-            preparedStatement.setInt(2, entity.getNumber());
+            preparedStatement.setString(2, entity.getNumber());
             preparedStatement.setString(3, entity.getStreet());
             preparedStatement.setString(4, entity.getNeighborhood());
             preparedStatement.setString(5, entity.getCity());
@@ -104,7 +104,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
             if (resultSet.next()){
                 final int entityId = resultSet.getInt("id");
                 final String description = resultSet.getString("description");
-                final int number = resultSet.getInt("number");
+                final String number = resultSet.getString("number");
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");
@@ -153,7 +153,7 @@ public class ReportPostgresDaoImpl implements ReportDao {
             while(resultSet.next()){
                 final int entityId = resultSet.getInt("id");
                 final String description = resultSet.getString("description");
-                final int number = resultSet.getInt("number");
+                final String number = resultSet.getString("number");
                 final String street = resultSet.getString("street");
                 final String neighborhood = resultSet.getString("neighborhood");
                 final String city = resultSet.getString("city");

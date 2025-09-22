@@ -6,7 +6,7 @@ public class GetReport {
     private int id;
     private String description;
     private String neighborhood;
-    private int number;
+    private String number;
     private String street;
     private String city;
     private String urlFotoVideo;
@@ -15,7 +15,7 @@ public class GetReport {
     private String email;
     private String fullname;
 
-    public GetReport(int id, String description, String neighborhood, int number, String street, String city, String urlFotoVideo, Report.ReportStatus status, Report.ReportType type, String email, String fullname) {
+    public GetReport(int id, String description, String neighborhood, String number, String street, String city, String urlFotoVideo, Report.ReportStatus status, Report.ReportType type, String email, String fullname) {
         this.id = id;
         this.description = description;
         this.neighborhood = neighborhood;
@@ -54,11 +54,11 @@ public class GetReport {
         this.neighborhood = neighborhood;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
