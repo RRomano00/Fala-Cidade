@@ -1,4 +1,4 @@
-package br.com.faitec.fala_cidade.implementation.service.tolls;
+package br.com.faitec.fala_cidade.implementation.service.tools;
 
 import br.com.faitec.fala_cidade.port.service.tools.ResourceFileService;
 import org.springframework.stereotype.Service;
