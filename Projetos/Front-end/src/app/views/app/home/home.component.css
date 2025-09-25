@@ -71,3 +71,10 @@ main p {
 .btn-primary:hover {
     background-color: lab(61.71% -30.99 16.4);
 }
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
