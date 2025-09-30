@@ -1,0 +1,6 @@
+Precisa ser feito:
+- Melhorar o diagrama de sequencia(mostrar os eventos de ponto a ponto, incluindo todas as entidades
+- Melhorar o diagrama de pacotes com as demais classes
+- Talvez melhorar o texto no slide a respeito de segurança, visto que nao é feito nada em especifico para proteger os dados
+- Melhorar o daschboard de denúncias (muitas cores comparado ao restante do projeto)
+- Adcionar a acessibilidade (pode ser a opção do tamanho da fonte ou o alt tab)
