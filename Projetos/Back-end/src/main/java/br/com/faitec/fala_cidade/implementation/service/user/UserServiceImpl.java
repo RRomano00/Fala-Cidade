@@ -28,7 +28,14 @@ public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.u
         }
         if (entity.getFullname().isEmpty()
                 || entity.getEmail().isEmpty()
-                || isPasswordInvalid(entity.getPassword())){
+                || isPasswordInvalid(entity.getPassword())
+                || entity.getRole() == null
+                || entity.getFullname() == null
+                || entity.getEmail() == null
+                ||entity.getPassword() == null
+                || entity.getFullname().isBlank()
+                || entity.getEmail().isBlank()
+                ||entity.getPassword().isBlank()){
             return invalidResponse;
         }
 
