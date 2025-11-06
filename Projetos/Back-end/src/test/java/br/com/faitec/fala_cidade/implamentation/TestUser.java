@@ -74,6 +74,19 @@ public class TestUser {
     }
 
     @Test
+    public void testCreate_ShouldCallDaoAdd_WheNullName() {
+        UserModel user = new UserModel();
+        user.setFullname(null);
+        user.setEmail("john@test.com");
+        user.setPassword("1234");
+        user.setRole(UserModel.UserRole.USER);
+
+        int result = userService.create(user);
+
+        assertEquals(-1, result);
+    }
+
+    @Test
     public void testCreate_ShouldCallDaoAdd_WhenInvalidEmail() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
@@ -91,6 +104,19 @@ public class TestUser {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("  ");
+        user.setPassword("1234");
+        user.setRole(UserModel.UserRole.USER);
+
+        int result = userService.create(user);
+
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testCreate_ShouldReturnMinusOne_WhenEmailIsNull() {
+        UserModel user = new UserModel();
+        user.setFullname("Jonh");
+        user.setEmail(null);
         user.setPassword("1234");
         user.setRole(UserModel.UserRole.USER);
 
@@ -126,6 +152,32 @@ public class TestUser {
     }
 
     @Test
+    public void testCreate_ShouldCallDaoAdd_WhenEmpityPassword() {
+        UserModel user = new UserModel();
+        user.setFullname("Jonh");
+        user.setEmail("john@test.com");
+        user.setPassword("");
+        user.setRole(UserModel.UserRole.USER);
+
+        int result = userService.create(user);
+
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testCreate_ShouldCallDaoAdd_WhenNullPassword() {
+        UserModel user = new UserModel();
+        user.setFullname("Jonh");
+        user.setEmail("john@test.com");
+        user.setPassword(null);
+        user.setRole(UserModel.UserRole.USER);
+
+        int result = userService.create(user);
+
+        assertEquals(-1, result);
+    }
+
+    @Test
     public void testCreate_ShouldCallDaoAdd_WhenInvalidRole() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
@@ -137,4 +189,80 @@ public class TestUser {
 
         assertEquals(-1, result);
     }
+
+    @Test
+    public void testFindById_ShouldReturnUser_WhenIdIsValid() {
+        UserModel userEsperado = new UserModel();
+        userEsperado.setId(1);
+        userEsperado.setFullname("John");
+        userEsperado.setEmail("john@test.com");
+
+        when(userDao.readById(1)).thenReturn(userEsperado);
+
+        UserModel userResultado = userService.findById(1);
+
+        assertNotNull(userResultado);
+        assertEquals(1, userResultado.getId());
+        assertEquals("John", userResultado.getFullname());
+    }
+
+    @Test
+    public void testFindById_ShouldReturnNull_WhenIdIsNegative() {
+        UserModel userResultado = userService.findById(-1);
+        assertNull(userResultado);
+    }
+
+    @Test
+    public void testFindById_ShouldReturnNull_WhenUserNotFound() {
+        when(userDao.readById(99)).thenReturn(null);
+        UserModel userResultado = userService.findById(99);
+        assertNull(userResultado);
+    }
+
+    @Test
+    public void testFindByEmail_ShouldReturnUser_WhenEmailIsValid() {
+        UserModel userEsperado = new UserModel();
+        userEsperado.setId(1);
+        userEsperado.setEmail("john@test.com");
+
+        when(userDao.readByEmail("john@test.com")).thenReturn(userEsperado);
+
+        UserModel userResultado = userService.findByEmail("john@test.com");
+
+        assertNotNull(userResultado);
+        assertEquals("john@test.com", userResultado.getEmail());
+    }
+
+    @Test
+    public void testFindByEmail_ShouldReturnNull_WhenEmailIsEmpty() {
+        UserModel userResultado = userService.findByEmail("");
+        assertNull(userResultado);
+    }
+
+    @Test
+    public void testFindByEmail_ShouldReturnNull_WhenEmailIsNull() {
+        UserModel userResultado = userService.findByEmail(null);
+        assertNull(userResultado);
+    }
+
+    @Test
+    public void testUpdatePassword_ShouldReturnFalse_WhenUserNotFound() {
+        when(userDao.readById(99)).thenReturn(null);
+        boolean resultado = userService.updatePassword(99, "senhaAntiga", "senhaNova");
+        assertFalse(resultado);
+    }
+
+    @Test
+    public void testUpdatePassword_ShouldReturnFalse_WhenNewPasswordIsInvalid() {
+        UserModel user = new UserModel();
+        user.setId(1);
+        user.setPassword("senhaHashedQualquer");
+
+        when(userDao.readById(1)).thenReturn(user);
+
+        boolean resultado = userService.updatePassword(1, "senhaAntiga", "aa");
+
+        assertFalse(resultado);
+    }
+
 }
