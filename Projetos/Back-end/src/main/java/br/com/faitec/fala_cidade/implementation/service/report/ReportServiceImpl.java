@@ -40,7 +40,7 @@ public class ReportServiceImpl implements ReportService {
         if(entity == null){
             return invalidResponse;
         }
-        if (entity.getDescription().isEmpty() || entity.getCity().isEmpty() || entity.getNeighborhood().isEmpty() || entity.getStreet().isEmpty()){
+        if (entity.getDescription() == null || entity.getCity() == null || entity.getNeighborhood() == null || entity.getStreet() == null || entity.getDescription().isEmpty() || entity.getCity().isEmpty() || entity.getNeighborhood().isEmpty() || entity.getStreet().isEmpty()){
             return invalidResponse;
         }
 
