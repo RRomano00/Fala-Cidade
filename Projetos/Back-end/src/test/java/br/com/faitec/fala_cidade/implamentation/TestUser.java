@@ -48,7 +48,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenInvalidName() {
+    public void testCreate_ShouldReturnError_WhenInvalidName() {
         UserModel user = new UserModel();
         user.setFullname("");
         user.setEmail("john@test.com");
@@ -61,7 +61,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenBlankName() {
+    public void testCreate_ShouldReturnError_WhenBlankName() {
         UserModel user = new UserModel();
         user.setFullname("  ");
         user.setEmail("john@test.com");
@@ -74,7 +74,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WheNullName() {
+    public void testCreate_ShouldReturnError_WheNullName() {
         UserModel user = new UserModel();
         user.setFullname(null);
         user.setEmail("john@test.com");
@@ -87,7 +87,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenInvalidEmail() {
+    public void testCreate_ShouldReturnError_WhenInvalidEmail() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("");
@@ -100,7 +100,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenBlankEmail() {
+    public void testCreate_ShouldReturnError_WhenBlankEmail() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("  ");
@@ -113,7 +113,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldReturnMinusOne_WhenEmailIsNull() {
+    public void testCreate_ShouldReturnError_WhenEmailIsNull() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail(null);
@@ -126,7 +126,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenInvalidPassword() {
+    public void testCreate_ShouldReturnError_WhenInvalidPassword() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("john@test.com");
@@ -139,7 +139,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenBlankPassword() {
+    public void testCreate_ShouldReturnError_WhenBlankPassword() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("john@test.com");
@@ -152,7 +152,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenEmpityPassword() {
+    public void testCreate_ShouldReturnError_WhenEmpityPassword() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("john@test.com");
@@ -165,7 +165,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenNullPassword() {
+    public void testCreate_ShouldReturnError_WhenNullPassword() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("john@test.com");
@@ -178,7 +178,7 @@ public class TestUser {
     }
 
     @Test
-    public void testCreate_ShouldCallDaoAdd_WhenInvalidRole() {
+    public void testCreate_ShouldReturnError_WhenInvalidRole() {
         UserModel user = new UserModel();
         user.setFullname("Jonh");
         user.setEmail("john@test.com");
