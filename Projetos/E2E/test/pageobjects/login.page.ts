@@ -31,6 +31,10 @@ class LoginPage extends Page {
         await this.btnSubmit.click();
     }
 
+    public get inlineLoginError() {
+        return $('.text-danger.mt-2.text-center'); // or use a data-test attr
+    }
+
     /**
      * overwrite specific options to adapt it to page object
      */

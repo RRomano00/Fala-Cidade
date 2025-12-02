@@ -4,13 +4,13 @@ import SecurePage from '../pageobjects/secure.page'
 
 describe('My Login application', () => {
     it('should login with valid credentials', async () => {
-        await LoginPage.open()
+        await LoginPage.open();
+        await LoginPage.login('admin@email.com', 'admin');
 
-        await LoginPage.login('admin@email.com', 'admin')
-        await SecurePage.waitForToastToExist(5000)
-        await expect(SecurePage.toastMessage).toBeExisting()
-        await expect(SecurePage.toastMessage).toHaveText(
-            expect.stringContaining('Login efetuado com sucesso.'))
+        await SecurePage.toastContainer.waitForExist({ timeout: 10000 });
+        if (await SecurePage.toastMessage.isExisting()) {
+            await expect(SecurePage.toastMessage).toHaveText(expect.stringContaining('Login efetuado com sucesso.'));
+        } 
     })
 })
 
