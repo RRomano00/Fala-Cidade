@@ -18,6 +18,9 @@
         <module name="fala-cidade" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fala-cidade" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

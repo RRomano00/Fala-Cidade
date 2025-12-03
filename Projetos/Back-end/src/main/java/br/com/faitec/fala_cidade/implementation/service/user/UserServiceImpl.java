@@ -26,9 +26,16 @@ public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.u
         if (entity == null){
             return invalidResponse;
         }
-        if (entity.getFullname().isEmpty()
+        if (entity.getRole() == null
+                || entity.getFullname() == null
+                || entity.getEmail() == null
+                ||entity.getPassword() == null
+                || entity.getFullname().isEmpty()
                 || entity.getEmail().isEmpty()
-                || isPasswordInvalid(entity.getPassword())){
+                || isPasswordInvalid(entity.getPassword())
+                || entity.getFullname().isBlank()
+                || entity.getEmail().isBlank()
+                ||entity.getPassword().isBlank()){
             return invalidResponse;
         }
 
@@ -95,7 +102,7 @@ public class UserServiceImpl implements br.com.faitec.fala_cidade.port.service.u
 
     @Override
     public UserModel findByEmail(String email) {
-        if (email.isEmpty()){
+        if (email == null || email.isBlank()) {
             return null;
         }
         UserModel user = userDao.readByEmail(email);
